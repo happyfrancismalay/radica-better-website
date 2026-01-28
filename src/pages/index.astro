@@ -1,0 +1,2581 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// SEO optimized structured data
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "RADICA",
+  "description": "Hong Kong's leading omnichannel marketing automation platform",
+  "url": "https://www.radica.ai",
+  "logo": "https://www.radica.ai/logo.png",
+  "sameAs": [
+    "https://www.linkedin.com/company/radica",
+    "https://www.facebook.com/radica"
+  ]
+};
+
+const schemaProduct = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "RADICA Marketing Automation Platform",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web-based",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "HKD",
+    "description": "14-day free trial"
+  }
+};
+
+// Statistics
+const stats = [
+  { value: '1B+', label: 'Messages Sent Monthly' },
+  { value: '500+', label: 'Enterprise Clients' },
+  { value: '35%', label: 'Average Conversion Lift' },
+  { value: '99.9%', label: 'Platform Uptime' }
+];
+
+// Client Logos
+const clientLogos = [
+  { name: 'HSBC', industry: 'Finance' },
+  { name: 'Cathay', industry: 'Aviation' },
+  { name: 'HKT', industry: 'Telecom' },
+  { name: 'Mannings', industry: 'Retail' },
+  { name: 'Pizza Hut', industry: 'F&B' },
+  { name: 'AIA', industry: 'Insurance' }
+];
+
+// Core Features
+const coreFeatures = [
+  {
+    icon: 'automation',
+    title: 'Smart Automation',
+    description: 'Visual drag-and-drop workflow design. Create complex customer journeys without coding.',
+    stat: 'Reduce 60%',
+    statLabel: 'Manual Work Time'
+  },
+  {
+    icon: 'omnichannel',
+    title: 'Omnichannel Reach',
+    description: 'Email, SMS, WhatsApp, Push - all-in-one management ensuring message delivery.',
+    stat: '99.9%',
+    statLabel: 'Delivery Rate'
+  },
+  {
+    icon: 'ai',
+    title: 'AI-Powered Optimization',
+    description: 'Smart send times, personalized content, automated A/B testing for continuous improvement.',
+    stat: '35%',
+    statLabel: 'Conversion Lift'
+  }
+];
+
+// Product Feature Tabs
+const productTabs = [
+  {
+    id: 'journey',
+    label: 'Customer Journey',
+    title: 'Visual Customer Journey Design',
+    description: 'Use intuitive drag-and-drop interface to easily create cross-channel automated customer journeys. From welcome emails to cart recovery, automate every touchpoint.',
+    features: ['Drag-and-drop workflow design', 'Conditional branching logic', 'Multi-channel triggers', 'Real-time preview testing'],
+    cta: 'Learn About Journeys'
+  },
+  {
+    id: 'segmentation',
+    label: 'Smart Segmentation',
+    title: 'AI-Driven Customer Segmentation',
+    description: 'Automatically segment based on behavior, preferences, and purchase history. Send the right message, at the right time, to the right person.',
+    features: ['Behavioral tracking analysis', 'Dynamic segment updates', 'RFM analysis', 'Predictive segmentation'],
+    cta: 'Explore Segmentation'
+  },
+  {
+    id: 'personalization',
+    label: 'Personalization',
+    title: '1:1 Personalized Experience',
+    description: 'Automatically generate personalized content, product recommendations, and send times based on each customer\'s unique characteristics.',
+    features: ['Dynamic content blocks', 'AI product recommendations', 'Optimal send time', 'Personalized subject lines'],
+    cta: 'View Personalization'
+  },
+  {
+    id: 'analytics',
+    label: 'Analytics',
+    title: 'Comprehensive Data Insights',
+    description: 'Track every channel and campaign performance in real-time. Gain deep understanding of customer behavior to continuously optimize strategy.',
+    features: ['Real-time dashboard', 'Conversion attribution', 'Customer lifecycle analysis', 'Custom reports'],
+    cta: 'Explore Analytics'
+  }
+];
+
+// Case Studies
+const caseStudies = [
+  {
+    company: 'Leading Retail Brand',
+    industry: 'Retail',
+    quote: 'After using RADICA, our email open rate increased by 45%, and cart recovery success rate reached 28%.',
+    author: 'Marketing Director',
+    stat: '+45%',
+    statLabel: 'Open Rate Increase'
+  },
+  {
+    company: 'Top Financial Institution',
+    industry: 'Finance',
+    quote: 'RADICA helped us achieve true omnichannel customer communication, significantly improving customer satisfaction.',
+    author: 'Head of Digital',
+    stat: '+60%',
+    statLabel: 'Customer Engagement'
+  },
+  {
+    company: 'International F&B Chain',
+    industry: 'F&B',
+    quote: 'Automated loyalty programs saved us significant time while member activity increased 3x.',
+    author: 'CRM Manager',
+    stat: '3x',
+    statLabel: 'Member Activity'
+  }
+];
+
+// Integration Platforms
+const integrations = [
+  { name: 'Salesforce', category: 'CRM' },
+  { name: 'HubSpot', category: 'CRM' },
+  { name: 'Microsoft Dynamics', category: 'CRM' },
+  { name: 'Shopify', category: 'E-commerce' },
+  { name: 'Shopline', category: 'E-commerce' },
+  { name: 'WooCommerce', category: 'E-commerce' },
+  { name: 'Magento', category: 'E-commerce' },
+  { name: 'WhatsApp Business', category: 'Channel' },
+  { name: 'Facebook', category: 'Channel' },
+  { name: 'Google Ads', category: 'Channel' }
+];
+
+// FAQ
+const faqs = [
+  {
+    question: 'What size of business is RADICA suitable for?',
+    answer: 'From SMBs to large enterprises, RADICA provides suitable solutions. Our flexible pricing and feature modules benefit businesses of all sizes.'
+  },
+  {
+    question: 'How long does it take to get started?',
+    answer: 'Most customers can complete basic setup and send their first automated campaign within 1-2 weeks. We provide professional onboarding support.'
+  },
+  {
+    question: 'Do you support multiple languages?',
+    answer: 'Yes, RADICA provides full Traditional Chinese, Simplified Chinese, and English interfaces, along with localized customer support teams.'
+  },
+  {
+    question: 'How is data security ensured?',
+    answer: 'We are ISO 27001 certified, compliant with GDPR and PDPO requirements. All data is encrypted and stored in secure data centers.'
+  }
+];
+
+// Resource Articles
+const resources = [
+  {
+    type: 'Guide',
+    title: '2024 Complete Email Marketing Guide for E-commerce',
+    description: 'Learn practical strategies to boost e-commerce conversion rates through email marketing.',
+    tag: 'Email Marketing'
+  },
+  {
+    type: 'Case Study',
+    title: 'How Retail Brands Increased Sales 40% with WhatsApp',
+    description: 'Deep dive into successful WhatsApp marketing strategies and implementation steps.',
+    tag: 'Case Study'
+  },
+  {
+    type: 'White Paper',
+    title: 'Marketing Automation ROI Calculation Guide',
+    description: 'Learn how to measure and maximize your marketing automation investment returns.',
+    tag: 'White Paper'
+  }
+];
+---
+
+<BaseLayout
+  title="RADICA - Hong Kong's Leading Omnichannel Marketing Automation Platform | Email, WhatsApp, SMS All-in-One"
+  description="RADICA is Hong Kong's leading marketing automation platform, providing Email, WhatsApp, SMS omnichannel customer engagement solutions. Trusted by 500+ enterprises, averaging 35% conversion lift. 14-day free trial."
+>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+  <script type="application/ld+json" set:html={JSON.stringify(schemaProduct)} />
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-icon">🏆</span>
+            <span>Trusted by 500+ Enterprises in Hong Kong</span>
+          </div>
+          <h1 class="hero-title">
+            Make Every Customer Interaction<br/>
+            <span class="text-gradient">Create Value</span>
+          </h1>
+          <p class="hero-subtitle">
+            RADICA omnichannel marketing automation platform helps you build deeper customer relationships through Email, WhatsApp, SMS, averaging <strong>35% conversion lift</strong>.
+          </p>
+          <div class="hero-ctas">
+            <a href="/request-demo/" class="btn btn-primary btn-large">
+              Start 14-Day Free Trial
+              <span class="btn-subtext">No credit card required</span>
+            </a>
+            <a href="/contact/" class="btn btn-secondary btn-large">
+              Book a Personalized Demo
+            </a>
+          </div>
+          <div class="hero-trust">
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5zm0 2.18l7 3.89v7.86l-7 3.89-7-3.89V8.07l7-3.89z"/><path d="M12 8a4 4 0 100 8 4 4 0 000-8zm0 6a2 2 0 110-4 2 2 0 010 4z"/></svg>
+              <span>ISO 27001 Certified</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 6a3 3 0 110 6 3 3 0 010-6zm0 8c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+              <span>GDPR Compliant</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <span>99.9% Uptime</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-dashboard">
+            <div class="dashboard-window">
+              <div class="window-header">
+                <div class="window-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <span class="window-title">RADICA Dashboard</span>
+              </div>
+              <div class="window-content">
+                <div class="dashboard-sidebar">
+                  <div class="sidebar-item active"></div>
+                  <div class="sidebar-item"></div>
+                  <div class="sidebar-item"></div>
+                  <div class="sidebar-item"></div>
+                </div>
+                <div class="dashboard-main">
+                  <div class="dashboard-header-row">
+                    <div class="stat-card">
+                      <span class="stat-number">12,847</span>
+                      <span class="stat-label">Sent</span>
+                      <span class="stat-trend up">+23%</span>
+                    </div>
+                    <div class="stat-card">
+                      <span class="stat-number">68.5%</span>
+                      <span class="stat-label">Open Rate</span>
+                      <span class="stat-trend up">+12%</span>
+                    </div>
+                    <div class="stat-card">
+                      <span class="stat-number">$45.2K</span>
+                      <span class="stat-label">Revenue</span>
+                      <span class="stat-trend up">+35%</span>
+                    </div>
+                  </div>
+                  <div class="dashboard-chart">
+                    <div class="chart-bars">
+                      <div class="bar" style="height: 60%"></div>
+                      <div class="bar" style="height: 75%"></div>
+                      <div class="bar" style="height: 45%"></div>
+                      <div class="bar" style="height: 90%"></div>
+                      <div class="bar" style="height: 70%"></div>
+                      <div class="bar" style="height: 85%"></div>
+                      <div class="bar" style="height: 95%"></div>
+                    </div>
+                  </div>
+                  <div class="dashboard-flow">
+                    <div class="flow-item trigger">Trigger</div>
+                    <div class="flow-arrow"></div>
+                    <div class="flow-item action">Email</div>
+                    <div class="flow-arrow"></div>
+                    <div class="flow-item condition">Condition</div>
+                    <div class="flow-arrow"></div>
+                    <div class="flow-item action">WhatsApp</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Floating Elements -->
+            <div class="floating-card card-1">
+              <span class="card-icon">📧</span>
+              <span class="card-text">Email Delivery 99.2%</span>
+            </div>
+            <div class="floating-card card-2">
+              <span class="card-icon">💬</span>
+              <span class="card-text">WhatsApp Connected</span>
+            </div>
+            <div class="floating-card card-3">
+              <span class="card-icon">📈</span>
+              <span class="card-text">Conversion +35%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-bg">
+      <div class="bg-gradient"></div>
+      <div class="bg-grid"></div>
+    </div>
+  </section>
+
+  <!-- Social Proof: Client Logos -->
+  <section class="clients-section">
+    <div class="container">
+      <p class="clients-label">Trusted by Leading Brands Across Industries</p>
+      <div class="clients-logos">
+        {clientLogos.map((client) => (
+          <div class="client-logo">
+            <span class="logo-text">{client.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        {stats.map((stat) => (
+          <div class="stat-item">
+            <div class="stat-value">{stat.value}</div>
+            <div class="stat-label">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Value Proposition -->
+  <section class="section features-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Core Features</span>
+        <h2 class="section-title">Why Choose RADICA?</h2>
+        <p class="section-subtitle">
+          Not just a tool, but a partner helping you build deeper customer relationships
+        </p>
+      </div>
+      <div class="features-grid">
+        {coreFeatures.map((feature) => (
+          <div class="feature-card">
+            <div class="feature-icon">
+              {feature.icon === 'automation' && (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
+                  <circle cx="12" cy="12" r="4"/>
+                </svg>
+              )}
+              {feature.icon === 'omnichannel' && (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <circle cx="12" cy="12" r="4"/>
+                  <line x1="12" y1="2" x2="12" y2="6"/>
+                  <line x1="12" y1="18" x2="12" y2="22"/>
+                  <line x1="2" y1="12" x2="6" y2="12"/>
+                  <line x1="18" y1="12" x2="22" y2="12"/>
+                </svg>
+              )}
+              {feature.icon === 'ai' && (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2a10 10 0 0110 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z"/>
+                  <path d="M12 6v6l4 2"/>
+                  <circle cx="12" cy="12" r="2"/>
+                </svg>
+              )}
+            </div>
+            <div class="feature-stat">
+              <span class="feature-stat-value">{feature.stat}</span>
+              <span class="feature-stat-label">{feature.statLabel}</span>
+            </div>
+            <h3 class="feature-title">{feature.title}</h3>
+            <p class="feature-description">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+      <div class="features-cta">
+        <a href="/platform/" class="btn btn-primary">Explore All Features</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Features Tabs -->
+  <section class="section section-dark product-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge light">Product Features</span>
+        <h2 class="section-title light">One Platform, Unlimited Possibilities</h2>
+        <p class="section-subtitle light">
+          From customer journey design to data analytics, RADICA provides complete marketing automation solutions
+        </p>
+      </div>
+
+      <div class="product-tabs">
+        <div class="tabs-nav">
+          {productTabs.map((tab, index) => (
+            <button class={`tab-btn ${index === 0 ? 'active' : ''}`} data-tab={tab.id}>
+              {tab.label}
+            </button>
+          ))}
+        </div>
+        <div class="tabs-content">
+          {productTabs.map((tab, index) => (
+            <div class={`tab-panel ${index === 0 ? 'active' : ''}`} id={tab.id}>
+              <div class="tab-grid">
+                <div class="tab-text">
+                  <h3>{tab.title}</h3>
+                  <p>{tab.description}</p>
+                  <ul class="tab-features">
+                    {tab.features.map((f) => (
+                      <li>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <a href="/platform/" class="btn btn-primary">{tab.cta}</a>
+                </div>
+                <div class="tab-visual">
+                  <div class="product-mockup">
+                    {tab.id === 'journey' && (
+                      <div class="mockup-journey">
+                        <div class="journey-node start">Start</div>
+                        <div class="journey-line"></div>
+                        <div class="journey-node trigger">New Member Signup</div>
+                        <div class="journey-line"></div>
+                        <div class="journey-branch">
+                          <div class="branch-path">
+                            <div class="journey-node email">Send Welcome Email</div>
+                            <div class="journey-line"></div>
+                            <div class="journey-node wait">Wait 3 Days</div>
+                          </div>
+                          <div class="branch-path">
+                            <div class="journey-node sms">Send SMS</div>
+                          </div>
+                        </div>
+                        <div class="journey-line"></div>
+                        <div class="journey-node condition">Email Opened?</div>
+                        <div class="journey-line"></div>
+                        <div class="journey-node whatsapp">WhatsApp Follow-up</div>
+                      </div>
+                    )}
+                    {tab.id === 'segmentation' && (
+                      <div class="mockup-segments">
+                        <div class="segment-card active-users">
+                          <span class="segment-icon">👥</span>
+                          <span class="segment-name">Active Users</span>
+                          <span class="segment-count">12,450</span>
+                        </div>
+                        <div class="segment-card high-value">
+                          <span class="segment-icon">💎</span>
+                          <span class="segment-name">High-Value Customers</span>
+                          <span class="segment-count">3,280</span>
+                        </div>
+                        <div class="segment-card at-risk">
+                          <span class="segment-icon">⚠️</span>
+                          <span class="segment-name">At-Risk Churn</span>
+                          <span class="segment-count">890</span>
+                        </div>
+                        <div class="segment-card new-users">
+                          <span class="segment-icon">🆕</span>
+                          <span class="segment-name">New Users</span>
+                          <span class="segment-count">2,150</span>
+                        </div>
+                      </div>
+                    )}
+                    {tab.id === 'personalization' && (
+                      <div class="mockup-personalization">
+                        <div class="email-preview">
+                          <div class="email-header">
+                            <span>Subject: {'{'}first_name{'}'}, Exclusive Offers Await!</span>
+                          </div>
+                          <div class="email-body">
+                            <div class="dynamic-content">
+                              <span class="tag">Dynamic Content</span>
+                              <p>Recommended based on {'{'}purchase_history{'}'}</p>
+                            </div>
+                            <div class="product-recs">
+                              <div class="rec-item"></div>
+                              <div class="rec-item"></div>
+                              <div class="rec-item"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {tab.id === 'analytics' && (
+                      <div class="mockup-analytics">
+                        <div class="analytics-chart">
+                          <div class="chart-line"></div>
+                          <div class="chart-area"></div>
+                        </div>
+                        <div class="analytics-metrics">
+                          <div class="metric">
+                            <span class="metric-value">68.5%</span>
+                            <span class="metric-label">Open Rate</span>
+                          </div>
+                          <div class="metric">
+                            <span class="metric-value">12.3%</span>
+                            <span class="metric-label">Click Rate</span>
+                          </div>
+                          <div class="metric">
+                            <span class="metric-value">4.8%</span>
+                            <span class="metric-label">Conversion Rate</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Boost Your Marketing Results?</h2>
+        <p>14-day free trial, no credit card required, cancel anytime</p>
+        <a href="/request-demo/" class="btn btn-white btn-large">Start Free Trial Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies -->
+  <section class="section cases-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Success Stories</span>
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p class="section-subtitle">
+          See how other businesses improved their marketing results with RADICA
+        </p>
+      </div>
+      <div class="cases-grid">
+        {caseStudies.map((study) => (
+          <div class="case-card">
+            <div class="case-stat">
+              <span class="case-stat-value">{study.stat}</span>
+              <span class="case-stat-label">{study.statLabel}</span>
+            </div>
+            <blockquote class="case-quote">
+              "{study.quote}"
+            </blockquote>
+            <div class="case-author">
+              <div class="author-info">
+                <span class="author-title">{study.author}</span>
+                <span class="author-company">{study.company}</span>
+              </div>
+              <span class="case-industry">{study.industry}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="cases-cta">
+        <a href="/about/" class="btn btn-secondary">View More Success Stories</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Integrations -->
+  <section class="section section-gray integrations-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Seamless Integrations</span>
+        <h2 class="section-title">Works Perfectly With Your Tools</h2>
+        <p class="section-subtitle">
+          50+ integrations connecting your CRM, e-commerce platforms, and marketing channels
+        </p>
+      </div>
+      <div class="integrations-grid">
+        {integrations.map((integration) => (
+          <div class="integration-card">
+            <div class="integration-icon">
+              <span>{integration.name.substring(0, 2)}</span>
+            </div>
+            <span class="integration-name">{integration.name}</span>
+            <span class="integration-category">{integration.category}</span>
+          </div>
+        ))}
+      </div>
+      <div class="integrations-more">
+        <span>Plus 40+ more integrations...</span>
+        <a href="/integrations/" class="btn btn-secondary">View All Integrations</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">FAQ</span>
+        <h2 class="section-title">Got Questions? We Have Answers</h2>
+      </div>
+      <div class="faq-grid">
+        {faqs.map((faq, index) => (
+          <div class="faq-item">
+            <button class="faq-question" data-faq={index}>
+              <span>{faq.question}</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources -->
+  <section class="section section-gray resources-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Learning Resources</span>
+        <h2 class="section-title">Boost Your Marketing Knowledge</h2>
+        <p class="section-subtitle">
+          Explore our guides, case studies, and industry insights
+        </p>
+      </div>
+      <div class="resources-grid">
+        {resources.map((resource) => (
+          <article class="resource-card">
+            <div class="resource-image">
+              <span class="resource-type">{resource.type}</span>
+            </div>
+            <div class="resource-content">
+              <span class="resource-tag">{resource.tag}</span>
+              <h3 class="resource-title">{resource.title}</h3>
+              <p class="resource-excerpt">{resource.description}</p>
+              <a href="#" class="resource-link">
+                Read More
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="resources-cta">
+        <a href="#" class="btn btn-secondary">View All Resources</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta-section">
+    <div class="container">
+      <div class="final-cta-grid">
+        <div class="final-cta-content">
+          <h2>Ready to Get Started?</h2>
+          <p>Join 500+ enterprises and start building deeper customer relationships</p>
+          <ul class="final-cta-benefits">
+            <li>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+              14-day free trial
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+              No credit card required
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+              Dedicated onboarding support
+            </li>
+          </ul>
+        </div>
+        <div class="final-cta-form">
+          <form class="demo-form">
+            <h3>Start Free Trial or Book Demo</h3>
+            <div class="form-row">
+              <input type="text" placeholder="Name" required class="form-input" />
+            </div>
+            <div class="form-row">
+              <input type="email" placeholder="Work Email" required class="form-input" />
+            </div>
+            <div class="form-row">
+              <input type="tel" placeholder="Phone Number" class="form-input" />
+            </div>
+            <div class="form-row">
+              <select class="form-input">
+                <option value="">Company Size</option>
+                <option value="1-10">1-10 employees</option>
+                <option value="11-50">11-50 employees</option>
+                <option value="51-200">51-200 employees</option>
+                <option value="201-500">201-500 employees</option>
+                <option value="500+">500+ employees</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Start Free Trial</button>
+            <p class="form-note">By submitting, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  // Tab functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    // Product Tabs
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabId = btn.dataset.tab;
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabPanels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(tabId)?.classList.add('active');
+      });
+    });
+
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question?.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        faqItems.forEach(i => i.classList.remove('open'));
+        if (!isOpen) {
+          item.classList.add('open');
+        }
+      });
+    });
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.feature-card, .case-card, .integration-card, .resource-card').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Language Switcher
+    initLanguageSwitcher();
+  });
+
+  function initLanguageSwitcher() {
+    const translations = {
+      en: {
+        heroBadge: 'Trusted by 500+ Enterprises in Hong Kong',
+        heroTitle1: 'Make Every Customer Interaction',
+        heroTitle2: 'Create Value',
+        heroSubtitle: 'RADICA omnichannel marketing automation platform helps you build deeper customer relationships through Email, WhatsApp, SMS, averaging <strong>35% conversion lift</strong>.',
+        heroCta1: 'Start 14-Day Free Trial',
+        heroCta1Sub: 'No credit card required',
+        heroCta2: 'Book a Personalized Demo',
+        trustIso: 'ISO 27001 Certified',
+        trustGdpr: 'GDPR Compliant',
+        trustUptime: '99.9% Uptime',
+        dashSent: 'Sent',
+        dashOpenRate: 'Open Rate',
+        dashRevenue: 'Revenue',
+        dashTrigger: 'Trigger',
+        dashCondition: 'Condition',
+        floatEmail: 'Email Delivery 99.2%',
+        floatWhatsapp: 'WhatsApp Connected',
+        floatConversion: 'Conversion +35%',
+        clientsLabel: 'Trusted by Leading Brands Across Industries',
+        stat1: '1B+',
+        stat1Label: 'Messages Sent Monthly',
+        stat2: '500+',
+        stat2Label: 'Enterprise Clients',
+        stat3: '35%',
+        stat3Label: 'Average Conversion Lift',
+        stat4: '99.9%',
+        stat4Label: 'Platform Uptime',
+        featuresBadge: 'Core Features',
+        featuresTitle: 'Why Choose RADICA?',
+        featuresSubtitle: 'Not just a tool, but a partner helping you build deeper customer relationships',
+        feature1Title: 'Smart Automation',
+        feature1Desc: 'Visual drag-and-drop workflow design. Create complex customer journeys without coding.',
+        feature1Stat: 'Reduce 60%',
+        feature1StatLabel: 'Manual Work Time',
+        feature2Title: 'Omnichannel Reach',
+        feature2Desc: 'Email, SMS, WhatsApp, Push - all-in-one management ensuring message delivery.',
+        feature2Stat: '99.9%',
+        feature2StatLabel: 'Delivery Rate',
+        feature3Title: 'AI-Powered Optimization',
+        feature3Desc: 'Smart send times, personalized content, automated A/B testing for continuous improvement.',
+        feature3Stat: '35%',
+        feature3StatLabel: 'Conversion Lift',
+        featuresCta: 'Explore All Features',
+        productBadge: 'Product Features',
+        productTitle: 'One Platform, Unlimited Possibilities',
+        productSubtitle: 'From customer journey design to data analytics, RADICA provides complete marketing automation solutions',
+        ctaBannerTitle: 'Ready to Boost Your Marketing Results?',
+        ctaBannerSubtitle: '14-day free trial, no credit card required, cancel anytime',
+        ctaBannerBtn: 'Start Free Trial Now',
+        casesBadge: 'Success Stories',
+        casesTitle: 'What Our Customers Say',
+        casesSubtitle: 'See how other businesses improved their marketing results with RADICA',
+        casesCta: 'View More Success Stories',
+        integrationsBadge: 'Seamless Integrations',
+        integrationsTitle: 'Works Perfectly With Your Tools',
+        integrationsSubtitle: '50+ integrations connecting your CRM, e-commerce platforms, and marketing channels',
+        integrationsMore: 'Plus 40+ more integrations...',
+        integrationsCta: 'View All Integrations',
+        faqBadge: 'FAQ',
+        faqTitle: 'Got Questions? We Have Answers',
+        resourcesBadge: 'Learning Resources',
+        resourcesTitle: 'Boost Your Marketing Knowledge',
+        resourcesSubtitle: 'Explore our guides, case studies, and industry insights',
+        resourcesCta: 'View All Resources',
+        readMore: 'Read More',
+        finalCtaTitle: 'Ready to Get Started?',
+        finalCtaSubtitle: 'Join 500+ enterprises and start building deeper customer relationships',
+        finalCtaBenefit1: '14-day free trial',
+        finalCtaBenefit2: 'No credit card required',
+        finalCtaBenefit3: 'Dedicated onboarding support',
+        formTitle: 'Start Free Trial or Book Demo',
+        formName: 'Name',
+        formEmail: 'Work Email',
+        formPhone: 'Phone Number',
+        formSize: 'Company Size',
+        formSize1: '1-10 employees',
+        formSize2: '11-50 employees',
+        formSize3: '51-200 employees',
+        formSize4: '201-500 employees',
+        formSize5: '500+ employees',
+        formSubmit: 'Start Free Trial',
+        formNote: 'By submitting, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>'
+      },
+      'zh-TW': {
+        heroBadge: '香港 500+ 企業的選擇',
+        heroTitle1: '讓每一次客戶互動',
+        heroTitle2: '都創造價值',
+        heroSubtitle: 'RADICA 全渠道營銷自動化平台，助你透過 Email、WhatsApp、SMS 建立深度客戶關係，平均提升 <strong>35% 轉換率</strong>。',
+        heroCta1: '免費試用 14 天',
+        heroCta1Sub: '無需信用卡',
+        heroCta2: '預約個人化 Demo',
+        trustIso: 'ISO 27001 認證',
+        trustGdpr: 'GDPR 合規',
+        trustUptime: '99.9% 穩定性',
+        dashSent: '已發送',
+        dashOpenRate: '開信率',
+        dashRevenue: '收入',
+        dashTrigger: '觸發',
+        dashCondition: '判斷',
+        floatEmail: 'Email 送達率 99.2%',
+        floatWhatsapp: 'WhatsApp 已連接',
+        floatConversion: '轉換率 +35%',
+        clientsLabel: '深受各行業領先品牌信賴',
+        stat1: '10億+',
+        stat1Label: '每月發送訊息',
+        stat2: '500+',
+        stat2Label: '企業客戶',
+        stat3: '35%',
+        stat3Label: '平均轉換提升',
+        stat4: '99.9%',
+        stat4Label: '平台穩定性',
+        featuresBadge: '核心功能',
+        featuresTitle: '為什麼選擇 RADICA？',
+        featuresSubtitle: '不只是工具，而是幫助你建立深度客戶關係的夥伴',
+        feature1Title: '智能自動化',
+        feature1Desc: '視覺化拖放式流程設計，無需編程即可創建複雜的客戶旅程',
+        feature1Stat: '減少 60%',
+        feature1StatLabel: '手動工作時間',
+        feature2Title: '全渠道觸達',
+        feature2Desc: 'Email、SMS、WhatsApp、Push 一站式管理，確保訊息觸達',
+        feature2Stat: '99.9%',
+        feature2StatLabel: '送達率',
+        feature3Title: 'AI 驅動優化',
+        feature3Desc: '智能發送時間、個人化內容、自動 A/B 測試，持續提升效果',
+        feature3Stat: '35%',
+        feature3StatLabel: '轉換率提升',
+        featuresCta: '探索所有功能',
+        productBadge: '產品功能',
+        productTitle: '一個平台，無限可能',
+        productSubtitle: '從客戶旅程設計到數據分析，RADICA 提供完整的營銷自動化解決方案',
+        ctaBannerTitle: '準備好提升你的營銷效果？',
+        ctaBannerSubtitle: '14 天免費試用，無需信用卡，隨時取消',
+        ctaBannerBtn: '立即免費試用',
+        casesBadge: '成功案例',
+        casesTitle: '客戶怎麼說',
+        casesSubtitle: '看看其他企業如何透過 RADICA 提升營銷效果',
+        casesCta: '查看更多成功案例',
+        integrationsBadge: '無縫整合',
+        integrationsTitle: '與你的工具完美配合',
+        integrationsSubtitle: '50+ 整合，連接你的 CRM、電商平台和營銷渠道',
+        integrationsMore: '還有 40+ 整合...',
+        integrationsCta: '查看所有整合',
+        faqBadge: '常見問題',
+        faqTitle: '有疑問？我們來解答',
+        resourcesBadge: '學習資源',
+        resourcesTitle: '提升你的營銷知識',
+        resourcesSubtitle: '探索我們的指南、案例研究和行業洞察',
+        resourcesCta: '查看所有資源',
+        readMore: '閱讀更多',
+        finalCtaTitle: '準備好開始了嗎？',
+        finalCtaSubtitle: '加入 500+ 企業的行列，開始建立更深度的客戶關係',
+        finalCtaBenefit1: '14 天免費試用',
+        finalCtaBenefit2: '無需信用卡',
+        finalCtaBenefit3: '專人 Onboarding 支援',
+        formTitle: '免費試用或預約 Demo',
+        formName: '姓名',
+        formEmail: '工作 Email',
+        formPhone: '電話號碼',
+        formSize: '公司規模',
+        formSize1: '1-10 人',
+        formSize2: '11-50 人',
+        formSize3: '51-200 人',
+        formSize4: '201-500 人',
+        formSize5: '500+ 人',
+        formSubmit: '開始免費試用',
+        formNote: '提交即表示同意我們的<a href="#">服務條款</a>和<a href="#">私隱政策</a>'
+      },
+      ja: {
+        heroBadge: '香港500社以上の企業に選ばれています',
+        heroTitle1: 'すべての顧客接点で',
+        heroTitle2: '価値を創造する',
+        heroSubtitle: 'RADICAオムニチャネルマーケティング自動化プラットフォームで、Email、WhatsApp、SMSを通じてより深い顧客関係を構築。平均<strong>35%のコンバージョン向上</strong>を実現。',
+        heroCta1: '14日間無料トライアル',
+        heroCta1Sub: 'クレジットカード不要',
+        heroCta2: 'デモを予約する',
+        trustIso: 'ISO 27001認証取得',
+        trustGdpr: 'GDPR準拠',
+        trustUptime: '99.9%の稼働率',
+        dashSent: '送信済み',
+        dashOpenRate: '開封率',
+        dashRevenue: '売上',
+        dashTrigger: 'トリガー',
+        dashCondition: '条件',
+        floatEmail: 'メール到達率 99.2%',
+        floatWhatsapp: 'WhatsApp接続済み',
+        floatConversion: 'コンバージョン +35%',
+        clientsLabel: '各業界のリーディングブランドに信頼されています',
+        stat1: '10億+',
+        stat1Label: '月間メッセージ送信数',
+        stat2: '500+',
+        stat2Label: '企業クライアント',
+        stat3: '35%',
+        stat3Label: '平均コンバージョン向上',
+        stat4: '99.9%',
+        stat4Label: 'プラットフォーム稼働率',
+        featuresBadge: 'コア機能',
+        featuresTitle: 'なぜRADICAを選ぶのか？',
+        featuresSubtitle: '単なるツールではなく、より深い顧客関係構築をサポートするパートナー',
+        feature1Title: 'スマート自動化',
+        feature1Desc: 'ビジュアルなドラッグ＆ドロップでワークフローを設計。コーディング不要で複雑な顧客ジャーニーを作成。',
+        feature1Stat: '60%削減',
+        feature1StatLabel: '手作業時間',
+        feature2Title: 'オムニチャネル対応',
+        feature2Desc: 'Email、SMS、WhatsApp、Pushを一元管理し、確実なメッセージ配信を実現。',
+        feature2Stat: '99.9%',
+        feature2StatLabel: '到達率',
+        feature3Title: 'AI駆動の最適化',
+        feature3Desc: 'スマートな送信タイミング、パーソナライズされたコンテンツ、自動A/Bテストで継続的な改善。',
+        feature3Stat: '35%',
+        feature3StatLabel: 'コンバージョン向上',
+        featuresCta: 'すべての機能を見る',
+        productBadge: '製品機能',
+        productTitle: '1つのプラットフォームで無限の可能性',
+        productSubtitle: '顧客ジャーニー設計からデータ分析まで、RADICAが完全なマーケティング自動化ソリューションを提供',
+        ctaBannerTitle: 'マーケティング成果を向上させる準備はできていますか？',
+        ctaBannerSubtitle: '14日間無料トライアル、クレジットカード不要、いつでもキャンセル可能',
+        ctaBannerBtn: '今すぐ無料で始める',
+        casesBadge: '成功事例',
+        casesTitle: 'お客様の声',
+        casesSubtitle: '他の企業がRADICAでどのようにマーケティング成果を向上させたかをご覧ください',
+        casesCta: '成功事例をもっと見る',
+        integrationsBadge: 'シームレスな連携',
+        integrationsTitle: 'お使いのツールと完璧に連携',
+        integrationsSubtitle: '50以上の連携でCRM、ECプラットフォーム、マーケティングチャネルを接続',
+        integrationsMore: 'さらに40以上の連携...',
+        integrationsCta: 'すべての連携を見る',
+        faqBadge: 'よくある質問',
+        faqTitle: 'ご質問にお答えします',
+        resourcesBadge: '学習リソース',
+        resourcesTitle: 'マーケティング知識を高める',
+        resourcesSubtitle: 'ガイド、ケーススタディ、業界インサイトをご覧ください',
+        resourcesCta: 'すべてのリソースを見る',
+        readMore: '続きを読む',
+        finalCtaTitle: '始める準備はできましたか？',
+        finalCtaSubtitle: '500社以上の企業に加わり、より深い顧客関係の構築を始めましょう',
+        finalCtaBenefit1: '14日間無料トライアル',
+        finalCtaBenefit2: 'クレジットカード不要',
+        finalCtaBenefit3: '専任オンボーディングサポート',
+        formTitle: '無料トライアルまたはデモを予約',
+        formName: 'お名前',
+        formEmail: '仕事用メール',
+        formPhone: '電話番号',
+        formSize: '会社規模',
+        formSize1: '1-10名',
+        formSize2: '11-50名',
+        formSize3: '51-200名',
+        formSize4: '201-500名',
+        formSize5: '500名以上',
+        formSubmit: '無料トライアルを開始',
+        formNote: '送信することで、<a href="#">利用規約</a>と<a href="#">プライバシーポリシー</a>に同意したことになります'
+      }
+    };
+
+    // Get saved language or default to 'en'
+    const savedLang = localStorage.getItem('radica-lang') || 'en';
+    applyTranslations(savedLang);
+    updateActiveButton(savedLang);
+
+    // Add click listeners to language buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        localStorage.setItem('radica-lang', lang);
+        applyTranslations(lang);
+        updateActiveButton(lang);
+      });
+    });
+
+    function updateActiveButton(lang) {
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+    }
+
+    function applyTranslations(lang) {
+      const t = translations[lang];
+      if (!t) return;
+
+      // Hero Section
+      setText('.hero-badge span:last-child', t.heroBadge);
+      setHtml('.hero-title', `${t.heroTitle1}<br/><span class="text-gradient">${t.heroTitle2}</span>`);
+      setHtml('.hero-subtitle', t.heroSubtitle);
+      setHtml('.hero-ctas .btn-primary', `${t.heroCta1}<span class="btn-subtext">${t.heroCta1Sub}</span>`);
+      setText('.hero-ctas .btn-secondary', t.heroCta2);
+      setText('.trust-item:nth-child(1) span', t.trustIso);
+      setText('.trust-item:nth-child(2) span', t.trustGdpr);
+      setText('.trust-item:nth-child(3) span', t.trustUptime);
+
+      // Dashboard mockup
+      setText('.dashboard-header-row .stat-card:nth-child(1) .stat-label', t.dashSent);
+      setText('.dashboard-header-row .stat-card:nth-child(2) .stat-label', t.dashOpenRate);
+      setText('.dashboard-header-row .stat-card:nth-child(3) .stat-label', t.dashRevenue);
+      setText('.dashboard-flow .flow-item.trigger', t.dashTrigger);
+      setText('.dashboard-flow .flow-item.condition', t.dashCondition);
+
+      // Floating cards
+      setText('.floating-card.card-1 .card-text', t.floatEmail);
+      setText('.floating-card.card-2 .card-text', t.floatWhatsapp);
+      setText('.floating-card.card-3 .card-text', t.floatConversion);
+
+      // Clients section
+      setText('.clients-label', t.clientsLabel);
+
+      // Stats section
+      const statItems = document.querySelectorAll('.stats-section .stat-item');
+      if (statItems.length >= 4) {
+        statItems[0].querySelector('.stat-value').textContent = t.stat1;
+        statItems[0].querySelector('.stat-label').textContent = t.stat1Label;
+        statItems[1].querySelector('.stat-value').textContent = t.stat2;
+        statItems[1].querySelector('.stat-label').textContent = t.stat2Label;
+        statItems[2].querySelector('.stat-value').textContent = t.stat3;
+        statItems[2].querySelector('.stat-label').textContent = t.stat3Label;
+        statItems[3].querySelector('.stat-value').textContent = t.stat4;
+        statItems[3].querySelector('.stat-label').textContent = t.stat4Label;
+      }
+
+      // Features section
+      setText('.features-section .section-badge', t.featuresBadge);
+      setText('.features-section .section-title', t.featuresTitle);
+      setText('.features-section .section-subtitle', t.featuresSubtitle);
+      const featureCards = document.querySelectorAll('.feature-card');
+      if (featureCards.length >= 3) {
+        featureCards[0].querySelector('.feature-title').textContent = t.feature1Title;
+        featureCards[0].querySelector('.feature-description').textContent = t.feature1Desc;
+        featureCards[0].querySelector('.feature-stat-value').textContent = t.feature1Stat;
+        featureCards[0].querySelector('.feature-stat-label').textContent = t.feature1StatLabel;
+        featureCards[1].querySelector('.feature-title').textContent = t.feature2Title;
+        featureCards[1].querySelector('.feature-description').textContent = t.feature2Desc;
+        featureCards[1].querySelector('.feature-stat-value').textContent = t.feature2Stat;
+        featureCards[1].querySelector('.feature-stat-label').textContent = t.feature2StatLabel;
+        featureCards[2].querySelector('.feature-title').textContent = t.feature3Title;
+        featureCards[2].querySelector('.feature-description').textContent = t.feature3Desc;
+        featureCards[2].querySelector('.feature-stat-value').textContent = t.feature3Stat;
+        featureCards[2].querySelector('.feature-stat-label').textContent = t.feature3StatLabel;
+      }
+      setText('.features-cta .btn', t.featuresCta);
+
+      // Product section
+      setText('.product-section .section-badge', t.productBadge);
+      setText('.product-section .section-title', t.productTitle);
+      setText('.product-section .section-subtitle', t.productSubtitle);
+
+      // CTA Banner
+      setText('.cta-banner h2', t.ctaBannerTitle);
+      setText('.cta-banner p', t.ctaBannerSubtitle);
+      setText('.cta-banner .btn', t.ctaBannerBtn);
+
+      // Cases section
+      setText('.cases-section .section-badge', t.casesBadge);
+      setText('.cases-section .section-title', t.casesTitle);
+      setText('.cases-section .section-subtitle', t.casesSubtitle);
+      setText('.cases-cta .btn', t.casesCta);
+
+      // Integrations section
+      setText('.integrations-section .section-badge', t.integrationsBadge);
+      setText('.integrations-section .section-title', t.integrationsTitle);
+      setText('.integrations-section .section-subtitle', t.integrationsSubtitle);
+      setText('.integrations-more span', t.integrationsMore);
+      setText('.integrations-more .btn', t.integrationsCta);
+
+      // FAQ section
+      setText('.faq-section .section-badge', t.faqBadge);
+      setText('.faq-section .section-title', t.faqTitle);
+
+      // Resources section
+      setText('.resources-section .section-badge', t.resourcesBadge);
+      setText('.resources-section .section-title', t.resourcesTitle);
+      setText('.resources-section .section-subtitle', t.resourcesSubtitle);
+      setText('.resources-cta .btn', t.resourcesCta);
+      document.querySelectorAll('.resource-link').forEach(link => {
+        const svg = link.querySelector('svg').outerHTML;
+        link.innerHTML = t.readMore + ' ' + svg;
+      });
+
+      // Final CTA section
+      setText('.final-cta-content h2', t.finalCtaTitle);
+      setText('.final-cta-content p', t.finalCtaSubtitle);
+      const benefits = document.querySelectorAll('.final-cta-benefits li');
+      if (benefits.length >= 3) {
+        const svg = benefits[0].querySelector('svg').outerHTML;
+        benefits[0].innerHTML = svg + t.finalCtaBenefit1;
+        benefits[1].innerHTML = svg + t.finalCtaBenefit2;
+        benefits[2].innerHTML = svg + t.finalCtaBenefit3;
+      }
+
+      // Form
+      setText('.demo-form h3', t.formTitle);
+      setPlaceholder('.demo-form input[type="text"]', t.formName);
+      setPlaceholder('.demo-form input[type="email"]', t.formEmail);
+      setPlaceholder('.demo-form input[type="tel"]', t.formPhone);
+      const sizeSelect = document.querySelector('.demo-form select');
+      if (sizeSelect) {
+        const options = sizeSelect.querySelectorAll('option');
+        if (options.length >= 6) {
+          options[0].textContent = t.formSize;
+          options[1].textContent = t.formSize1;
+          options[2].textContent = t.formSize2;
+          options[3].textContent = t.formSize3;
+          options[4].textContent = t.formSize4;
+          options[5].textContent = t.formSize5;
+        }
+      }
+      setText('.demo-form button[type="submit"]', t.formSubmit);
+      setHtml('.form-note', t.formNote);
+    }
+
+    function setText(selector, text) {
+      const el = document.querySelector(selector);
+      if (el) el.textContent = text;
+    }
+
+    function setHtml(selector, html) {
+      const el = document.querySelector(selector);
+      if (el) el.innerHTML = html;
+    }
+
+    function setPlaceholder(selector, text) {
+      const el = document.querySelector(selector);
+      if (el) el.placeholder = text;
+    }
+  }
+</script>
+
+<style>
+  /* ===== Base Variables ===== */
+  :root {
+    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+    --dark-gradient: linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 100%);
+  }
+
+  /* ===== Hero Section ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 0 80px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .bg-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+  }
+
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #6366f1;
+    margin-bottom: 24px;
+  }
+
+  .badge-icon {
+    font-size: 16px;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--text-dark);
+    margin-bottom: 24px;
+  }
+
+  .text-gradient {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: var(--text-gray);
+    margin-bottom: 32px;
+  }
+
+  .hero-subtitle strong {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .btn-large {
+    padding: 18px 32px;
+    font-size: 16px;
+    position: relative;
+  }
+
+  .btn-subtext {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  .hero-trust {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-gray);
+  }
+
+  .trust-item svg {
+    width: 18px;
+    height: 18px;
+    color: #10b981;
+  }
+
+  /* Hero Visual / Dashboard */
+  .hero-visual {
+    position: relative;
+  }
+
+  .hero-dashboard {
+    position: relative;
+  }
+
+  .dashboard-window {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 25px 100px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+  }
+
+  .window-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .window-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .window-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #e2e8f0;
+  }
+
+  .window-dots span:nth-child(1) { background: #ef4444; }
+  .window-dots span:nth-child(2) { background: #eab308; }
+  .window-dots span:nth-child(3) { background: #22c55e; }
+
+  .window-title {
+    font-size: 12px;
+    color: var(--text-gray);
+  }
+
+  .window-content {
+    display: flex;
+    min-height: 350px;
+  }
+
+  .dashboard-sidebar {
+    width: 60px;
+    background: var(--header-dark);
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sidebar-item {
+    height: 36px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+  }
+
+  .sidebar-item.active {
+    background: var(--primary);
+  }
+
+  .dashboard-main {
+    flex: 1;
+    padding: 20px;
+    background: #f8fafc;
+  }
+
+  .dashboard-header-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .stat-card {
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .stat-card .stat-number {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+
+  .stat-card .stat-label {
+    font-size: 11px;
+    color: var(--text-gray);
+  }
+
+  .stat-card .stat-trend {
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .stat-card .stat-trend.up {
+    color: #10b981;
+  }
+
+  .dashboard-chart {
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    height: 100px;
+  }
+
+  .chart-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 100%;
+    gap: 8px;
+  }
+
+  .chart-bars .bar {
+    flex: 1;
+    background: linear-gradient(180deg, #6366f1 0%, #8b5cf6 100%);
+    border-radius: 4px 4px 0 0;
+    animation: barGrow 1s ease-out forwards;
+  }
+
+  @keyframes barGrow {
+    from { transform: scaleY(0); }
+    to { transform: scaleY(1); }
+  }
+
+  .dashboard-flow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background: white;
+    border-radius: 8px;
+  }
+
+  .flow-item {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+  }
+
+  .flow-item.trigger { background: #6366f1; }
+  .flow-item.action { background: #10b981; }
+  .flow-item.condition { background: #f59e0b; }
+
+  .flow-arrow {
+    width: 20px;
+    height: 2px;
+    background: #d1d5db;
+    position: relative;
+  }
+
+  .flow-arrow::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -3px;
+    border: 4px solid transparent;
+    border-left-color: #d1d5db;
+  }
+
+  /* Floating Cards */
+  .floating-card {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    font-size: 13px;
+    font-weight: 500;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .card-icon {
+    font-size: 18px;
+  }
+
+  .card-1 {
+    top: -20px;
+    right: 20px;
+    animation-delay: 0s;
+  }
+
+  .card-2 {
+    bottom: 80px;
+    left: -30px;
+    animation-delay: 1s;
+  }
+
+  .card-3 {
+    bottom: -10px;
+    right: 60px;
+    animation-delay: 2s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* ===== Clients Section ===== */
+  .clients-section {
+    padding: 40px 0;
+    background: white;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .clients-label {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-gray);
+    margin-bottom: 24px;
+  }
+
+  .clients-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .client-logo {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+  }
+
+  .client-logo:hover {
+    opacity: 1;
+  }
+
+  .logo-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-gray);
+  }
+
+  /* ===== Stats Section ===== */
+  .stats-section {
+    padding: 60px 0;
+    background: var(--header-dark);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+
+  .stat-item {
+    text-align: center;
+    color: white;
+  }
+
+  .stat-value {
+    font-size: 3rem;
+    font-weight: 800;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-top: 8px;
+  }
+
+  /* ===== Section Styles ===== */
+  .section {
+    padding: 100px 0;
+  }
+
+  .section-dark {
+    background: var(--dark-gradient);
+  }
+
+  .section-gray {
+    background: #f8fafc;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .section-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(99, 102, 241, 0.1);
+    color: #6366f1;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .section-badge.light {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  .section-title {
+    font-size: 2.75rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+  }
+
+  .section-title.light {
+    color: white;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-gray);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .section-subtitle.light {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* ===== Features Section ===== */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .feature-card {
+    background: white;
+    padding: 40px 32px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .feature-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .feature-card:hover {
+    border-color: #6366f1;
+    box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
+    transform: translateY(-5px);
+  }
+
+  .feature-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    background: var(--primary-gradient);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .feature-icon svg {
+    width: 32px;
+    height: 32px;
+    color: white;
+  }
+
+  .feature-stat {
+    margin-bottom: 20px;
+  }
+
+  .feature-stat-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #6366f1;
+  }
+
+  .feature-stat-label {
+    font-size: 13px;
+    color: var(--text-gray);
+  }
+
+  .feature-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .feature-description {
+    font-size: 15px;
+    color: var(--text-gray);
+    line-height: 1.7;
+  }
+
+  .features-cta {
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  /* ===== Product Tabs ===== */
+  .product-tabs {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .tabs-nav {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    padding: 14px 28px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .tab-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+  }
+
+  .tab-btn.active {
+    background: white;
+    color: var(--header-dark);
+    border-color: white;
+  }
+
+  .tab-panel {
+    display: none;
+  }
+
+  .tab-panel.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .tab-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .tab-text {
+    color: white;
+  }
+
+  .tab-text h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .tab-text p {
+    font-size: 16px;
+    line-height: 1.7;
+    opacity: 0.8;
+    margin-bottom: 24px;
+  }
+
+  .tab-features {
+    list-style: none;
+    margin-bottom: 32px;
+  }
+
+  .tab-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    font-size: 15px;
+    opacity: 0.9;
+  }
+
+  .tab-features svg {
+    width: 20px;
+    height: 20px;
+    color: #10b981;
+  }
+
+  /* Product Mockups */
+  .tab-visual {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .product-mockup {
+    min-height: 300px;
+  }
+
+  /* Journey Mockup */
+  .mockup-journey {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .journey-node {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+  }
+
+  .journey-node.start { background: #6366f1; }
+  .journey-node.trigger { background: #8b5cf6; }
+  .journey-node.email { background: #10b981; }
+  .journey-node.sms { background: #3b82f6; }
+  .journey-node.whatsapp { background: #22c55e; }
+  .journey-node.wait { background: #f59e0b; }
+  .journey-node.condition { background: #ec4899; }
+
+  .journey-line {
+    width: 2px;
+    height: 16px;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .journey-branch {
+    display: flex;
+    gap: 24px;
+  }
+
+  .branch-path {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Segments Mockup */
+  .mockup-segments {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .segment-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .segment-icon {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .segment-name {
+    display: block;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 4px;
+  }
+
+  .segment-count {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+  }
+
+  /* Personalization Mockup */
+  .mockup-personalization {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .email-preview {
+    color: var(--text-dark);
+  }
+
+  .email-header {
+    padding: 16px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 14px;
+  }
+
+  .email-body {
+    padding: 20px;
+  }
+
+  .dynamic-content {
+    background: #f0fdf4;
+    border: 1px dashed #22c55e;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+
+  .dynamic-content .tag {
+    display: inline-block;
+    background: #22c55e;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+
+  .dynamic-content p {
+    font-size: 13px;
+    color: var(--text-gray);
+    margin: 0;
+  }
+
+  .product-recs {
+    display: flex;
+    gap: 12px;
+  }
+
+  .rec-item {
+    flex: 1;
+    height: 60px;
+    background: #f1f5f9;
+    border-radius: 8px;
+  }
+
+  /* Analytics Mockup */
+  .mockup-analytics {
+    color: white;
+  }
+
+  .analytics-chart {
+    height: 120px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .chart-area {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(180deg, rgba(99, 102, 241, 0.3) 0%, transparent 100%);
+  }
+
+  .chart-line {
+    position: absolute;
+    bottom: 60%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #6366f1;
+  }
+
+  .analytics-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .metric {
+    text-align: center;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+  }
+
+  .metric-value {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .metric-label {
+    font-size: 12px;
+    opacity: 0.7;
+  }
+
+  /* ===== CTA Banner ===== */
+  .cta-banner {
+    background: var(--primary-gradient);
+    padding: 60px 0;
+  }
+
+  .cta-banner .cta-content {
+    text-align: center;
+    color: white;
+  }
+
+  .cta-banner h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .cta-banner p {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 24px;
+  }
+
+  /* ===== Case Studies ===== */
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .case-card {
+    background: white;
+    padding: 32px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .case-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .case-card:hover {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+  }
+
+  .case-stat {
+    margin-bottom: 20px;
+  }
+
+  .case-stat-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #6366f1;
+  }
+
+  .case-stat-label {
+    font-size: 14px;
+    color: var(--text-gray);
+  }
+
+  .case-quote {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .case-author {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .author-title {
+    display: block;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  .author-company {
+    font-size: 14px;
+    color: var(--text-gray);
+  }
+
+  .case-industry {
+    font-size: 12px;
+    padding: 4px 12px;
+    background: #f1f5f9;
+    border-radius: 50px;
+    color: var(--text-gray);
+  }
+
+  .cases-cta {
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  /* ===== Integrations ===== */
+  .integrations-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  .integration-card {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .integration-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .integration-card:hover {
+    border-color: #6366f1;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
+  }
+
+  .integration-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 12px;
+    background: var(--primary-gradient);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+  }
+
+  .integration-name {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+
+  .integration-category {
+    font-size: 12px;
+    color: var(--text-gray);
+  }
+
+  .integrations-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .integrations-more span {
+    color: var(--text-gray);
+  }
+
+  /* ===== FAQ ===== */
+  .faq-grid {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    background: none;
+    border: none;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .faq-question svg {
+    width: 24px;
+    height: 24px;
+    color: var(--text-gray);
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item.open .faq-question svg {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 200px;
+  }
+
+  .faq-answer p {
+    padding-bottom: 24px;
+    color: var(--text-gray);
+    line-height: 1.7;
+  }
+
+  /* ===== Resources ===== */
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .resource-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .resource-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .resource-card:hover {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+  }
+
+  .resource-image {
+    height: 160px;
+    background: var(--primary-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .resource-type {
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 50px;
+  }
+
+  .resource-content {
+    padding: 24px;
+  }
+
+  .resource-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #6366f1;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .resource-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .resource-excerpt {
+    font-size: 14px;
+    color: var(--text-gray);
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+
+  .resource-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #6366f1;
+    font-size: 14px;
+  }
+
+  .resource-link svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+  }
+
+  .resource-link:hover svg {
+    transform: translateX(4px);
+  }
+
+  .resources-cta {
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  /* ===== Final CTA ===== */
+  .final-cta-section {
+    background: var(--header-dark);
+    padding: 100px 0;
+  }
+
+  .final-cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .final-cta-content {
+    color: white;
+  }
+
+  .final-cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+
+  .final-cta-content p {
+    font-size: 1.125rem;
+    opacity: 0.8;
+    margin-bottom: 32px;
+  }
+
+  .final-cta-benefits {
+    list-style: none;
+  }
+
+  .final-cta-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    font-size: 16px;
+  }
+
+  .final-cta-benefits svg {
+    width: 24px;
+    height: 24px;
+    color: #10b981;
+  }
+
+  .final-cta-form {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+  }
+
+  .demo-form h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .form-row {
+    margin-bottom: 16px;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: #6366f1;
+  }
+
+  .btn-full {
+    width: 100%;
+  }
+
+  .form-note {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--text-gray);
+    text-align: center;
+  }
+
+  .form-note a {
+    color: #6366f1;
+  }
+
+  /* ===== Buttons ===== */
+  .btn-primary {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: #6366f1;
+    border: 2px solid #6366f1;
+  }
+
+  .btn-secondary:hover {
+    background: #6366f1;
+    color: white;
+  }
+
+  .btn-white {
+    background: white;
+    color: #6366f1;
+  }
+
+  .btn-white:hover {
+    background: #f8fafc;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 1024px) {
+    .hero-grid,
+    .tab-grid,
+    .final-cta-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .stats-grid,
+    .features-grid,
+    .cases-grid,
+    .resources-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .integrations-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hero-visual {
+      order: -1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 100px 0 60px;
+    }
+
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .hero-ctas {
+      flex-direction: column;
+    }
+
+    .hero-trust {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .stats-grid,
+    .features-grid,
+    .cases-grid,
+    .resources-grid,
+    .integrations-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tabs-nav {
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 10px 18px;
+      font-size: 13px;
+    }
+
+    .section {
+      padding: 60px 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .final-cta-form {
+      padding: 24px;
+    }
+
+    .floating-card {
+      display: none;
+    }
+  }
+</style>

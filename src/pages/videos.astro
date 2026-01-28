@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VideoCard from '../components/VideoCard.astro';
+
+const videos = [
+  {
+    id: 'RNka6ZCs9cY',
+    title: 'RADICA Marketing Automation Overview',
+    description: 'Learn how RADICA helps businesses automate their marketing campaigns.',
+  },
+  {
+    id: 'RmpOzV2qaKI',
+    title: 'WhatsApp Marketing Best Practices',
+    description: 'Discover effective strategies for WhatsApp marketing.',
+  },
+  {
+    id: 'yCRRQahC_34',
+    title: 'Email Marketing Automation Guide',
+    description: 'A comprehensive guide to email marketing automation.',
+  },
+  {
+    id: 'dsXAqbID75M',
+    title: 'Customer Engagement Strategies',
+    description: 'Tips for improving customer engagement across channels.',
+  },
+  {
+    id: 'BdIpe1BCgJE',
+    title: 'Omni-Channel Marketing Tutorial',
+    description: 'How to create seamless omni-channel experiences.',
+  },
+  {
+    id: 'VUf9k4lSKX0',
+    title: 'AI-Powered Marketing Insights',
+    description: 'Leveraging AI for smarter marketing decisions.',
+  },
+];
+---
+
+<BaseLayout title="Videos | RADICA" description="Watch RADICA's marketing automation tutorials and insights on YouTube.">
+  <section class="videos-hero">
+    <div class="container">
+      <h1>Videos</h1>
+      <p>Watch our marketing automation tutorials and insights</p>
+      <a href="https://www.youtube.com/@radicaemarketerchannel3702" target="_blank" rel="noopener" class="btn btn-secondary">
+        Subscribe to YouTube Channel
+      </a>
+    </div>
+  </section>
+
+  <section class="videos-section">
+    <div class="container">
+      <div class="videos-grid">
+        {videos.map((video) => (
+          <VideoCard
+            id={video.id}
+            title={video.title}
+            description={video.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="videos-cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Want to see RADICA in action?</h2>
+        <p>Schedule a personalized demo with our team.</p>
+        <a href="/request-demo/" class="btn btn-primary">Request a Demo</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .videos-hero {
+    padding: 80px 0 60px;
+    background: var(--header-dark);
+    color: white;
+    text-align: center;
+  }
+
+  .videos-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+
+  .videos-hero p {
+    font-size: 1.25rem;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto 24px;
+  }
+
+  .videos-hero .btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+
+  .videos-hero .btn-secondary:hover {
+    background: white;
+    color: var(--header-dark);
+  }
+
+  .videos-section {
+    padding: 60px 0 80px;
+    background: #f9fafb;
+  }
+
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  .videos-cta {
+    padding: 80px 0;
+    background: var(--gradient-primary);
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 12px;
+  }
+
+  .cta-content p {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 24px;
+  }
+
+  .cta-content .btn-primary {
+    background: white;
+    color: var(--primary);
+  }
+
+  .cta-content .btn-primary:hover {
+    background: #f3f4f6;
+  }
+
+  @media (max-width: 768px) {
+    .videos-hero h1 {
+      font-size: 2rem;
+    }
+
+    .videos-hero p {
+      font-size: 1rem;
+    }
+
+    .videos-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

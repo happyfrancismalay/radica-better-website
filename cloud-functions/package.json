@@ -1,0 +1,16 @@
+{
+  "name": "radicaai-form-handler",
+  "version": "1.0.0",
+  "description": "Cloud Function to handle form submissions from RADICA website",
+  "main": "index.js",
+  "scripts": {
+    "start": "functions-framework --target=submitForm"
+  },
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.0.0",
+    "nodemailer": "^6.9.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

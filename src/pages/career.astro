@@ -1,0 +1,755 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const thriveTraits = [
+  'Travel independently and seek adventure',
+  'Started your own company or side project',
+  'Have a sportsman\'s mentality — discipline meets risk-taking',
+  'Question "the way things are done"',
+  'Create your own path instead of following others',
+];
+
+const notFitTraits = [
+  'Only push kids toward famous schools and rehearsal classes',
+  'Need step-by-step instructions for everything',
+  'Wait for permission before acting',
+  'Value prestige over impact',
+  'Follow trends instead of setting them',
+];
+
+const opportunities = [
+  {
+    icon: '🎓',
+    title: 'University Research Collaboration',
+    description: 'Work alongside academic institutions on cutting-edge marketing technology and AI research projects.',
+  },
+  {
+    icon: '🌏',
+    title: 'GutCommon Project',
+    description: 'Participate in our social impact initiative supporting minority communities in Yunnan, China.',
+    link: '/about/#gutcommon',
+  },
+  {
+    icon: '🚀',
+    title: 'Innovation Lab',
+    description: 'Dedicated time and resources to explore new ideas, experiment with emerging technologies, and build the future.',
+  },
+];
+
+const archetypes = [
+  {
+    icon: '🧭',
+    title: 'The Explorer',
+    description: 'Curious minds who travel independently, seek new experiences, and aren\'t afraid of the unknown.',
+  },
+  {
+    icon: '🔨',
+    title: 'The Builder',
+    description: 'Entrepreneurs and makers who\'ve created something from nothing — a startup, a project, a movement.',
+  },
+  {
+    icon: '🏃',
+    title: 'The Athlete',
+    description: 'Disciplined competitors who embrace challenges, push limits, and know that growth requires discomfort.',
+  },
+  {
+    icon: '⚡',
+    title: 'The Rebel',
+    description: 'Rule-breakers with purpose who challenge the status quo because they see a better way.',
+  },
+];
+---
+
+<BaseLayout title="Career | RADICA" description="Join RADICA if you're an innovator, creator, and rule-breaker. We don't hire followers — we hire people who want to build a better world.">
+
+  <!-- Hero Section -->
+  <section class="career-hero">
+    <div class="container">
+      <h1>We Don't Hire Followers.<br/>We Hire <span class="highlight">Creators</span>.</h1>
+      <p class="hero-subtitle">
+        RADICA is for those who believe rules are meant to be questioned,
+        innovation is a lifestyle, and work should make the world better.
+      </p>
+      <a href="#apply" class="btn btn-primary btn-large">Join the Movement</a>
+    </div>
+  </section>
+
+  <!-- Culture Manifesto -->
+  <section class="manifesto">
+    <div class="container">
+      <h2 class="manifesto-title">Not Everyone Fits Here.<br/>And That's the Point.</h2>
+      <div class="manifesto-grid">
+        <div class="manifesto-card">
+          <div class="manifesto-icon">🚪</div>
+          <h3>Open Environment</h3>
+          <p>No politics. No hierarchies that silence ideas. Every voice matters, every perspective counts. If you have a better idea, speak up — we're listening.</p>
+        </div>
+        <div class="manifesto-card">
+          <div class="manifesto-icon">💡</div>
+          <h3>Innovation First</h3>
+          <p>We reward those who challenge the status quo. Playing it safe isn't in our DNA. We'd rather fail trying something new than succeed doing the same old thing.</p>
+        </div>
+        <div class="manifesto-card">
+          <div class="manifesto-icon">🌍</div>
+          <h3>Building a Better World</h3>
+          <p>Our work has purpose beyond profit. From empowering businesses to supporting remote communities, we believe technology should lift everyone up.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Are You Our Type Section -->
+  <section class="fit-check">
+    <div class="container">
+      <h2>Are You Our Type?</h2>
+      <p class="section-intro">Be honest with yourself. This isn't about skills — it's about who you are.</p>
+
+      <div class="fit-grid">
+        <div class="fit-column thrive">
+          <h3>You'll Thrive Here If You...</h3>
+          <ul>
+            {thriveTraits.map((trait) => (
+              <li>
+                <span class="check-icon">✓</span>
+                {trait}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="fit-column not-fit">
+          <h3>This Isn't for You If You...</h3>
+          <ul>
+            {notFitTraits.map((trait) => (
+              <li>
+                <span class="x-icon">✕</span>
+                {trait}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beyond the Day Job -->
+  <section class="opportunities">
+    <div class="container">
+      <h2>Beyond the Day Job</h2>
+      <p class="section-intro">At RADICA, your impact extends far beyond your job description.</p>
+
+      <div class="opportunities-grid">
+        {opportunities.map((opp) => (
+          <div class="opportunity-card">
+            <div class="opportunity-icon">{opp.icon}</div>
+            <h3>{opp.title}</h3>
+            <p>{opp.description}</p>
+            {opp.link && (
+              <a href={opp.link} class="opportunity-link">Learn more →</a>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Look For -->
+  <section class="archetypes">
+    <div class="container">
+      <h2>The People We're Looking For</h2>
+      <p class="section-intro">Talent matters less than character. We hire for who you are, not just what you know.</p>
+
+      <div class="archetypes-grid">
+        {archetypes.map((archetype) => (
+          <div class="archetype-card">
+            <div class="archetype-icon">{archetype.icon}</div>
+            <h3>{archetype.title}</h3>
+            <p>{archetype.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Form -->
+  <section class="apply-section" id="apply">
+    <div class="container">
+      <div class="apply-wrapper">
+        <div class="apply-intro">
+          <h2>Ready to Break Some Rules?</h2>
+          <p>We don't have a traditional hiring process because we're not looking for traditional people. Tell us your story.</p>
+          <div class="apply-note">
+            <strong>Note:</strong> We read every application personally. No AI screening, no keyword matching. Just humans looking for other remarkable humans.
+          </div>
+        </div>
+
+        <form id="careerForm" class="apply-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="name">Full Name *</label>
+              <input type="text" id="name" name="name" class="form-input" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email *</label>
+              <input type="email" id="email" name="email" class="form-input" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" class="form-input" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="linkedin">LinkedIn URL</label>
+              <input type="url" id="linkedin" name="linkedin" class="form-input" placeholder="https://linkedin.com/in/..." />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="story">Tell us about a time you broke the rules and it worked. *</label>
+            <textarea id="story" name="story" class="form-textarea" rows="5" required placeholder="This is your chance to stand out. Be specific, be honest, be you."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="resume">Resume/CV Link</label>
+            <input type="url" id="resume" name="resume" class="form-input" placeholder="Google Drive, Dropbox, or personal website link" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="anything">Anything else you want us to know?</label>
+            <textarea id="anything" name="anything" class="form-textarea" rows="3" placeholder="Portfolio, side projects, why RADICA, travel stories — whatever you think matters."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-large btn-full">Start Your Journey</button>
+
+          <p class="form-note">By submitting, you're taking the first step toward something different. We'll be in touch.</p>
+
+          <div id="formStatus" class="form-status"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .career-hero {
+    padding: 160px 0 100px;
+    background: linear-gradient(135deg, var(--header-dark) 0%, #1a1a2e 50%, var(--primary-dark) 100%);
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .career-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+
+  .career-hero .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .career-hero h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  .career-hero .highlight {
+    background: linear-gradient(135deg, var(--primary) 0%, #ff6b6b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: 1.35rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+  }
+
+  .btn-large {
+    padding: 16px 40px;
+    font-size: 1.1rem;
+  }
+
+  /* Manifesto Section */
+  .manifesto {
+    padding: 100px 0;
+    background: #f9fafb;
+  }
+
+  .manifesto-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 60px;
+    line-height: 1.2;
+  }
+
+  .manifesto-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .manifesto-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .manifesto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .manifesto-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  .manifesto-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .manifesto-card p {
+    color: var(--text-gray);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  /* Fit Check Section */
+  .fit-check {
+    padding: 100px 0;
+    background: white;
+  }
+
+  .fit-check h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .section-intro {
+    text-align: center;
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .fit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  .fit-column {
+    padding: 40px;
+    border-radius: 16px;
+  }
+
+  .fit-column.thrive {
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    border: 2px solid #10b981;
+  }
+
+  .fit-column.not-fit {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    border: 2px solid #ef4444;
+  }
+
+  .fit-column h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  .thrive h3 {
+    color: #065f46;
+  }
+
+  .not-fit h3 {
+    color: #991b1b;
+  }
+
+  .fit-column ul {
+    list-style: none;
+  }
+
+  .fit-column li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .check-icon {
+    color: #10b981;
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .x-icon {
+    color: #ef4444;
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  /* Opportunities Section */
+  .opportunities {
+    padding: 100px 0;
+    background: var(--header-dark);
+    color: white;
+  }
+
+  .opportunities h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .opportunities .section-intro {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .opportunities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .opportunity-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px 30px;
+    border-radius: 16px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+
+  .opportunity-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
+  }
+
+  .opportunity-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  .opportunity-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .opportunity-card p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+
+  .opportunity-link {
+    color: var(--primary-light);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .opportunity-link:hover {
+    color: white;
+  }
+
+  /* Archetypes Section */
+  .archetypes {
+    padding: 100px 0;
+    background: #f9fafb;
+  }
+
+  .archetypes h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .archetypes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .archetype-card {
+    background: white;
+    padding: 30px 24px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .archetype-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary);
+  }
+
+  .archetype-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+  }
+
+  .archetype-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--primary);
+  }
+
+  .archetype-card p {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* Apply Section */
+  .apply-section {
+    padding: 100px 0;
+    background: white;
+  }
+
+  .apply-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .apply-intro {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .apply-intro h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+
+  .apply-intro p {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    margin-bottom: 24px;
+  }
+
+  .apply-note {
+    background: #fef3c7;
+    border: 1px solid #f59e0b;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    color: #92400e;
+    text-align: left;
+  }
+
+  .apply-form {
+    background: #f9fafb;
+    padding: 40px;
+    border-radius: 16px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 24px;
+  }
+
+  .form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+  }
+
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background: white;
+  }
+
+  .form-input:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .btn-full {
+    width: 100%;
+  }
+
+  .form-note {
+    text-align: center;
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-top: 20px;
+  }
+
+  .form-status {
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 500;
+    display: none;
+  }
+
+  .form-status.success {
+    display: block;
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #10b981;
+  }
+
+  .form-status.error {
+    display: block;
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #ef4444;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .career-hero h1 {
+      font-size: 3rem;
+    }
+
+    .manifesto-grid,
+    .opportunities-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .archetypes-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .fit-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .career-hero {
+      padding: 120px 0 80px;
+    }
+
+    .career-hero h1 {
+      font-size: 2.2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .manifesto-title,
+    .fit-check h2,
+    .opportunities h2,
+    .archetypes h2,
+    .apply-intro h2 {
+      font-size: 1.8rem;
+    }
+
+    .archetypes-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .apply-form {
+      padding: 24px;
+    }
+
+    .fit-column {
+      padding: 24px;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('careerForm') as HTMLFormElement;
+  const status = document.getElementById('formStatus') as HTMLElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch(import.meta.env.PUBLIC_FORM_ENDPOINT || 'https://asia-east1-YOUR_PROJECT.cloudfunctions.net/submitForm', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...data, formType: 'career' }),
+      });
+
+      if (response.ok) {
+        status.textContent = 'Your application has been received. We\'ll be in touch if there\'s a match. Good luck!';
+        status.className = 'form-status success';
+        form.reset();
+      } else {
+        throw new Error('Failed to submit');
+      }
+    } catch (error) {
+      status.textContent = 'Sorry, there was an error submitting your application. Please try again or email us directly.';
+      status.className = 'form-status error';
+    }
+  });
+</script>

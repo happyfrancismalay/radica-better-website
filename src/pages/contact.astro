@@ -1,0 +1,266 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contact Us - RADICA" description="Get in touch with RADICA. Contact our sales team for pricing information, technical support, or partnership opportunities.">
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p>Have questions? We're here to help. Reach out to our team.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>Get in Touch</h2>
+          <p>Whether you're interested in our platform, need technical support, or want to explore partnership opportunities, we'd love to hear from you.</p>
+
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="method-icon">📧</div>
+              <div class="method-content">
+                <h4>Email</h4>
+                <a href="mailto:marketing@radicasys.com">marketing@radicasys.com</a>
+              </div>
+            </div>
+
+            <div class="contact-method">
+              <div class="method-icon">💬</div>
+              <div class="method-content">
+                <h4>Sales Inquiries</h4>
+                <p>Request a demo or get pricing information</p>
+              </div>
+            </div>
+
+            <div class="contact-method">
+              <div class="method-icon">🏢</div>
+              <div class="method-content">
+                <h4>Office</h4>
+                <p>Hong Kong</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper">
+          <form id="contactForm" class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="name">Full Name *</label>
+                <input type="text" id="name" name="name" class="form-input" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Email Address *</label>
+                <input type="email" id="email" name="email" class="form-input" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="company">Company</label>
+                <input type="text" id="company" name="company" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" class="form-input" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="subject">Subject *</label>
+              <select id="subject" name="subject" class="form-select" required>
+                <option value="">Select a subject</option>
+                <option value="sales">Sales Inquiry</option>
+                <option value="support">Technical Support</option>
+                <option value="partnership">Partnership Opportunity</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Message *</label>
+              <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+
+            <div id="formStatus" class="form-status"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--header-dark) 0%, var(--primary-purple-dark) 100%);
+    padding: 140px 0 80px;
+    text-align: center;
+    color: white;
+  }
+
+  .page-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .page-hero p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .contact-info h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .contact-info > p {
+    color: var(--text-gray);
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .contact-method {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .method-icon {
+    width: 48px;
+    height: 48px;
+    background: #f3f4f6;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .method-content h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .method-content p,
+  .method-content a {
+    color: var(--text-gray);
+    font-size: 14px;
+  }
+
+  .method-content a:hover {
+    color: var(--primary-purple);
+  }
+
+  .contact-form-wrapper {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .btn-full {
+    width: 100%;
+  }
+
+  .form-status {
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    display: none;
+  }
+
+  .form-status.success {
+    display: block;
+    background: #d1fae5;
+    color: #065f46;
+  }
+
+  .form-status.error {
+    display: block;
+    background: #fee2e2;
+    color: #991b1b;
+  }
+
+  @media (max-width: 1024px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .page-hero h1 {
+      font-size: 2rem;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-form-wrapper {
+      padding: 24px;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  const status = document.getElementById('formStatus') as HTMLElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch(import.meta.env.PUBLIC_FORM_ENDPOINT || 'https://asia-east1-YOUR_PROJECT.cloudfunctions.net/submitForm', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        status.textContent = 'Thank you! Your message has been sent successfully.';
+        status.className = 'form-status success';
+        form.reset();
+      } else {
+        throw new Error('Failed to submit');
+      }
+    } catch (error) {
+      status.textContent = 'Sorry, there was an error. Please try again or email us directly.';
+      status.className = 'form-status error';
+    }
+  });
+</script>

@@ -1,0 +1,438 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import AuthorBio from '../components/AuthorBio.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  author: string;
+  heroImage?: string;
+  category: string;
+  tags: string[];
+  slug: string;
+  headings: Array<{ depth: number; slug: string; text: string }>;
+  faq?: Array<{ question: string; answer: string }>;
+  canonicalUrl?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  author,
+  heroImage,
+  category,
+  tags,
+  slug,
+  headings,
+  faq,
+  canonicalUrl,
+  ogImage
+} = Astro.props;
+
+const formattedPubDate = pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+// Schema.org BlogPosting structured data
+const blogPostingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description: description,
+  image: heroImage ? new URL(heroImage, Astro.site).href : undefined,
+  datePublished: pubDate.toISOString(),
+  dateModified: (updatedDate || pubDate).toISOString(),
+  author: {
+    '@type': 'Organization',
+    name: author === 'RADICA Team' ? 'RADICA' : author,
+    url: 'https://radicaai.com'
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'RADICA',
+    url: 'https://radicaai.com',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://radicaai.com/logo.png'
+    }
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': new URL(`/blog/${slug}/`, Astro.site).href
+  },
+  articleSection: category,
+  keywords: tags.join(', ')
+};
+
+// Schema.org FAQPage structured data (if FAQ exists)
+const faqSchema = faq && faq.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map(item => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer
+    }
+  }))
+} : null;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="author" content={author} />
+  <meta name="keywords" content={tags.join(', ')} />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:site_name" content="RADICA" />
+  <meta property="og:url" content={new URL(`/blog/${slug}/`, Astro.site).href} />
+  {(ogImage || heroImage) && <meta property="og:image" content={new URL(ogImage || heroImage!, Astro.site).href} />}
+  <meta property="article:published_time" content={pubDate.toISOString()} />
+  {updatedDate && <meta property="article:modified_time" content={updatedDate.toISOString()} />}
+  <meta property="article:section" content={category} />
+  {tags.map(tag => <meta property="article:tag" content={tag} />)}
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  {(ogImage || heroImage) && <meta name="twitter:image" content={new URL(ogImage || heroImage!, Astro.site).href} />}
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="canonical" href={canonicalUrl || new URL(`/blog/${slug}/`, Astro.site).href} />
+
+  <title>{title} | RADICA Blog</title>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
+  {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+</head>
+<body>
+  <Header />
+  <main>
+    <article class="blog-post">
+      <!-- Hero Section -->
+      <header class="blog-post-header">
+        <div class="container">
+          <div class="blog-post-meta">
+            <a href={`/blog/category/${category.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}/`} class="blog-post-category">{category}</a>
+            <span class="blog-post-date">
+              <time datetime={pubDate.toISOString()}>{formattedPubDate}</time>
+              {updatedDate && formattedUpdatedDate !== formattedPubDate && (
+                <span class="blog-post-updated"> (Updated: {formattedUpdatedDate})</span>
+              )}
+            </span>
+          </div>
+          <h1 class="blog-post-title">{title}</h1>
+          <p class="blog-post-description">{description}</p>
+          <div class="blog-post-tags">
+            {tags.map(tag => (
+              <span class="blog-post-tag">{tag}</span>
+            ))}
+          </div>
+        </div>
+      </header>
+
+      {heroImage && (
+        <div class="blog-post-hero">
+          <div class="container">
+            <img src={heroImage} alt={title} />
+          </div>
+        </div>
+      )}
+
+      <!-- Content -->
+      <div class="blog-post-content">
+        <div class="container">
+          <div class="blog-post-layout">
+            <aside class="blog-post-sidebar">
+              <TableOfContents headings={headings} />
+            </aside>
+            <div class="blog-post-body">
+              <slot />
+              <AuthorBio author={author} />
+              <RelatedPosts currentSlug={slug} category={category} tags={tags} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</body>
+</html>
+
+<style>
+  .blog-post-header {
+    padding: 80px 0 40px;
+    background: #f9fafb;
+  }
+
+  .blog-post-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .blog-post-category {
+    background: var(--primary);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 13px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .blog-post-category:hover {
+    opacity: 0.9;
+  }
+
+  .blog-post-date {
+    color: var(--text-gray);
+    font-size: 14px;
+  }
+
+  .blog-post-updated {
+    font-style: italic;
+  }
+
+  .blog-post-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+  }
+
+  .blog-post-description {
+    font-size: 1.25rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 24px;
+    max-width: 800px;
+  }
+
+  .blog-post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .blog-post-tag {
+    background: white;
+    color: var(--text-gray);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    border: 1px solid var(--border-color);
+  }
+
+  .blog-post-hero {
+    margin: 40px 0;
+  }
+
+  .blog-post-hero img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .blog-post-content {
+    padding: 40px 0 80px;
+  }
+
+  .blog-post-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .blog-post-sidebar {
+    position: sticky;
+    top: 100px;
+  }
+
+  .blog-post-body {
+    max-width: 800px;
+  }
+
+  /* Markdown Content Styles */
+  .blog-post-body :global(h2) {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 48px 0 16px;
+    color: var(--text-dark);
+  }
+
+  .blog-post-body :global(h3) {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 32px 0 12px;
+    color: var(--text-dark);
+  }
+
+  .blog-post-body :global(h4) {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 24px 0 8px;
+    color: var(--text-dark);
+  }
+
+  .blog-post-body :global(p) {
+    margin-bottom: 16px;
+    line-height: 1.8;
+    color: var(--text-dark);
+  }
+
+  .blog-post-body :global(ul),
+  .blog-post-body :global(ol) {
+    margin-bottom: 16px;
+    padding-left: 24px;
+  }
+
+  .blog-post-body :global(li) {
+    margin-bottom: 8px;
+    line-height: 1.7;
+  }
+
+  .blog-post-body :global(strong) {
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  .blog-post-body :global(a) {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+
+  .blog-post-body :global(a:hover) {
+    opacity: 0.8;
+  }
+
+  .blog-post-body :global(blockquote) {
+    border-left: 4px solid var(--primary);
+    padding-left: 20px;
+    margin: 24px 0;
+    font-style: italic;
+    color: var(--text-gray);
+  }
+
+  .blog-post-body :global(code) {
+    background: #f3f4f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-family: 'Monaco', 'Consolas', monospace;
+  }
+
+  .blog-post-body :global(pre) {
+    background: var(--header-dark);
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 24px 0;
+  }
+
+  .blog-post-body :global(pre code) {
+    background: none;
+    padding: 0;
+    color: white;
+  }
+
+  .blog-post-body :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 14px;
+  }
+
+  .blog-post-body :global(th),
+  .blog-post-body :global(td) {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .blog-post-body :global(th) {
+    background: #f9fafb;
+    font-weight: 600;
+  }
+
+  .blog-post-body :global(hr) {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 48px 0;
+  }
+
+  .blog-post-body :global(img) {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 24px 0;
+  }
+
+  @media (max-width: 1024px) {
+    .blog-post-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .blog-post-sidebar {
+      position: static;
+      order: -1;
+    }
+
+    .blog-post-title {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .blog-post-header {
+      padding: 60px 0 30px;
+    }
+
+    .blog-post-title {
+      font-size: 1.75rem;
+    }
+
+    .blog-post-description {
+      font-size: 1.1rem;
+    }
+
+    .blog-post-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  }
+</style>

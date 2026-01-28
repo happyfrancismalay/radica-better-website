@@ -1,0 +1,1200 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const pageTitle = "Conversational Marketing Platform | AI Chatbots & Live Chat | RADICA";
+const pageDescription = "AI-powered conversational marketing platform. Chatbots, live chat, and messaging automation across WhatsApp, web, and social. 24/7 engagement that converts. Request demo.";
+
+const capabilities = [
+  {
+    icon: "🤖",
+    title: "AI-Powered Chatbots",
+    description: "Natural language understanding that handles complex conversations and learns from interactions.",
+    benefit: "80% of inquiries resolved automatically"
+  },
+  {
+    icon: "💬",
+    title: "Live Chat Integration",
+    description: "Seamless handoff from bot to human agents with full conversation context preserved.",
+    benefit: "Perfect balance of automation and human touch"
+  },
+  {
+    icon: "🔀",
+    title: "Omni-Channel Messaging",
+    description: "Deploy conversations across WhatsApp, web chat, Messenger, LINE, and more from one platform.",
+    benefit: "Meet customers on their preferred channel"
+  },
+  {
+    icon: "🎨",
+    title: "Visual Bot Builder",
+    description: "Drag-and-drop conversation designer with no coding required. Build complex flows visually.",
+    benefit: "Launch bots in hours, not weeks"
+  },
+  {
+    icon: "📊",
+    title: "Conversation Analytics",
+    description: "Track engagement, resolution rates, sentiment, and conversion across all conversations.",
+    benefit: "Data-driven conversation optimization"
+  },
+  {
+    icon: "🔗",
+    title: "CRM & System Integration",
+    description: "Connect to your CRM, e-commerce, and business systems for personalized conversations.",
+    benefit: "Context-aware customer interactions"
+  }
+];
+
+const channels = [
+  {
+    name: "Web Chat",
+    description: "Embed intelligent chat on your website for instant visitor engagement",
+    icon: "🌐"
+  },
+  {
+    name: "WhatsApp",
+    description: "Reach 2 billion users with automated WhatsApp conversations",
+    icon: "💚"
+  },
+  {
+    name: "Facebook Messenger",
+    description: "Engage customers on the world's largest social platform",
+    icon: "💙"
+  },
+  {
+    name: "LINE",
+    description: "Connect with customers across Asia's leading messaging app",
+    icon: "💚"
+  },
+  {
+    name: "Instagram DM",
+    description: "Automate responses to Instagram direct messages",
+    icon: "💜"
+  },
+  {
+    name: "SMS",
+    description: "Two-way SMS conversations with automated responses",
+    icon: "📱"
+  }
+];
+
+const useCases = [
+  {
+    title: "Lead Generation",
+    description: "Qualify leads 24/7 with conversational forms that feel natural. Capture details, schedule demos, and route hot leads to sales instantly.",
+    outcome: "3x more qualified leads",
+    icon: "🎯"
+  },
+  {
+    title: "Customer Support",
+    description: "Resolve common questions instantly with AI while routing complex issues to the right agent with full context.",
+    outcome: "70% reduction in support tickets",
+    icon: "🛟"
+  },
+  {
+    title: "Sales Assistance",
+    description: "Guide customers through product selection, answer questions, and close sales through conversational commerce.",
+    outcome: "25% increase in conversion",
+    icon: "💰"
+  },
+  {
+    title: "Appointment Booking",
+    description: "Let customers book, reschedule, and confirm appointments through natural conversation.",
+    outcome: "50% fewer no-shows",
+    icon: "📅"
+  }
+];
+
+const faqs = [
+  {
+    question: "How intelligent are the AI chatbots?",
+    answer: "RADICA's chatbots use advanced NLP to understand intent, handle variations in phrasing, and maintain context across multi-turn conversations. They learn from interactions to improve accuracy over time. For complex queries outside their scope, they seamlessly hand off to human agents."
+  },
+  {
+    question: "Can the chatbot integrate with our existing systems?",
+    answer: "Yes, RADICA offers pre-built integrations with popular CRMs (Salesforce, HubSpot), e-commerce platforms (Shopify, Magento), and help desks (Zendesk, Freshdesk). We also provide APIs and webhooks for custom integrations with your business systems."
+  },
+  {
+    question: "How does handoff to human agents work?",
+    answer: "When a conversation requires human intervention—either triggered by the customer, detected by sentiment analysis, or based on conversation rules—the chat seamlessly transfers to a live agent. The agent sees the full conversation history and customer context to continue without repetition."
+  },
+  {
+    question: "Do I need technical skills to build chatbots?",
+    answer: "No coding is required. Our visual bot builder lets you design conversation flows with drag-and-drop. You can create conditional logic, integrate with systems, and deploy across channels—all through an intuitive interface. For advanced use cases, we also support custom code."
+  },
+  {
+    question: "What languages are supported?",
+    answer: "RADICA supports 50+ languages including English, Chinese (Traditional & Simplified), Japanese, Korean, Thai, Vietnamese, and more. The platform handles multilingual conversations and can automatically detect and respond in the customer's language."
+  },
+  {
+    question: "How do you measure chatbot performance?",
+    answer: "Our analytics dashboard tracks key metrics including resolution rate, response time, customer satisfaction (CSAT), conversation completion, handoff rate, and conversion attribution. You can see which flows perform best and identify opportunities for improvement."
+  }
+];
+
+// Schema markup for SEO
+const softwareAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "RADICA Conversational Marketing Platform",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web-based",
+  "description": pageDescription,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Free demo available"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "145",
+    "bestRating": "5"
+  },
+  "featureList": [
+    "AI-powered chatbots",
+    "Live chat integration",
+    "Omni-channel messaging",
+    "Visual bot builder",
+    "Conversation analytics",
+    "CRM integration"
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(softwareAppSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="conversational-page">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-container">
+        <span class="badge">Conversational Marketing Platform</span>
+        <h1>Turn Conversations into Conversions</h1>
+        <p class="subtitle">
+          AI-powered chatbots and live chat that engage customers 24/7 across every channel.
+          Automate support, generate leads, and drive sales through natural conversations.
+        </p>
+
+        <div class="stats-bar">
+          <div class="stat">
+            <span class="stat-value">24/7</span>
+            <span class="stat-label">Always On</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">80%</span>
+            <span class="stat-label">Auto-Resolved</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">3x</span>
+            <span class="stat-label">More Leads</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">&lt;1 sec</span>
+            <span class="stat-label">Response Time</span>
+          </div>
+        </div>
+
+        <div class="cta-group">
+          <a href="/contact/" class="btn-primary">Request Demo</a>
+          <a href="#capabilities" class="btn-secondary">See Capabilities</a>
+        </div>
+      </div>
+
+      <!-- Chat Widget Mockup -->
+      <div class="chat-mockup">
+        <div class="chat-widget">
+          <div class="chat-header">
+            <div class="chat-avatar">R</div>
+            <div class="chat-header-info">
+              <span class="chat-name">RADICA Bot</span>
+              <span class="chat-status">Online</span>
+            </div>
+          </div>
+          <div class="chat-messages">
+            <div class="chat-message bot">
+              <p>Hi! 👋 I'm here to help. What brings you to RADICA today?</p>
+            </div>
+            <div class="chat-message user">
+              <p>I want to learn about marketing automation</p>
+            </div>
+            <div class="chat-message bot">
+              <p>Great choice! Our marketing automation helps you:</p>
+              <ul>
+                <li>Build visual customer journeys</li>
+                <li>Automate campaigns across channels</li>
+                <li>Increase conversions by 40%</li>
+              </ul>
+              <p>Would you like to see a demo?</p>
+            </div>
+            <div class="chat-quick-replies">
+              <button>Yes, show me</button>
+              <button>Tell me more</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What is Conversational Marketing -->
+    <section class="intro-section">
+      <div class="container">
+        <h2>What is Conversational Marketing?</h2>
+        <div class="intro-grid">
+          <div class="intro-content">
+            <p>
+              Conversational marketing uses real-time, one-to-one conversations to move buyers
+              through your funnel faster. Instead of forcing customers to fill out forms and wait,
+              you engage them instantly with intelligent chatbots and live chat.
+            </p>
+            <p>
+              RADICA's conversational platform combines AI-powered automation with human expertise.
+              Chatbots handle routine inquiries 24/7 while seamlessly escalating complex questions
+              to your team—all within a unified conversation experience.
+            </p>
+            <p>
+              The result? Faster responses, higher engagement, more qualified leads, and customers
+              who feel heard—not processed.
+            </p>
+          </div>
+          <div class="intro-visual">
+            <div class="funnel-diagram">
+              <div class="funnel-stage">
+                <span class="funnel-icon">👋</span>
+                <span class="funnel-label">Engage</span>
+              </div>
+              <div class="funnel-arrow">→</div>
+              <div class="funnel-stage">
+                <span class="funnel-icon">🎯</span>
+                <span class="funnel-label">Qualify</span>
+              </div>
+              <div class="funnel-arrow">→</div>
+              <div class="funnel-stage">
+                <span class="funnel-icon">📅</span>
+                <span class="funnel-label">Convert</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capabilities Section -->
+    <section id="capabilities" class="capabilities">
+      <div class="container">
+        <h2>Conversational Marketing Capabilities</h2>
+        <p class="section-intro">
+          Everything you need to build, deploy, and optimize conversations that convert—across
+          every channel your customers use.
+        </p>
+
+        <div class="capabilities-grid">
+          {capabilities.map((cap) => (
+            <div class="capability-card">
+              <span class="capability-icon">{cap.icon}</span>
+              <h3>{cap.title}</h3>
+              <p>{cap.description}</p>
+              <span class="capability-benefit">{cap.benefit}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Channels Section -->
+    <section class="channels">
+      <div class="container">
+        <h2>One Platform, Every Channel</h2>
+        <p class="section-intro">
+          Deploy conversations wherever your customers are. Build once, engage everywhere.
+        </p>
+
+        <div class="channels-grid">
+          {channels.map((channel) => (
+            <div class="channel-card">
+              <span class="channel-icon">{channel.icon}</span>
+              <h3>{channel.name}</h3>
+              <p>{channel.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="use-cases">
+      <div class="container">
+        <h2>Conversational Marketing Use Cases</h2>
+        <p class="section-intro">
+          From lead generation to customer support, see how conversations drive business results.
+        </p>
+
+        <div class="use-cases-grid">
+          {useCases.map((useCase) => (
+            <div class="use-case-card">
+              <span class="use-case-icon">{useCase.icon}</span>
+              <h3>{useCase.title}</h3>
+              <p>{useCase.description}</p>
+              <div class="use-case-outcome">
+                <span class="outcome-value">{useCase.outcome}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Bot Builder Section -->
+    <section class="bot-builder">
+      <div class="container">
+        <div class="builder-content">
+          <h2>Visual Bot Builder</h2>
+          <p>
+            Create sophisticated conversation flows without writing a single line of code.
+            Our drag-and-drop builder makes it easy to design, test, and deploy chatbots
+            across all your channels.
+          </p>
+
+          <ul class="builder-features">
+            <li>
+              <span class="feature-icon">🎨</span>
+              <div>
+                <strong>Drag-and-Drop Design</strong>
+                <span>Build flows visually with an intuitive canvas interface</span>
+              </div>
+            </li>
+            <li>
+              <span class="feature-icon">🔀</span>
+              <div>
+                <strong>Conditional Logic</strong>
+                <span>Branch conversations based on user responses and data</span>
+              </div>
+            </li>
+            <li>
+              <span class="feature-icon">🧪</span>
+              <div>
+                <strong>Built-in Testing</strong>
+                <span>Preview and test flows before going live</span>
+              </div>
+            </li>
+            <li>
+              <span class="feature-icon">📦</span>
+              <div>
+                <strong>Templates Library</strong>
+                <span>Start with pre-built templates for common use cases</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="builder-visual">
+          <div class="flow-diagram">
+            <div class="flow-node start">Start</div>
+            <div class="flow-connector"></div>
+            <div class="flow-node message">Welcome Message</div>
+            <div class="flow-connector"></div>
+            <div class="flow-node condition">User Intent?</div>
+            <div class="flow-branches">
+              <div class="flow-branch">
+                <div class="flow-connector horizontal"></div>
+                <div class="flow-node action">Sales Flow</div>
+              </div>
+              <div class="flow-branch">
+                <div class="flow-connector horizontal"></div>
+                <div class="flow-node action">Support Flow</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container">
+        <h2>Frequently Asked Questions</h2>
+        <p class="section-intro">
+          Common questions about conversational marketing, chatbots, and our platform.
+        </p>
+
+        <div class="faq-grid">
+          {faqs.map((faq, index) => (
+            <div class="faq-item">
+              <h3 class="faq-question">{faq.question}</h3>
+              <p class="faq-answer">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to Start Conversing?</h2>
+        <p>
+          Build your first chatbot and see how conversational marketing can transform
+          your customer engagement. Get started with a free demo today.
+        </p>
+        <div class="cta-group">
+          <a href="/contact/" class="btn-primary">Request Demo</a>
+          <a href="/solutions/omni-channel/" class="btn-secondary">Explore Omni-Channel</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Base Styles */
+  .conversational-page {
+    --conv-primary: #6366F1;
+    --conv-primary-dark: #4F46E5;
+    --conv-primary-light: #818CF8;
+    --conv-success: #10B981;
+    --conv-accent: #F59E0B;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .section-intro {
+    font-size: 1.25rem;
+    color: #64748b;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    line-height: 1.7;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+    padding: 120px 24px 80px;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 60px;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .hero-container {
+    max-width: 650px;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+    backdrop-filter: blur(10px);
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  .hero .subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .stats-bar {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    opacity: 0.8;
+  }
+
+  .cta-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: white;
+    color: var(--conv-primary);
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-secondary:hover {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Chat Mockup */
+  .chat-mockup {
+    display: flex;
+    justify-content: center;
+  }
+
+  .chat-widget {
+    width: 340px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+  }
+
+  .chat-header {
+    background: var(--conv-primary);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .chat-avatar {
+    width: 40px;
+    height: 40px;
+    background: white;
+    color: var(--conv-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+
+  .chat-header-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chat-name {
+    font-weight: 600;
+    color: white;
+  }
+
+  .chat-status {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .chat-messages {
+    padding: 16px;
+    background: #f8fafc;
+    min-height: 280px;
+  }
+
+  .chat-message {
+    margin-bottom: 12px;
+  }
+
+  .chat-message p {
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .chat-message.bot p {
+    background: white;
+    color: #1e293b;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .chat-message.user p {
+    background: var(--conv-primary);
+    color: white;
+    border-bottom-right-radius: 4px;
+    margin-left: auto;
+    max-width: 85%;
+  }
+
+  .chat-message ul {
+    margin: 8px 0;
+    padding-left: 20px;
+    font-size: 0.85rem;
+    color: #475569;
+  }
+
+  .chat-message ul li {
+    margin: 4px 0;
+  }
+
+  .chat-quick-replies {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .chat-quick-replies button {
+    background: white;
+    border: 1px solid var(--conv-primary);
+    color: var(--conv-primary);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .chat-quick-replies button:hover {
+    background: var(--conv-primary);
+    color: white;
+  }
+
+  /* Intro Section */
+  .intro-section {
+    padding: 100px 24px;
+  }
+
+  .intro-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 48px;
+    color: #1e293b;
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .intro-content p {
+    font-size: 1.1rem;
+    color: #475569;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .funnel-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 40px;
+    background: #f8fafc;
+    border-radius: 16px;
+  }
+
+  .funnel-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 24px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .funnel-icon {
+    font-size: 2rem;
+  }
+
+  .funnel-label {
+    font-weight: 600;
+    color: #1e293b;
+  }
+
+  .funnel-arrow {
+    font-size: 1.5rem;
+    color: var(--conv-primary);
+  }
+
+  /* Capabilities Section */
+  .capabilities {
+    padding: 100px 24px;
+    background: #f8fafc;
+  }
+
+  .capabilities h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #1e293b;
+  }
+
+  .capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .capability-card {
+    background: white;
+    padding: 32px;
+    border-radius: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .capability-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  .capability-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .capability-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #1e293b;
+  }
+
+  .capability-card p {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .capability-benefit {
+    display: inline-block;
+    color: var(--conv-primary);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  /* Channels Section */
+  .channels {
+    padding: 100px 24px;
+  }
+
+  .channels h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #1e293b;
+  }
+
+  .channels-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .channel-card {
+    background: #f8fafc;
+    padding: 28px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .channel-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .channel-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .channel-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #1e293b;
+  }
+
+  .channel-card p {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* Use Cases Section */
+  .use-cases {
+    padding: 100px 24px;
+    background: #f8fafc;
+  }
+
+  .use-cases h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #1e293b;
+  }
+
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .use-case-card {
+    background: white;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .use-case-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .use-case-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #1e293b;
+  }
+
+  .use-case-card p {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .use-case-outcome {
+    padding-top: 16px;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .outcome-value {
+    font-weight: 700;
+    color: var(--conv-success);
+    font-size: 1.1rem;
+  }
+
+  /* Bot Builder Section */
+  .bot-builder {
+    padding: 100px 24px;
+  }
+
+  .bot-builder .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .bot-builder h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #1e293b;
+  }
+
+  .builder-content p {
+    font-size: 1.1rem;
+    color: #64748b;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .builder-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .builder-features li {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .builder-features li:last-child {
+    border-bottom: none;
+  }
+
+  .feature-icon {
+    font-size: 1.5rem;
+  }
+
+  .builder-features strong {
+    display: block;
+    color: #1e293b;
+    margin-bottom: 4px;
+  }
+
+  .builder-features span {
+    color: #64748b;
+    font-size: 0.95rem;
+  }
+
+  /* Flow Diagram */
+  .flow-diagram {
+    background: #f8fafc;
+    padding: 40px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flow-node {
+    background: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .flow-node.start {
+    background: var(--conv-primary);
+    color: white;
+    border-radius: 20px;
+  }
+
+  .flow-node.condition {
+    background: var(--conv-accent);
+    color: white;
+    transform: rotate(0deg);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    padding: 24px 32px;
+  }
+
+  .flow-node.action {
+    background: var(--conv-success);
+    color: white;
+  }
+
+  .flow-connector {
+    width: 2px;
+    height: 24px;
+    background: #cbd5e1;
+  }
+
+  .flow-connector.horizontal {
+    width: 40px;
+    height: 2px;
+  }
+
+  .flow-branches {
+    display: flex;
+    gap: 40px;
+    margin-top: 24px;
+  }
+
+  .flow-branch {
+    display: flex;
+    align-items: center;
+  }
+
+  /* FAQ Section */
+  .faq-section {
+    padding: 100px 24px;
+    background: #f8fafc;
+  }
+
+  .faq-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #1e293b;
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: white;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .faq-question {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #1e293b;
+  }
+
+  .faq-answer {
+    color: #64748b;
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: 100px 24px;
+    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+    text-align: center;
+    color: white;
+  }
+
+  .cta-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .cta-section p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 32px;
+  }
+
+  .cta-section .cta-group {
+    justify-content: center;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 100px 24px 60px;
+    }
+
+    .chat-mockup {
+      display: none;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+
+    .intro-grid,
+    .bot-builder .container {
+      grid-template-columns: 1fr;
+    }
+
+    .builder-visual {
+      order: -1;
+    }
+
+    .capabilities-grid,
+    .channels-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2rem;
+    }
+
+    .stats-bar {
+      gap: 24px;
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+    }
+
+    .capabilities-grid,
+    .channels-grid,
+    .use-cases-grid,
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .funnel-diagram {
+      flex-direction: column;
+    }
+
+    .funnel-arrow {
+      transform: rotate(90deg);
+    }
+
+    .flow-branches {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .flow-branch {
+      flex-direction: column;
+    }
+
+    .flow-connector.horizontal {
+      width: 2px;
+      height: 24px;
+    }
+
+    .cta-group {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      text-align: center;
+    }
+  }
+</style>

@@ -1,0 +1,236 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const useCases = [
+  {
+    title: 'Digital Onboarding',
+    description: 'Streamline account opening with automated KYC workflows, e-signature collection, and personalized welcome sequences.',
+    stat: '60% faster activation'
+  },
+  {
+    title: 'Transaction Alerts & Fraud Prevention',
+    description: 'Real-time notifications for transactions, suspicious activity alerts, and security verification via SMS & WhatsApp.',
+    stat: '95% delivery rate'
+  },
+  {
+    title: 'Wealth Advisory Campaigns',
+    description: 'Personalized investment insights, portfolio updates, and cross-sell opportunities based on customer segments.',
+    stat: '32% engagement rate'
+  },
+  {
+    title: 'Loan & Credit Lifecycle',
+    description: 'Automated payment reminders, refinancing offers, and credit limit upgrade campaigns with compliance tracking.',
+    stat: '28% conversion rate'
+  }
+];
+
+const features = [
+  'Bank-grade encryption (AES-256)',
+  'HKMA & MAS regulatory compliance',
+  'Real-time transaction triggers',
+  'Secure API integrations with core banking',
+  'Complete audit trail & reporting',
+  'Data residency in Hong Kong'
+];
+---
+
+<BaseLayout title="Banking & Wealth Management Solutions - RADICA" description="Drive digital engagement and lifetime value with intelligent customer journeys for banking and wealth management.">
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="badge">Industry Solution</span>
+      <h1>Banking & Wealth Management</h1>
+      <p>Drive digital engagement and lifetime value with intelligent customer journeys</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Key Use Cases</h2>
+      <p class="section-subtitle">How banks and wealth managers use RADICA to engage customers</p>
+
+      <div class="use-cases-grid">
+        {useCases.map((useCase) => (
+          <div class="use-case-card">
+            <h3>{useCase.title}</h3>
+            <p>{useCase.description}</p>
+            <div class="use-case-stat">{useCase.stat}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-gray">
+    <div class="container">
+      <div class="features-content">
+        <div class="features-text">
+          <h2>Enterprise Security & Compliance</h2>
+          <p>RADICA meets the stringent security and compliance requirements of banking and wealth management organizations.</p>
+          <ul class="features-list">
+            {features.map((feature) => (
+              <li>{feature}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Transform Banking Customer Engagement?</h2>
+        <p>See how RADICA can help you build stronger customer relationships.</p>
+        <a href="/request-demo/" class="btn btn-white btn-large">Request Demo</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--header-dark) 0%, var(--primary-purple-dark) 100%);
+    padding: 140px 0 80px;
+    text-align: center;
+    color: white;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .page-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .page-hero p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .use-case-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .use-case-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .use-case-card p {
+    color: var(--text-gray);
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+
+  .use-case-stat {
+    display: inline-block;
+    background: rgba(220, 38, 38, 0.1);
+    color: var(--primary-purple);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .features-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .features-content > div > p {
+    color: var(--text-gray);
+    margin-bottom: 24px;
+  }
+
+  .features-list {
+    list-style: none;
+    columns: 2;
+    column-gap: 40px;
+  }
+
+  .features-list li {
+    padding: 10px 0;
+    padding-left: 28px;
+    position: relative;
+    font-size: 14px;
+  }
+
+  .features-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-purple);
+    font-weight: 700;
+  }
+
+  .cta-section {
+    background: var(--gradient-purple);
+    padding: 80px 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    color: white;
+  }
+
+  .cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .cta-content p {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 32px;
+  }
+
+  .btn-white {
+    background: white;
+    color: var(--primary-purple);
+  }
+
+  .btn-large {
+    padding: 16px 36px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .use-cases-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .features-list {
+      columns: 1;
+    }
+
+    .page-hero h1 {
+      font-size: 2rem;
+    }
+  }
+</style>

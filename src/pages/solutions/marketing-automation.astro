@@ -1,0 +1,927 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// SEO-optimized structured data
+const schemaProduct = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "RADICA Marketing Automation Platform",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web-based",
+  "description": "Enterprise marketing automation platform with visual journey builder, AI-powered segmentation, and cross-channel campaign orchestration. Reduce manual work by 60% while increasing conversions.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "HKD",
+    "description": "14-day free trial available"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "500"
+  },
+  "featureList": [
+    "Visual Journey Builder",
+    "AI-Powered Segmentation",
+    "Cross-Channel Orchestration",
+    "Behavioral Triggers",
+    "A/B Testing",
+    "Marketing Analytics"
+  ],
+  "provider": {
+    "@type": "Organization",
+    "name": "RADICA",
+    "url": "https://www.radica.ai"
+  }
+};
+
+const schemaFAQ = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is marketing automation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Marketing automation is technology that manages marketing processes and campaigns automatically across multiple channels. It enables businesses to target customers with automated messages via email, SMS, WhatsApp, and other channels based on workflows and triggers you define—saving time while improving personalization and results."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much time can marketing automation save?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Businesses using RADICA's marketing automation platform report saving 60% of time previously spent on manual marketing tasks. This includes automated campaign scheduling, triggered messages, lead scoring, and reporting—freeing your team to focus on strategy and creative work."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between marketing automation and email marketing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Email marketing focuses solely on email campaigns, while marketing automation encompasses the entire customer journey across all channels. Marketing automation includes email but also SMS, WhatsApp, push notifications, behavioral triggers, lead scoring, segmentation, and comprehensive analytics—all working together in automated workflows."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to implement marketing automation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most businesses can launch their first automated campaigns within 1-2 weeks using RADICA. Our platform includes pre-built templates and workflows, plus dedicated onboarding support to help you integrate your data sources and configure your first customer journeys quickly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can marketing automation work with my existing CRM?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, RADICA integrates with all major CRM platforms including Salesforce, HubSpot, Microsoft Dynamics, and Zoho. We also connect with e-commerce platforms like Shopify and WooCommerce, ensuring your marketing automation has access to complete customer data."
+      }
+    }
+  ]
+};
+
+const stats = [
+  { value: '60%', label: 'Less Manual Work' },
+  { value: '35%', label: 'Higher Conversions' },
+  { value: '3x', label: 'Faster Campaigns' },
+  { value: '500+', label: 'Enterprise Clients' }
+];
+
+const capabilities = [
+  {
+    icon: '🎯',
+    title: 'Visual Journey Builder',
+    description: 'Design complex customer journeys with our intuitive drag-and-drop interface. No coding required—just map out your ideal customer experience and let automation handle the rest.',
+    benefits: ['Drag-and-drop workflow design', 'Conditional branching logic', 'Multi-channel touchpoints', 'Real-time journey preview']
+  },
+  {
+    icon: '🧠',
+    title: 'AI-Powered Segmentation',
+    description: 'Let machine learning automatically segment your audience based on behavior, preferences, and predicted actions. Send the right message to the right person at the right time.',
+    benefits: ['Behavioral segmentation', 'Predictive scoring', 'Dynamic list updates', 'RFM analysis']
+  },
+  {
+    icon: '⚡',
+    title: 'Behavioral Triggers',
+    description: 'Respond instantly to customer actions with automated triggers. Cart abandonment, browse behavior, purchase events—turn every interaction into an opportunity.',
+    benefits: ['Real-time event triggers', 'Custom trigger conditions', 'Multi-step sequences', 'Timing optimization']
+  },
+  {
+    icon: '📊',
+    title: 'Campaign Analytics',
+    description: 'Measure what matters with comprehensive analytics. Track every touchpoint, attribute conversions, and continuously optimize based on real performance data.',
+    benefits: ['Real-time dashboards', 'Conversion attribution', 'Revenue tracking', 'Custom reports']
+  },
+  {
+    icon: '🔄',
+    title: 'Cross-Channel Orchestration',
+    description: 'Coordinate messaging across Email, SMS, WhatsApp, and Push from one platform. Ensure consistent experiences regardless of where customers engage.',
+    benefits: ['Unified campaign management', 'Channel preference learning', 'Consistent messaging', 'Optimal channel selection']
+  },
+  {
+    icon: '🧪',
+    title: 'A/B & Multivariate Testing',
+    description: 'Test everything—subject lines, content, send times, channels. Our testing engine automatically finds winners and applies learnings to future campaigns.',
+    benefits: ['Automated split testing', 'Statistical significance', 'Auto-winner selection', 'Continuous optimization']
+  }
+];
+
+const automationTemplates = [
+  {
+    name: 'Welcome Series',
+    description: 'Onboard new subscribers with a multi-touch welcome journey that introduces your brand and drives first conversion.',
+    channels: ['Email', 'SMS'],
+    result: '+40% first purchase rate'
+  },
+  {
+    name: 'Cart Abandonment',
+    description: 'Recover lost sales with perfectly-timed reminders across email, SMS, and WhatsApp.',
+    channels: ['Email', 'SMS', 'WhatsApp'],
+    result: '28% cart recovery'
+  },
+  {
+    name: 'Post-Purchase',
+    description: 'Build loyalty with order confirmations, shipping updates, review requests, and cross-sell recommendations.',
+    channels: ['Email', 'SMS'],
+    result: '+25% repeat purchase'
+  },
+  {
+    name: 'Re-engagement',
+    description: 'Win back inactive customers with targeted campaigns based on their previous behavior and preferences.',
+    channels: ['Email', 'Push'],
+    result: '15% reactivation rate'
+  },
+  {
+    name: 'Birthday & Anniversary',
+    description: 'Celebrate customer milestones with personalized offers that drive engagement and loyalty.',
+    channels: ['Email', 'SMS', 'WhatsApp'],
+    result: '45% redemption rate'
+  },
+  {
+    name: 'Lead Nurturing',
+    description: 'Guide prospects through your funnel with educational content and timely offers based on their engagement.',
+    channels: ['Email'],
+    result: '3x qualified leads'
+  }
+];
+
+const useCases = [
+  {
+    industry: 'E-Commerce',
+    title: 'Automated Revenue Recovery',
+    description: 'An online retailer implemented cart abandonment, browse abandonment, and post-purchase flows. Result: 28% increase in revenue from automated campaigns alone.',
+    stat: '+28%',
+    statLabel: 'Automated Revenue'
+  },
+  {
+    industry: 'Financial Services',
+    title: 'Compliant Customer Onboarding',
+    description: 'A bank automated their customer onboarding journey with triggered emails for document collection, KYC reminders, and product education.',
+    stat: '60%',
+    statLabel: 'Faster Onboarding'
+  },
+  {
+    industry: 'SaaS',
+    title: 'Trial-to-Paid Conversion',
+    description: 'A software company used behavioral triggers to identify engaged trial users and deliver targeted upgrade campaigns.',
+    stat: '2.5x',
+    statLabel: 'Trial Conversion'
+  },
+  {
+    industry: 'Retail',
+    title: 'Loyalty Program Automation',
+    description: 'A retail chain automated their loyalty communications including point updates, tier changes, and personalized rewards.',
+    stat: '3x',
+    statLabel: 'Member Engagement'
+  }
+];
+
+const integrations = {
+  crm: ['Salesforce', 'HubSpot', 'Microsoft Dynamics', 'Zoho CRM'],
+  ecommerce: ['Shopify', 'Shopline', 'WooCommerce', 'Magento'],
+  data: ['Segment', 'Google Analytics', 'Mixpanel', 'Custom APIs']
+};
+
+const faqs = [
+  {
+    question: 'What is marketing automation?',
+    answer: 'Marketing automation is technology that manages marketing processes and campaigns automatically across multiple channels. It enables businesses to target customers with automated messages via email, SMS, WhatsApp, and other channels based on workflows and triggers you define—saving time while improving personalization and results.'
+  },
+  {
+    question: 'How much time can marketing automation save?',
+    answer: 'Businesses using RADICA\'s marketing automation platform report saving 60% of time previously spent on manual marketing tasks. This includes automated campaign scheduling, triggered messages, lead scoring, and reporting—freeing your team to focus on strategy and creative work.'
+  },
+  {
+    question: 'What\'s the difference between marketing automation and email marketing?',
+    answer: 'Email marketing focuses solely on email campaigns, while marketing automation encompasses the entire customer journey across all channels. Marketing automation includes email but also SMS, WhatsApp, push notifications, behavioral triggers, lead scoring, segmentation, and comprehensive analytics—all working together in automated workflows.'
+  },
+  {
+    question: 'How long does it take to implement marketing automation?',
+    answer: 'Most businesses can launch their first automated campaigns within 1-2 weeks using RADICA. Our platform includes pre-built templates and workflows, plus dedicated onboarding support to help you integrate your data sources and configure your first customer journeys quickly.'
+  },
+  {
+    question: 'Can marketing automation work with my existing CRM?',
+    answer: 'Yes, RADICA integrates with all major CRM platforms including Salesforce, HubSpot, Microsoft Dynamics, and Zoho. We also connect with e-commerce platforms like Shopify and WooCommerce, ensuring your marketing automation has access to complete customer data.'
+  },
+  {
+    question: 'Is marketing automation suitable for small businesses?',
+    answer: 'Absolutely. Marketing automation is valuable for businesses of all sizes. Small businesses often see the biggest impact because automation lets a small team achieve what would otherwise require a much larger marketing department. RADICA offers plans scaled to your needs.'
+  }
+];
+---
+
+<BaseLayout
+  title="Marketing Automation Platform | AI-Powered Campaign Automation - RADICA"
+  description="Automate your marketing with RADICA's AI-powered platform. Visual journey builder, smart segmentation, behavioral triggers. Save 60% time, increase conversions 35%. Free demo."
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaProduct)} />
+  <script type="application/ld+json" set:html={JSON.stringify(schemaFAQ)} />
+
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="badge">Marketing Automation</span>
+      <h1>Marketing Automation That Turns Campaigns into Revenue</h1>
+      <p>Stop doing marketing manually. RADICA's marketing automation platform lets you build sophisticated customer journeys, trigger personalized messages, and optimize campaigns automatically—so you can <strong>focus on strategy while automation drives results</strong>.</p>
+      <div class="hero-stats">
+        {stats.map((stat) => (
+          <div class="hero-stat">
+            <div class="hero-stat-value">{stat.value}</div>
+            <div class="hero-stat-label">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+      <div class="hero-cta">
+        <a href="/request-demo/" class="btn btn-white btn-large">Request Free Demo</a>
+        <a href="/contact/" class="btn btn-outline-white btn-large">Talk to Sales</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem/Solution Section -->
+  <section class="section">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-content">
+          <h2>What is Marketing Automation?</h2>
+          <p>
+            <strong>Marketing automation</strong> is the technology that handles repetitive marketing tasks automatically, so you can deliver personalized experiences at scale without burning out your team.
+          </p>
+          <p>
+            Instead of manually sending emails, segmenting lists, and tracking results, marketing automation lets you build workflows once and let them run. A customer abandons their cart? Automation sends the recovery sequence. A lead downloads a whitepaper? Automation nurtures them toward a sale. A customer hasn't purchased in 90 days? Automation re-engages them.
+          </p>
+          <p>
+            With RADICA, you get enterprise-grade marketing automation that's actually easy to use—visual builders, pre-built templates, and AI that optimizes everything from send times to channel selection.
+          </p>
+        </div>
+        <div class="intro-visual">
+          <div class="automation-flow">
+            <div class="flow-item">
+              <span class="flow-icon">👤</span>
+              <span class="flow-label">Customer Action</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-item">
+              <span class="flow-icon">⚡</span>
+              <span class="flow-label">Trigger</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-item">
+              <span class="flow-icon">📨</span>
+              <span class="flow-label">Automated Message</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-item">
+              <span class="flow-icon">💰</span>
+              <span class="flow-label">Conversion</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities Section -->
+  <section class="section section-gray" id="capabilities">
+    <div class="container">
+      <h2 class="section-title">Marketing Automation Capabilities</h2>
+      <p class="section-subtitle">Everything you need to automate, personalize, and optimize your marketing</p>
+
+      <div class="capabilities-grid">
+        {capabilities.map((capability) => (
+          <article class="capability-card">
+            <span class="capability-icon">{capability.icon}</span>
+            <h3>{capability.title}</h3>
+            <p>{capability.description}</p>
+            <ul class="capability-benefits">
+              {capability.benefits.map((benefit) => (
+                <li>{benefit}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Templates Section -->
+  <section class="section" id="templates">
+    <div class="container">
+      <h2 class="section-title">Pre-Built Automation Templates</h2>
+      <p class="section-subtitle">Launch proven campaigns in minutes, not weeks</p>
+
+      <div class="templates-grid">
+        {automationTemplates.map((template) => (
+          <article class="template-card">
+            <div class="template-header">
+              <h3>{template.name}</h3>
+              <span class="template-result">{template.result}</span>
+            </div>
+            <p>{template.description}</p>
+            <div class="template-channels">
+              {template.channels.map((channel) => (
+                <span class="channel-tag">{channel}</span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases Section -->
+  <section class="section section-gray" id="use-cases">
+    <div class="container">
+      <h2 class="section-title">Marketing Automation in Action</h2>
+      <p class="section-subtitle">Real results from real businesses using RADICA</p>
+
+      <div class="use-cases-grid">
+        {useCases.map((useCase) => (
+          <article class="use-case-card">
+            <span class="use-case-industry">{useCase.industry}</span>
+            <h3>{useCase.title}</h3>
+            <p>{useCase.description}</p>
+            <div class="use-case-stat">
+              <span class="stat-value">{useCase.stat}</span>
+              <span class="stat-label">{useCase.statLabel}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Integrations Section -->
+  <section class="section" id="integrations">
+    <div class="container">
+      <h2 class="section-title">Connects With Your Stack</h2>
+      <p class="section-subtitle">Seamless integrations with the tools you already use</p>
+
+      <div class="integrations-grid">
+        <div class="integration-category">
+          <h3>CRM Platforms</h3>
+          <ul>
+            {integrations.crm.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="integration-category">
+          <h3>E-Commerce</h3>
+          <ul>
+            {integrations.ecommerce.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="integration-category">
+          <h3>Data & Analytics</h3>
+          <ul>
+            {integrations.data.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div class="integrations-cta">
+        <a href="/integrations/" class="btn btn-outline">View All Integrations</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section section-gray" id="faq">
+    <div class="container">
+      <h2 class="section-title">Marketing Automation FAQ</h2>
+      <p class="section-subtitle">Common questions about marketing automation</p>
+
+      <div class="faq-grid">
+        {faqs.map((faq) => (
+          <article class="faq-item">
+            <h3>{faq.question}</h3>
+            <p>{faq.answer}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Automate Your Marketing?</h2>
+        <p>Join 500+ enterprises using RADICA to turn manual campaigns into automated revenue machines.</p>
+        <div class="cta-actions">
+          <a href="/request-demo/" class="btn btn-white btn-large">Request Free Demo</a>
+          <a href="/pricing/" class="btn btn-outline-white btn-large">View Pricing</a>
+        </div>
+        <p class="cta-note">No credit card required. 14-day free trial included.</p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--header-dark) 0%, var(--primary-purple-dark) 100%);
+    padding: 140px 0 80px;
+    text-align: center;
+    color: white;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .page-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .page-hero > .container > p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    max-width: 750px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .hero-stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+  }
+
+  .hero-stat-label {
+    font-size: 14px;
+    opacity: 0.85;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-white {
+    background: white;
+    color: var(--primary-purple);
+  }
+
+  .btn-outline-white {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+
+  .btn-large {
+    padding: 16px 36px;
+    font-size: 16px;
+  }
+
+  /* Intro Section */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .intro-content h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  .intro-content p {
+    color: var(--text-gray);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+  }
+
+  /* Automation Flow Visual */
+  .automation-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 20px;
+  }
+
+  .flow-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    min-width: 100px;
+  }
+
+  .flow-icon {
+    font-size: 2rem;
+  }
+
+  .flow-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-gray);
+    text-align: center;
+  }
+
+  .flow-arrow {
+    font-size: 1.5rem;
+    color: var(--primary-purple);
+    font-weight: 700;
+  }
+
+  /* Capabilities Grid */
+  .capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .capability-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .capability-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .capability-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .capability-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .capability-card > p {
+    color: var(--text-gray);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .capability-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .capability-benefits li {
+    font-size: 13px;
+    color: var(--primary-purple);
+    padding: 4px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .capability-benefits li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+
+  /* Templates Grid */
+  .templates-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .template-card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+
+  .template-card:hover {
+    border-color: var(--primary-purple);
+  }
+
+  .template-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 12px;
+  }
+
+  .template-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+
+  .template-result {
+    background: rgba(34, 197, 94, 0.1);
+    color: #16a34a;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .template-card > p {
+    color: var(--text-gray);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .template-channels {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .channel-tag {
+    background: rgba(220, 38, 38, 0.1);
+    color: var(--primary-purple);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  /* Use Cases */
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .use-case-card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .use-case-industry {
+    display: inline-block;
+    background: var(--primary-purple);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .use-case-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .use-case-card > p {
+    color: var(--text-gray);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .use-case-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .use-case-stat .stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary-purple);
+  }
+
+  .use-case-stat .stat-label {
+    font-size: 14px;
+    color: var(--text-gray);
+  }
+
+  /* Integrations */
+  .integrations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  .integration-category h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--primary-purple);
+  }
+
+  .integration-category ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .integration-category li {
+    padding: 10px 0;
+    color: var(--text-gray);
+    font-size: 15px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .integration-category li:last-child {
+    border-bottom: none;
+  }
+
+  .integrations-cta {
+    text-align: center;
+  }
+
+  /* FAQ Section */
+  .faq-grid {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: white;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .faq-item h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .faq-item p {
+    color: var(--text-gray);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: var(--gradient-purple);
+    padding: 80px 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    color: white;
+  }
+
+  .cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .cta-content > p {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 32px;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .cta-note {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .intro-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .automation-flow {
+      margin-top: 40px;
+    }
+
+    .capabilities-grid,
+    .templates-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .integrations-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-hero h1 {
+      font-size: 2rem;
+    }
+
+    .hero-stats {
+      gap: 24px;
+    }
+
+    .hero-stat-value {
+      font-size: 2rem;
+    }
+
+    .capabilities-grid,
+    .templates-grid,
+    .use-cases-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .integrations-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .cta-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .automation-flow {
+      flex-direction: column;
+    }
+
+    .flow-arrow {
+      transform: rotate(90deg);
+    }
+  }
+</style>

@@ -1,0 +1,956 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// SEO-optimized structured data
+const schemaOmnichannel = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "RADICA Omni-Channel Marketing Platform",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web-based",
+  "description": "Enterprise omni-channel marketing automation platform that unifies Email, SMS, WhatsApp, Push Notifications, and Social Media marketing in one powerful solution.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "HKD",
+    "description": "14-day free trial available"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "500"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "RADICA",
+    "url": "https://www.radica.ai"
+  }
+};
+
+const schemaFAQ = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is omni-channel marketing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Omni-channel marketing is a customer-centric approach that provides a seamless experience across all channels and touchpoints. Unlike multi-channel marketing, omni-channel ensures consistent messaging and unified customer data across Email, SMS, WhatsApp, Social Media, and other platforms."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does RADICA's omni-channel platform increase engagement?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RADICA's platform uses AI-powered channel orchestration to automatically select the best channel for each customer based on their preferences and behavior. This results in up to 10X higher engagement rates compared to single-channel campaigns."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which marketing channels does RADICA support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RADICA supports Email Marketing, SMS Marketing, WhatsApp Business API, Push Notifications (Web & Mobile), Social Media (Facebook, Instagram), and LINE Official Account integration."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I integrate RADICA with my existing CRM?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, RADICA integrates seamlessly with major CRM platforms including Salesforce, HubSpot, Microsoft Dynamics, as well as e-commerce platforms like Shopify, Shopline, and WooCommerce."
+      }
+    }
+  ]
+};
+
+const channels = [
+  {
+    name: 'Email Marketing',
+    icon: '📧',
+    description: 'Create high-converting email campaigns with advanced personalization, dynamic content, A/B testing, and automated drip sequences that nurture leads and drive conversions.',
+    features: ['Dynamic content personalization', 'AI send-time optimization', 'Advanced email analytics', 'Drag-and-drop email builder']
+  },
+  {
+    name: 'SMS Marketing',
+    icon: '💬',
+    description: 'Reach customers instantly with SMS marketing campaigns. Perfect for time-sensitive promotions, appointment reminders, and transactional notifications with 98% open rates.',
+    features: ['98% open rate', 'Two-way SMS messaging', 'Global SMS delivery', 'Automated SMS sequences']
+  },
+  {
+    name: 'WhatsApp Marketing',
+    icon: '📱',
+    description: 'Engage customers on WhatsApp Business API with rich media messages, interactive buttons, and conversational commerce. Build meaningful relationships at scale.',
+    features: ['WhatsApp Business API', 'Rich media & catalogs', 'Chatbot automation', 'Broadcast messaging']
+  },
+  {
+    name: 'Push Notifications',
+    icon: '🔔',
+    description: 'Re-engage website visitors and app users with targeted web and mobile push notifications. Drive traffic back to your site with personalized, timely messages.',
+    features: ['Web & mobile push', 'Geo-targeted notifications', 'Rich push with images', 'Scheduled notifications']
+  },
+  {
+    name: 'Social Media Marketing',
+    icon: '🌐',
+    description: 'Coordinate your social media marketing across Facebook, Instagram, and other platforms. Sync your messaging and track performance from one dashboard.',
+    features: ['Cross-platform campaigns', 'Custom audience sync', 'Social retargeting', 'Performance analytics']
+  },
+  {
+    name: 'LINE Marketing',
+    icon: '💚',
+    description: 'Connect with customers across Asia through LINE Official Account integration. Send rich messages, create interactive menus, and drive engagement on LINE.',
+    features: ['LINE Official Account', 'Rich menus & cards', 'LINE Pay integration', 'Sticker messages']
+  }
+];
+
+const benefits = [
+  {
+    title: 'Unified Customer Data Platform',
+    description: 'Consolidate all customer interactions across every marketing channel into a single, comprehensive customer profile. Get a 360-degree view of your customers.',
+    stat: '360°',
+    statLabel: 'Customer visibility'
+  },
+  {
+    title: 'Consistent Brand Experience',
+    description: 'Deliver coherent brand messaging regardless of which channel your customers prefer. Ensure every touchpoint reinforces your brand identity.',
+    stat: '100%',
+    statLabel: 'Brand consistency'
+  },
+  {
+    title: '10X Higher Engagement',
+    description: 'Reach customers on their preferred channels at optimal times. Our AI-powered platform dramatically improves open rates, click-through rates, and conversions.',
+    stat: '10x',
+    statLabel: 'Engagement boost'
+  },
+  {
+    title: 'AI-Powered Channel Selection',
+    description: 'Let machine learning automatically choose the best channel for each customer and message type. Maximize ROI with intelligent marketing automation.',
+    stat: '35%',
+    statLabel: 'Conversion lift'
+  }
+];
+
+const useCases = [
+  {
+    title: 'Automated Welcome Journey',
+    description: 'Onboard new customers with a coordinated multi-channel welcome sequence. Start with a welcome email, follow up with SMS, and engage on WhatsApp to drive first purchase.',
+    channels: ['Email', 'SMS', 'WhatsApp']
+  },
+  {
+    title: 'Cart Abandonment Recovery',
+    description: 'Recover up to 28% of abandoned carts with timely, multi-channel reminders. Automatically escalate from email to SMS to WhatsApp based on customer response.',
+    channels: ['Email', 'Push', 'SMS']
+  },
+  {
+    title: 'Loyalty Program Automation',
+    description: 'Keep loyalty members engaged with personalized rewards notifications, point balance updates, tier upgrades, and exclusive member-only offers across all channels.',
+    channels: ['Email', 'SMS', 'Push']
+  },
+  {
+    title: 'Customer Re-engagement',
+    description: 'Win back dormant customers with targeted win-back campaigns. Use customer data to reach them on their most responsive channel with personalized offers.',
+    channels: ['Email', 'WhatsApp', 'Social']
+  }
+];
+
+const features = [
+  'Visual customer journey builder with drag-and-drop interface',
+  'Cross-channel campaign orchestration and automation',
+  'Real-time customer behavior tracking and analytics',
+  'AI-powered send time optimization for each channel',
+  'Dynamic content personalization at scale',
+  'Comprehensive A/B and multivariate testing',
+  'Advanced customer segmentation engine',
+  'Unified marketing analytics dashboard',
+  'REST API and webhook integrations',
+  'Enterprise-grade security and GDPR compliance'
+];
+
+const stats = [
+  { value: '10x', label: 'Engagement Increase' },
+  { value: '99.9%', label: 'Message Delivery Rate' },
+  { value: '35%', label: 'Conversion Rate Lift' },
+  { value: '60%', label: 'Marketing Time Saved' }
+];
+
+const faqs = [
+  {
+    question: 'What is omni-channel marketing?',
+    answer: 'Omni-channel marketing is a customer-centric approach that provides a seamless experience across all channels and touchpoints. Unlike multi-channel marketing where channels operate independently, omni-channel ensures consistent messaging, unified customer data, and coordinated campaigns across Email, SMS, WhatsApp, Social Media, and other platforms.'
+  },
+  {
+    question: 'How does RADICA\'s omni-channel platform increase engagement?',
+    answer: 'RADICA\'s platform uses AI-powered channel orchestration to automatically select the best channel for each customer based on their preferences and behavior patterns. By reaching customers on their preferred channel at the optimal time, businesses see up to 10X higher engagement rates compared to single-channel campaigns.'
+  },
+  {
+    question: 'Which marketing channels does RADICA support?',
+    answer: 'RADICA supports all major marketing channels including Email Marketing, SMS Marketing, WhatsApp Business API, Web and Mobile Push Notifications, Social Media (Facebook, Instagram), and LINE Official Account. All channels are managed from a single unified platform.'
+  },
+  {
+    question: 'Can I integrate RADICA with my existing CRM and e-commerce platform?',
+    answer: 'Yes, RADICA integrates seamlessly with major CRM platforms including Salesforce, HubSpot, and Microsoft Dynamics, as well as e-commerce platforms like Shopify, Shopline, WooCommerce, and Magento. We also offer REST APIs for custom integrations.'
+  },
+  {
+    question: 'How long does it take to implement RADICA\'s omni-channel solution?',
+    answer: 'Most businesses can be up and running with RADICA within 1-2 weeks. Our dedicated onboarding team helps you migrate existing campaigns, set up integrations, and train your team. We also offer managed services for businesses that need additional support.'
+  }
+];
+---
+
+<BaseLayout
+  title="Omni-Channel Marketing Solution | Unified Email, SMS, WhatsApp Marketing - RADICA"
+  description="Boost 10X customer engagement with RADICA's omni-channel marketing platform. Unify Email, SMS, WhatsApp, Push Notifications & Social Media marketing. AI-powered automation, 99.9% delivery rate. Request free demo."
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaOmnichannel)} />
+  <script type="application/ld+json" set:html={JSON.stringify(schemaFAQ)} />
+
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="badge">Omni-Channel Marketing Solution</span>
+      <h1>Unify Your Marketing Channels. Multiply Your Results.</h1>
+      <p>RADICA's omni-channel marketing platform helps businesses boost <strong>10X engagement</strong> by delivering personalized, customer-centric messages across Email, SMS, WhatsApp, and more—all from one powerful platform.</p>
+      <div class="hero-stats">
+        {stats.map((stat) => (
+          <div class="hero-stat">
+            <div class="hero-stat-value">{stat.value}</div>
+            <div class="hero-stat-label">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+      <div class="hero-cta">
+        <a href="/request-demo/" class="btn btn-white btn-large">Request Free Demo</a>
+        <a href="/contact/" class="btn btn-outline-white btn-large">Talk to Sales</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is Omni-Channel Section -->
+  <section class="section">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-content">
+          <h2>What is Omni-Channel Marketing?</h2>
+          <p>
+            <strong>Omni-channel marketing</strong> is a customer-centric strategy that delivers seamless, consistent experiences across all marketing channels. Unlike traditional multi-channel marketing where each channel operates in silos, omni-channel marketing unifies your customer data and coordinates messaging across Email, SMS, WhatsApp, Push Notifications, and Social Media.
+          </p>
+          <p>
+            With RADICA's omni-channel marketing platform, you can create automated customer journeys that intelligently select the right channel for each customer, ensuring your message reaches them where they're most likely to engage.
+          </p>
+          <ul class="intro-benefits">
+            <li><strong>Unified Customer Profiles</strong> - Single view of all customer interactions</li>
+            <li><strong>Intelligent Channel Selection</strong> - AI picks the best channel for each message</li>
+            <li><strong>Seamless Customer Experience</strong> - Consistent messaging across touchpoints</li>
+            <li><strong>Higher ROI</strong> - Better targeting means better results</li>
+          </ul>
+        </div>
+        <div class="intro-visual">
+          <div class="channel-hub">
+            <div class="hub-center">RADICA</div>
+            <div class="hub-channels">
+              {channels.slice(0, 6).map((channel, i) => (
+                <div class="hub-channel" style={`--i: ${i}`} title={channel.name}>
+                  <span class="hub-icon">{channel.icon}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Supported Marketing Channels -->
+  <section class="section section-gray" id="channels">
+    <div class="container">
+      <h2 class="section-title">Marketing Channels We Support</h2>
+      <p class="section-subtitle">Reach your customers on every channel from one unified marketing platform</p>
+
+      <div class="channels-grid">
+        {channels.map((channel) => (
+          <article class="channel-card">
+            <span class="channel-icon" role="img" aria-label={channel.name}>{channel.icon}</span>
+            <h3>{channel.name}</h3>
+            <p>{channel.description}</p>
+            <ul class="channel-features">
+              {channel.features.map((feature) => (
+                <li>{feature}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section" id="benefits">
+    <div class="container">
+      <h2 class="section-title">Why Choose Omni-Channel Marketing?</h2>
+      <p class="section-subtitle">The business impact of unified customer engagement across all channels</p>
+
+      <div class="benefits-grid">
+        {benefits.map((benefit) => (
+          <article class="benefit-card">
+            <div class="benefit-stat">
+              <span class="benefit-stat-value">{benefit.stat}</span>
+              <span class="benefit-stat-label">{benefit.statLabel}</span>
+            </div>
+            <h3>{benefit.title}</h3>
+            <p>{benefit.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases Section -->
+  <section class="section section-gray" id="use-cases">
+    <div class="container">
+      <h2 class="section-title">Omni-Channel Marketing Use Cases</h2>
+      <p class="section-subtitle">How leading brands use RADICA to drive customer engagement and revenue</p>
+
+      <div class="use-cases-grid">
+        {useCases.map((useCase) => (
+          <article class="use-case-card">
+            <h3>{useCase.title}</h3>
+            <p>{useCase.description}</p>
+            <div class="use-case-channels">
+              {useCase.channels.map((ch) => (
+                <span class="channel-tag">{ch}</span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform Features Section -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="features-content">
+        <div class="features-text">
+          <h2>Omni-Channel Marketing Platform Features</h2>
+          <p>Everything you need to execute world-class omni-channel marketing campaigns that drive engagement and conversions.</p>
+          <ul class="features-list">
+            {features.map((feature) => (
+              <li>{feature}</li>
+            ))}
+          </ul>
+          <div class="features-cta">
+            <a href="/platform/" class="btn btn-primary">Explore Platform Features</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Integration Section -->
+  <section class="section section-gray" id="integrations">
+    <div class="container">
+      <div class="integration-content">
+        <h2 class="section-title">Seamless Integrations</h2>
+        <p class="section-subtitle">Connect RADICA with your existing marketing stack</p>
+        <div class="integration-grid">
+          <div class="integration-category">
+            <h3>CRM Platforms</h3>
+            <ul>
+              <li>Salesforce</li>
+              <li>HubSpot</li>
+              <li>Microsoft Dynamics</li>
+              <li>Zoho CRM</li>
+            </ul>
+          </div>
+          <div class="integration-category">
+            <h3>E-Commerce</h3>
+            <ul>
+              <li>Shopify</li>
+              <li>Shopline</li>
+              <li>WooCommerce</li>
+              <li>Magento</li>
+            </ul>
+          </div>
+          <div class="integration-category">
+            <h3>Data & Analytics</h3>
+            <ul>
+              <li>Google Analytics</li>
+              <li>Segment</li>
+              <li>Mixpanel</li>
+              <li>Custom APIs</li>
+            </ul>
+          </div>
+        </div>
+        <div class="integration-cta">
+          <a href="/integrations/" class="btn btn-outline">View All Integrations</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section" id="faq">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-subtitle">Everything you need to know about omni-channel marketing</p>
+
+      <div class="faq-grid">
+        {faqs.map((faq) => (
+          <article class="faq-item">
+            <h3>{faq.question}</h3>
+            <p>{faq.answer}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Transform Your Marketing with Omni-Channel?</h2>
+        <p>Join 500+ enterprises using RADICA to deliver seamless customer experiences across all channels.</p>
+        <div class="cta-actions">
+          <a href="/request-demo/" class="btn btn-white btn-large">Request Free Demo</a>
+          <a href="/pricing/" class="btn btn-outline-white btn-large">View Pricing</a>
+        </div>
+        <p class="cta-note">No credit card required. 14-day free trial included.</p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--header-dark) 0%, var(--primary-purple-dark) 100%);
+    padding: 140px 0 80px;
+    text-align: center;
+    color: white;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .page-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .page-hero > .container > p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    max-width: 750px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .hero-stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+  }
+
+  .hero-stat-label {
+    font-size: 14px;
+    opacity: 0.85;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-white {
+    background: white;
+    color: var(--primary-purple);
+  }
+
+  .btn-outline-white {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+
+  .btn-large {
+    padding: 16px 36px;
+    font-size: 16px;
+  }
+
+  /* Intro Section */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .intro-content h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  .intro-content p {
+    color: var(--text-gray);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+  }
+
+  .intro-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0;
+  }
+
+  .intro-benefits li {
+    padding: 12px 0;
+    padding-left: 28px;
+    position: relative;
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+
+  .intro-benefits li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-purple);
+    font-weight: 700;
+  }
+
+  .channel-hub {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+  }
+
+  .hub-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    background: var(--gradient-purple);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 10px 40px rgba(220, 38, 38, 0.3);
+  }
+
+  .hub-channel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transform: translate(-50%, -50%) rotate(calc(var(--i) * 60deg)) translateY(-120px) rotate(calc(var(--i) * -60deg));
+    animation: pulse 2s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.2s);
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) rotate(calc(var(--i) * 60deg)) translateY(-120px) rotate(calc(var(--i) * -60deg)) scale(1); }
+    50% { transform: translate(-50%, -50%) rotate(calc(var(--i) * 60deg)) translateY(-120px) rotate(calc(var(--i) * -60deg)) scale(1.1); }
+  }
+
+  .hub-icon {
+    font-size: 1.5rem;
+  }
+
+  /* Channels Grid */
+  .channels-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .channel-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .channel-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .channel-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .channel-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .channel-card > p {
+    color: var(--text-gray);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .channel-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .channel-features li {
+    font-size: 13px;
+    color: var(--primary-purple);
+    padding: 4px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .channel-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+
+  /* Benefits Grid */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .benefit-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+  }
+
+  .benefit-stat {
+    margin-bottom: 20px;
+  }
+
+  .benefit-stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-purple);
+    display: block;
+  }
+
+  .benefit-stat-label {
+    font-size: 12px;
+    color: var(--text-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .benefit-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .benefit-card p {
+    font-size: 14px;
+    color: var(--text-gray);
+    line-height: 1.6;
+  }
+
+  /* Use Cases */
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .use-case-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .use-case-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .use-case-card > p {
+    color: var(--text-gray);
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+
+  .use-case-channels {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .channel-tag {
+    background: rgba(220, 38, 38, 0.1);
+    color: var(--primary-purple);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* Features */
+  .features-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .features-text h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .features-text > p {
+    color: var(--text-gray);
+    margin-bottom: 32px;
+    font-size: 1.1rem;
+  }
+
+  .features-list {
+    list-style: none;
+    columns: 2;
+    column-gap: 40px;
+    margin-bottom: 32px;
+  }
+
+  .features-list li {
+    padding: 12px 0;
+    padding-left: 28px;
+    position: relative;
+    font-size: 15px;
+  }
+
+  .features-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-purple);
+    font-weight: 700;
+  }
+
+  .features-cta {
+    text-align: center;
+  }
+
+  /* Integrations */
+  .integration-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  .integration-category h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--primary-purple);
+  }
+
+  .integration-category ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .integration-category li {
+    padding: 8px 0;
+    color: var(--text-gray);
+    font-size: 15px;
+  }
+
+  .integration-cta {
+    text-align: center;
+  }
+
+  /* FAQ Section */
+  .faq-grid {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: white;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .faq-item h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .faq-item p {
+    color: var(--text-gray);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: var(--gradient-purple);
+    padding: 80px 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    color: white;
+  }
+
+  .cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .cta-content > p {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 32px;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .cta-note {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .intro-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .channel-hub {
+      margin-top: 40px;
+    }
+
+    .channels-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .integration-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-hero h1 {
+      font-size: 2rem;
+    }
+
+    .hero-stats {
+      gap: 24px;
+    }
+
+    .hero-stat-value {
+      font-size: 2rem;
+    }
+
+    .channels-grid,
+    .benefits-grid,
+    .use-cases-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .features-list {
+      columns: 1;
+    }
+
+    .integration-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .cta-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .channel-hub {
+      width: 250px;
+      height: 250px;
+    }
+
+    .hub-channel {
+      transform: translate(-50%, -50%) rotate(calc(var(--i) * 60deg)) translateY(-100px) rotate(calc(var(--i) * -60deg));
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) rotate(calc(var(--i) * 60deg)) translateY(-100px) rotate(calc(var(--i) * -60deg)) scale(1); }
+      50% { transform: translate(-50%, -50%) rotate(calc(var(--i) * 60deg)) translateY(-100px) rotate(calc(var(--i) * -60deg)) scale(1.1); }
+    }
+  }
+</style>

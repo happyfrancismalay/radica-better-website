@@ -1,0 +1,930 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// SEO-optimized structured data
+const schemaProduct = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "RADICA WhatsApp Marketing Platform",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web-based",
+  "description": "Official WhatsApp Business API platform for enterprise marketing. Send broadcasts, automate conversations, and drive sales on WhatsApp with 98% open rates.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "HKD",
+    "description": "14-day free trial available"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "450"
+  },
+  "featureList": [
+    "WhatsApp Business API",
+    "Broadcast Messaging",
+    "Chatbot Automation",
+    "Rich Media Messages",
+    "Product Catalogs",
+    "Conversation Analytics"
+  ],
+  "provider": {
+    "@type": "Organization",
+    "name": "RADICA",
+    "url": "https://www.radica.ai"
+  }
+};
+
+const schemaFAQ = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is WhatsApp Business API?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WhatsApp Business API is the official enterprise solution from Meta that allows businesses to send messages at scale, automate conversations, and integrate WhatsApp into their existing systems. Unlike the free WhatsApp Business app, the API supports unlimited agents, automation, and high-volume messaging."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between WhatsApp Business App and API?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WhatsApp Business App is free but limited to one device and manual messaging. WhatsApp Business API allows unlimited team members, automation, CRM integration, broadcast messaging to unlimited contacts, and chatbot capabilities—essential for businesses doing marketing at scale."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does WhatsApp Business API cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WhatsApp charges per conversation (24-hour window), with rates varying by country and conversation type. Marketing conversations cost more than utility or service conversations. RADICA provides transparent pricing with no hidden fees, plus the platform capabilities to maximize your ROI."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I send promotional messages on WhatsApp?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, with WhatsApp Business API you can send promotional messages including offers, product launches, and marketing campaigns. Messages must be sent using pre-approved templates, and recipients must have opted in. RADICA helps you create compliant templates that get approved quickly."
+      }
+    }
+  ]
+};
+
+const stats = [
+  { value: '98%', label: 'Open Rate' },
+  { value: '2B+', label: 'WhatsApp Users' },
+  { value: '45%', label: 'Response Rate' },
+  { value: '10x', label: 'vs Email Engagement' }
+];
+
+const capabilities = [
+  {
+    icon: '📢',
+    title: 'Broadcast Messaging',
+    description: 'Send promotional campaigns to thousands of opted-in customers simultaneously. Rich media, buttons, and personalization included—no more one-by-one messaging.',
+    benefits: ['Unlimited broadcast recipients', 'Rich media support', 'Personalized at scale', 'Scheduled campaigns']
+  },
+  {
+    icon: '🤖',
+    title: 'Chatbot Automation',
+    description: 'Build intelligent chatbots that handle inquiries, qualify leads, and guide customers 24/7. Seamless handoff to human agents when needed.',
+    benefits: ['Visual bot builder', 'AI-powered responses', 'Human handoff', 'Multi-language support']
+  },
+  {
+    icon: '🛍️',
+    title: 'Product Catalogs',
+    description: 'Showcase your products directly in WhatsApp. Customers can browse, ask questions, and purchase without leaving the chat.',
+    benefits: ['In-chat catalogs', 'Product carousels', 'Quick replies', 'Cart integration']
+  },
+  {
+    icon: '💬',
+    title: 'Two-Way Conversations',
+    description: 'Real conversations, not just broadcasts. Let customers reply, ask questions, and engage naturally while your team manages everything from one inbox.',
+    benefits: ['Unified team inbox', 'Conversation routing', 'Quick responses', 'Customer history']
+  },
+  {
+    icon: '🔗',
+    title: 'CRM Integration',
+    description: 'Sync WhatsApp conversations with your CRM automatically. Every interaction updates customer records for complete visibility.',
+    benefits: ['Salesforce sync', 'HubSpot integration', 'Custom webhooks', 'API access']
+  },
+  {
+    icon: '📊',
+    title: 'Analytics & Reporting',
+    description: 'Track delivery, opens, responses, and conversions. Understand what messages drive results and optimize your WhatsApp strategy.',
+    benefits: ['Delivery tracking', 'Response analytics', 'Conversion attribution', 'Campaign comparison']
+  }
+];
+
+const useCases = [
+  {
+    title: 'Promotional Campaigns',
+    description: 'Launch product announcements, flash sales, and seasonal promotions with rich media that gets noticed. 98% open rates mean your message actually reaches customers.',
+    icon: '🎯',
+    result: '10x higher engagement vs email'
+  },
+  {
+    title: 'Order Notifications',
+    description: 'Send order confirmations, shipping updates, and delivery alerts that customers actually read. Reduce "where\'s my order?" support tickets by 60%.',
+    icon: '📦',
+    result: '60% fewer support tickets'
+  },
+  {
+    title: 'Appointment Reminders',
+    description: 'Reduce no-shows with timely WhatsApp reminders. Include reschedule options and location details right in the message.',
+    icon: '📅',
+    result: '35% reduction in no-shows'
+  },
+  {
+    title: 'Customer Support',
+    description: 'Meet customers where they already are. Provide instant support via WhatsApp with chatbots handling common questions and agents handling complex issues.',
+    icon: '🎧',
+    result: '4x faster resolution time'
+  },
+  {
+    title: 'Lead Qualification',
+    description: 'Capture and qualify leads automatically through WhatsApp chatbots. Ask qualifying questions, schedule meetings, and route hot leads to sales.',
+    icon: '🎣',
+    result: '3x more qualified leads'
+  },
+  {
+    title: 'Loyalty & Re-engagement',
+    description: 'Bring back inactive customers with personalized WhatsApp campaigns. Birthday offers, loyalty rewards, and win-back sequences that feel personal.',
+    icon: '💝',
+    result: '25% reactivation rate'
+  }
+];
+
+const messageTypes = [
+  {
+    type: 'Marketing',
+    description: 'Promotional messages, product launches, offers, and campaigns',
+    examples: ['Flash sale announcements', 'New product launches', 'Seasonal promotions', 'Loyalty rewards'],
+    note: 'Requires customer opt-in'
+  },
+  {
+    type: 'Utility',
+    description: 'Transactional messages related to existing purchases or requests',
+    examples: ['Order confirmations', 'Shipping updates', 'Appointment reminders', 'Account alerts'],
+    note: 'Lower cost per conversation'
+  },
+  {
+    type: 'Service',
+    description: 'Customer-initiated conversations and support requests',
+    examples: ['Customer inquiries', 'Support tickets', 'FAQ responses', 'General questions'],
+    note: 'Customer initiates conversation'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What is WhatsApp Business API?',
+    answer: 'WhatsApp Business API is the official enterprise solution from Meta that allows businesses to send messages at scale, automate conversations, and integrate WhatsApp into their existing systems. Unlike the free WhatsApp Business app, the API supports unlimited agents, automation, and high-volume messaging.'
+  },
+  {
+    question: 'What\'s the difference between WhatsApp Business App and API?',
+    answer: 'WhatsApp Business App is free but limited to one device and manual messaging. WhatsApp Business API allows unlimited team members, automation, CRM integration, broadcast messaging to unlimited contacts, and chatbot capabilities—essential for businesses doing marketing at scale.'
+  },
+  {
+    question: 'How much does WhatsApp Business API cost?',
+    answer: 'WhatsApp charges per conversation (24-hour window), with rates varying by country and conversation type. Marketing conversations cost more than utility or service conversations. RADICA provides transparent pricing with no hidden fees, plus the platform capabilities to maximize your ROI.'
+  },
+  {
+    question: 'Can I send promotional messages on WhatsApp?',
+    answer: 'Yes, with WhatsApp Business API you can send promotional messages including offers, product launches, and marketing campaigns. Messages must be sent using pre-approved templates, and recipients must have opted in. RADICA helps you create compliant templates that get approved quickly.'
+  },
+  {
+    question: 'How do I get WhatsApp Business API access?',
+    answer: 'RADICA is an official Meta Business Partner, so we can provision your WhatsApp Business API account directly. The process typically takes 1-3 business days and includes phone number verification and business verification with Meta.'
+  },
+  {
+    question: 'Do customers need to opt-in to receive WhatsApp messages?',
+    answer: 'Yes, customers must actively opt-in to receive marketing messages via WhatsApp. However, you can send transactional messages (like order updates) to customers who have provided their number during a purchase. RADICA provides opt-in collection tools to help you build your WhatsApp audience.'
+  }
+];
+---
+
+<BaseLayout
+  title="WhatsApp Marketing Platform | WhatsApp Business API - RADICA"
+  description="Official WhatsApp Business API partner. Send broadcasts, automate conversations, and drive sales on WhatsApp. 98% open rate, 2B+ users. Start WhatsApp marketing with RADICA."
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaProduct)} />
+  <script type="application/ld+json" set:html={JSON.stringify(schemaFAQ)} />
+
+  <!-- Hero Section -->
+  <section class="page-hero whatsapp-hero">
+    <div class="container">
+      <span class="badge">WhatsApp Business API Partner</span>
+      <h1>WhatsApp Marketing: Reach 2 Billion Users Where They Actually Engage</h1>
+      <p>Your customers check WhatsApp 23 times a day. With <strong>98% open rates</strong> and instant delivery, WhatsApp isn't just another channel—it's where conversations turn into customers. RADICA makes enterprise WhatsApp marketing simple.</p>
+      <div class="hero-stats">
+        {stats.map((stat) => (
+          <div class="hero-stat">
+            <div class="hero-stat-value">{stat.value}</div>
+            <div class="hero-stat-label">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+      <div class="hero-cta">
+        <a href="/request-demo/" class="btn btn-white btn-large">Get WhatsApp API Access</a>
+        <a href="/contact/" class="btn btn-outline-white btn-large">Talk to Sales</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why WhatsApp Section -->
+  <section class="section">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-content">
+          <h2>Why WhatsApp for Marketing?</h2>
+          <p>
+            Email open rates hover around 20%. SMS feels impersonal. Social media algorithms bury your content. <strong>WhatsApp cuts through the noise</strong> with 98% open rates and messages that feel like conversations, not campaigns.
+          </p>
+          <p>
+            With 2 billion monthly active users worldwide and deep penetration across Asia, WhatsApp is where your customers already spend their time. Now you can reach them there—at scale—with RADICA's WhatsApp Business API platform.
+          </p>
+          <div class="comparison-box">
+            <div class="comparison-item">
+              <span class="comparison-label">Email</span>
+              <div class="comparison-bar" style="--width: 20%"></div>
+              <span class="comparison-value">~20% open rate</span>
+            </div>
+            <div class="comparison-item">
+              <span class="comparison-label">SMS</span>
+              <div class="comparison-bar" style="--width: 45%"></div>
+              <span class="comparison-value">~45% open rate</span>
+            </div>
+            <div class="comparison-item highlight">
+              <span class="comparison-label">WhatsApp</span>
+              <div class="comparison-bar" style="--width: 98%"></div>
+              <span class="comparison-value">98% open rate</span>
+            </div>
+          </div>
+        </div>
+        <div class="intro-visual">
+          <div class="phone-mockup">
+            <div class="phone-screen">
+              <div class="wa-header">
+                <span class="wa-logo">📱</span>
+                <span class="wa-name">Your Brand</span>
+                <span class="wa-verified">✓</span>
+              </div>
+              <div class="wa-message brand">
+                <p>Hi Sarah! 👋</p>
+                <p>Your exclusive 20% off code is ready:</p>
+                <p class="wa-code">SAVE20</p>
+                <span class="wa-time">10:30 AM</span>
+              </div>
+              <div class="wa-message customer">
+                <p>Thanks! Can I use this on sale items?</p>
+                <span class="wa-time">10:31 AM</span>
+              </div>
+              <div class="wa-message brand">
+                <p>Absolutely! Valid on everything including sale items. Expires Sunday 🛍️</p>
+                <span class="wa-time">10:31 AM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities Section -->
+  <section class="section section-gray" id="capabilities">
+    <div class="container">
+      <h2 class="section-title">WhatsApp Marketing Capabilities</h2>
+      <p class="section-subtitle">Everything you need to succeed with WhatsApp Business API</p>
+
+      <div class="capabilities-grid">
+        {capabilities.map((capability) => (
+          <article class="capability-card">
+            <span class="capability-icon">{capability.icon}</span>
+            <h3>{capability.title}</h3>
+            <p>{capability.description}</p>
+            <ul class="capability-benefits">
+              {capability.benefits.map((benefit) => (
+                <li>{benefit}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases Section -->
+  <section class="section" id="use-cases">
+    <div class="container">
+      <h2 class="section-title">WhatsApp Marketing Use Cases</h2>
+      <p class="section-subtitle">How businesses drive results with WhatsApp</p>
+
+      <div class="use-cases-grid">
+        {useCases.map((useCase) => (
+          <article class="use-case-card">
+            <span class="use-case-icon">{useCase.icon}</span>
+            <h3>{useCase.title}</h3>
+            <p>{useCase.description}</p>
+            <div class="use-case-result">{useCase.result}</div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Message Types Section -->
+  <section class="section section-gray" id="message-types">
+    <div class="container">
+      <h2 class="section-title">WhatsApp Message Types</h2>
+      <p class="section-subtitle">Understanding WhatsApp Business API conversation categories</p>
+
+      <div class="message-types-grid">
+        {messageTypes.map((msg) => (
+          <article class="message-type-card">
+            <h3>{msg.type}</h3>
+            <p>{msg.description}</p>
+            <ul class="message-examples">
+              {msg.examples.map((example) => (
+                <li>{example}</li>
+              ))}
+            </ul>
+            <div class="message-note">{msg.note}</div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section" id="faq">
+    <div class="container">
+      <h2 class="section-title">WhatsApp Marketing FAQ</h2>
+      <p class="section-subtitle">Common questions about WhatsApp Business API</p>
+
+      <div class="faq-grid">
+        {faqs.map((faq) => (
+          <article class="faq-item">
+            <h3>{faq.question}</h3>
+            <p>{faq.answer}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section whatsapp-cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Start WhatsApp Marketing?</h2>
+        <p>Join leading brands using RADICA to connect with customers on WhatsApp.</p>
+        <div class="cta-actions">
+          <a href="/request-demo/" class="btn btn-white btn-large">Get WhatsApp API Access</a>
+          <a href="/pricing/" class="btn btn-outline-white btn-large">View Pricing</a>
+        </div>
+        <p class="cta-note">Official Meta Business Partner. Setup in 1-3 business days.</p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--header-dark) 0%, var(--primary-purple-dark) 100%);
+    padding: 140px 0 80px;
+    text-align: center;
+    color: white;
+  }
+
+  .whatsapp-hero {
+    background: linear-gradient(135deg, #075e54 0%, #128c7e 50%, #25d366 100%);
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .page-hero h1 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .page-hero > .container > p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    max-width: 750px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .hero-stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+  }
+
+  .hero-stat-label {
+    font-size: 14px;
+    opacity: 0.85;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-white {
+    background: white;
+    color: #075e54;
+  }
+
+  .btn-outline-white {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+
+  .btn-large {
+    padding: 16px 36px;
+    font-size: 16px;
+  }
+
+  /* Intro Section */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .intro-content h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  .intro-content p {
+    color: var(--text-gray);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+  }
+
+  /* Comparison Box */
+  .comparison-box {
+    margin-top: 32px;
+  }
+
+  .comparison-item {
+    display: grid;
+    grid-template-columns: 80px 1fr 120px;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+  }
+
+  .comparison-label {
+    font-weight: 600;
+    color: var(--text-gray);
+  }
+
+  .comparison-bar {
+    height: 12px;
+    background: #e5e7eb;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .comparison-bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: var(--width);
+    background: linear-gradient(90deg, #ddd 0%, #bbb 100%);
+    border-radius: 6px;
+  }
+
+  .comparison-item.highlight .comparison-bar::after {
+    background: linear-gradient(90deg, #25d366 0%, #128c7e 100%);
+  }
+
+  .comparison-item.highlight .comparison-label,
+  .comparison-item.highlight .comparison-value {
+    color: #128c7e;
+    font-weight: 700;
+  }
+
+  .comparison-value {
+    font-size: 14px;
+    color: var(--text-gray);
+  }
+
+  /* Phone Mockup */
+  .phone-mockup {
+    background: #f5f5f5;
+    border-radius: 40px;
+    padding: 12px;
+    max-width: 320px;
+    margin: 0 auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  }
+
+  .phone-screen {
+    background: #ece5dd;
+    border-radius: 32px;
+    padding: 16px;
+    min-height: 400px;
+  }
+
+  .wa-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background: #075e54;
+    border-radius: 16px 16px 0 0;
+    margin: -16px -16px 16px -16px;
+    color: white;
+  }
+
+  .wa-logo {
+    font-size: 1.5rem;
+  }
+
+  .wa-name {
+    font-weight: 600;
+    flex: 1;
+  }
+
+  .wa-verified {
+    background: #25d366;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+  }
+
+  .wa-message {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .wa-message.brand {
+    background: #dcf8c6;
+    margin-left: auto;
+    border-bottom-right-radius: 4px;
+  }
+
+  .wa-message.customer {
+    background: white;
+    border-bottom-left-radius: 4px;
+  }
+
+  .wa-message p {
+    margin: 0 0 4px 0;
+    font-size: 14px;
+    color: #111;
+  }
+
+  .wa-code {
+    background: #128c7e;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    display: inline-block;
+    margin: 8px 0;
+  }
+
+  .wa-time {
+    font-size: 11px;
+    color: #667781;
+    float: right;
+    margin-top: 4px;
+  }
+
+  /* Capabilities Grid */
+  .capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .capability-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .capability-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .capability-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .capability-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .capability-card > p {
+    color: var(--text-gray);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .capability-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .capability-benefits li {
+    font-size: 13px;
+    color: #128c7e;
+    padding: 4px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .capability-benefits li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+
+  /* Use Cases Grid */
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .use-case-card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+  }
+
+  .use-case-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .use-case-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .use-case-card > p {
+    color: var(--text-gray);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .use-case-result {
+    background: rgba(37, 211, 102, 0.1);
+    color: #128c7e;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    display: inline-block;
+  }
+
+  /* Message Types */
+  .message-types-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .message-type-card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .message-type-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #128c7e;
+  }
+
+  .message-type-card > p {
+    color: var(--text-gray);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .message-examples {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px 0;
+  }
+
+  .message-examples li {
+    font-size: 13px;
+    color: var(--text-dark);
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .message-examples li:last-child {
+    border-bottom: none;
+  }
+
+  .message-examples li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #128c7e;
+  }
+
+  .message-note {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+    padding-top: 8px;
+    border-top: 1px dashed #ddd;
+  }
+
+  /* FAQ Section */
+  .faq-grid {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: white;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .faq-item h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .faq-item p {
+    color: var(--text-gray);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: var(--gradient-purple);
+    padding: 80px 0;
+  }
+
+  .whatsapp-cta {
+    background: linear-gradient(135deg, #075e54 0%, #128c7e 100%);
+  }
+
+  .cta-content {
+    text-align: center;
+    color: white;
+  }
+
+  .cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .cta-content > p {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 32px;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .cta-note {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .intro-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .phone-mockup {
+      margin-top: 40px;
+    }
+
+    .capabilities-grid,
+    .use-cases-grid,
+    .message-types-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-hero h1 {
+      font-size: 2rem;
+    }
+
+    .hero-stats {
+      gap: 24px;
+    }
+
+    .hero-stat-value {
+      font-size: 2rem;
+    }
+
+    .capabilities-grid,
+    .use-cases-grid,
+    .message-types-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .comparison-item {
+      grid-template-columns: 70px 1fr;
+    }
+
+    .comparison-value {
+      grid-column: 2;
+      text-align: left;
+      font-size: 12px;
+    }
+  }
+</style>

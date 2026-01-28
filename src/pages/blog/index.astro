@@ -1,0 +1,263 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+
+// Get all blog posts, sorted by date
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+// Get featured posts
+const featuredPosts = sortedPosts.filter(post => post.data.featured);
+const regularPosts = sortedPosts.filter(post => !post.data.featured);
+
+// Get unique categories
+const categories = [...new Set(sortedPosts.map(post => post.data.category))];
+
+// Schema.org Blog structured data
+const blogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'RADICA Blog',
+  description: 'Insights on marketing automation, omni-channel engagement, WhatsApp marketing, and AI-powered customer experiences.',
+  url: new URL('/blog/', Astro.site).href,
+  publisher: {
+    '@type': 'Organization',
+    name: 'RADICA',
+    url: 'https://radicaai.com'
+  },
+  blogPost: sortedPosts.slice(0, 10).map(post => ({
+    '@type': 'BlogPosting',
+    headline: post.data.title,
+    datePublished: post.data.pubDate.toISOString(),
+    url: new URL(`/blog/${post.slug}/`, Astro.site).href
+  }))
+};
+---
+
+<BaseLayout
+  title="Blog | RADICA - Marketing Automation Insights"
+  description="Explore insights on marketing automation, omni-channel engagement, WhatsApp marketing, and AI-powered customer experiences from the RADICA team."
+>
+  <section class="blog-hero">
+    <div class="container">
+      <h1>RADICA Blog</h1>
+      <p>Insights on marketing automation, customer engagement, and digital transformation</p>
+    </div>
+  </section>
+
+  <section class="blog-categories">
+    <div class="container">
+      <div class="categories-list">
+        <a href="/blog/" class="category-link active">All Posts</a>
+        {categories.map(category => (
+          <a
+            href={`/blog/category/${category.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}/`}
+            class="category-link"
+          >
+            {category}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {featuredPosts.length > 0 && (
+    <section class="blog-featured">
+      <div class="container">
+        <h2 class="section-label">Featured</h2>
+        <div class="featured-grid">
+          {featuredPosts.map(post => (
+            <BlogCard
+              title={post.data.title}
+              description={post.data.description}
+              pubDate={post.data.pubDate}
+              heroImage={post.data.heroImage}
+              category={post.data.category}
+              slug={post.slug}
+              featured={true}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="blog-list">
+    <div class="container">
+      <h2 class="section-label">Latest Articles</h2>
+      <div class="posts-grid">
+        {regularPosts.map(post => (
+          <BlogCard
+            title={post.data.title}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+            heroImage={post.data.heroImage}
+            category={post.data.category}
+            slug={post.slug}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="blog-cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to transform your marketing?</h2>
+        <p>See how RADICA can help you automate, personalize, and grow.</p>
+        <a href="/request-demo/" class="btn btn-primary">Request a Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(blogSchema)} />
+</BaseLayout>
+
+<style>
+  .blog-hero {
+    padding: 80px 0 60px;
+    background: var(--header-dark);
+    color: white;
+    text-align: center;
+  }
+
+  .blog-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+  }
+
+  .blog-hero p {
+    font-size: 1.25rem;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .blog-categories {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border-color);
+    background: white;
+    position: sticky;
+    top: 80px;
+    z-index: 10;
+  }
+
+  .categories-list {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .category-link {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-gray);
+    background: #f3f4f6;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .category-link:hover,
+  .category-link.active {
+    background: var(--primary);
+    color: white;
+  }
+
+  .blog-featured,
+  .blog-list {
+    padding: 60px 0;
+  }
+
+  .blog-featured {
+    background: #f9fafb;
+  }
+
+  .section-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--primary);
+    margin-bottom: 24px;
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .blog-cta {
+    padding: 80px 0;
+    background: var(--gradient-primary);
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 12px;
+  }
+
+  .cta-content p {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 24px;
+  }
+
+  .cta-content .btn-primary {
+    background: white;
+    color: var(--primary);
+  }
+
+  .cta-content .btn-primary:hover {
+    background: #f3f4f6;
+  }
+
+  @media (max-width: 1024px) {
+    .featured-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .posts-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .blog-hero h1 {
+      font-size: 2rem;
+    }
+
+    .blog-hero p {
+      font-size: 1rem;
+    }
+
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .categories-list {
+      justify-content: flex-start;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      padding-bottom: 8px;
+    }
+
+    .category-link {
+      white-space: nowrap;
+    }
+  }
+</style>

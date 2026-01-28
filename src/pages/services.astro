@@ -1,0 +1,855 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Engagement Model Steps
+const engagementSteps = [
+  {
+    number: '01',
+    title: 'Discovery Sprint',
+    duration: '2 weeks',
+    description: 'Deep dive with your stakeholders to map pain points, data landscape, and quick-win opportunities.'
+  },
+  {
+    number: '02',
+    title: 'Co-Development',
+    duration: 'Ongoing',
+    description: 'Our engineers embedded in your workflow, building alongside your team—not in isolation.'
+  },
+  {
+    number: '03',
+    title: 'Value Delivery',
+    duration: '90 days',
+    description: 'Measurable outcomes within the first quarter. No six-month pilots. No vaporware.'
+  },
+  {
+    number: '04',
+    title: 'Knowledge Transfer',
+    duration: 'Continuous',
+    description: 'Your team owns the capability. We build with you, not for you.'
+  }
+];
+
+// Industry Expertise
+const industries = [
+  {
+    title: 'Banking & Wealth',
+    expertise: [
+      'Transaction behavior analysis',
+      'RFM segmentation',
+      'Product propensity modeling',
+      'Regulatory-compliant personalization'
+    ]
+  },
+  {
+    title: 'Insurance',
+    expertise: [
+      'Policyholder lifecycle modeling',
+      'Cross-border engagement analytics',
+      'Agent performance optimization',
+      'Renewal propensity scoring'
+    ]
+  },
+  {
+    title: 'Luxury & Retail',
+    expertise: [
+      'VIP identification',
+      'Clienteling intelligence',
+      'Cross-channel attribution',
+      'Brand affinity scoring'
+    ]
+  }
+];
+
+// Brand Engagement 360 - 5 Value Dimensions
+const valueDimensions = [
+  {
+    acronym: 'CLV',
+    name: 'Lifetime Value',
+    description: 'Direct purchasing over time',
+    metric: 'Revenue per customer'
+  },
+  {
+    acronym: 'CRV',
+    name: 'Referral Value',
+    description: 'New customers brought through referrals',
+    metric: 'Referred acquisition rate'
+  },
+  {
+    acronym: 'CIV',
+    name: 'Influencing Value',
+    description: 'Social proof and word-of-mouth impact',
+    metric: 'Social mentions, reviews'
+  },
+  {
+    acronym: 'CKV',
+    name: 'Knowledge Value',
+    description: 'Insights customers provide through feedback',
+    metric: 'Survey participation, NPS'
+  },
+  {
+    acronym: 'CPV',
+    name: 'Passion Value',
+    description: 'Emotional advocacy and brand defense',
+    metric: 'Advocacy score, sentiment'
+  }
+];
+
+// Case Studies
+const caseStudies = [
+  {
+    client: 'Restaurant Group',
+    name: 'TamJai',
+    challenge: 'Candidate engagement for global expansion',
+    outcome: 'HKD 847,500 incremental value from non-customers'
+  },
+  {
+    client: 'Luxury Watch Retailer',
+    challenge: 'Convert browsers to buyers',
+    outcome: '115% increase in traffic conversion'
+  },
+  {
+    client: 'Insurance Company',
+    challenge: 'Cross-border policyholder engagement',
+    outcome: '3x engagement vs email'
+  }
+];
+
+// Support Tiers
+const supportTiers = [
+  {
+    name: 'Standard',
+    tagline: 'Self-service excellence',
+    features: [
+      'Knowledge base & documentation',
+      'Community forums',
+      'Email support',
+      '24-hour response time'
+    ]
+  },
+  {
+    name: 'Priority',
+    tagline: 'Dedicated response',
+    features: [
+      'Priority support queue',
+      'Phone & chat support',
+      '4-hour response time',
+      'Quarterly business reviews'
+    ]
+  },
+  {
+    name: 'Premium',
+    tagline: 'Named success partner + 24/7',
+    features: [
+      'Dedicated success manager',
+      '24/7 support availability',
+      '1-hour response SLA',
+      'Custom training & onboarding'
+    ],
+    highlighted: true
+  }
+];
+---
+
+<BaseLayout title="Services - RADICA" description="RADICA's embedded partnership model: our engineers and strategists work alongside your team to deliver measurable value in 90 days.">
+
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>We Work Alongside You</h1>
+      <p class="hero-tagline">Our engineers and strategists embed with your team to solve problems together—not from a distance.</p>
+    </div>
+  </section>
+
+  <!-- Section 1: Engagement Model -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Embedded Partnership, Not Outsourcing</h2>
+      <div class="philosophy-block">
+        <p>We don't hand you software and wish you luck. Our product engineers work shoulder-to-shoulder with your team to understand your specific pain points, map your customer data, and co-create solutions that deliver measurable value—fast.</p>
+      </div>
+
+      <h3 class="subsection-title">How We Work</h3>
+      <div class="engagement-grid">
+        {engagementSteps.map((step) => (
+          <div class="engagement-card">
+            <div class="step-number">{step.number}</div>
+            <h4>{step.title}</h4>
+            <span class="duration-badge">{step.duration}</span>
+            <p>{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Data & Analytics Consulting -->
+  <section class="section section-gray">
+    <div class="container">
+      <h2 class="section-title">Analytics Consultants Who Speak Your Industry</h2>
+      <div class="philosophy-block">
+        <p>Our consulting team isn't generalists learning your business on your dime. We bring deep domain expertise in banking, insurance, and luxury retail—industries where customer data isn't just analytics, it's competitive advantage.</p>
+      </div>
+
+      <div class="industry-grid">
+        {industries.map((industry) => (
+          <div class="industry-card">
+            <h3>{industry.title}</h3>
+            <ul class="expertise-list">
+              {industry.expertise.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Brand Engagement 360 Framework -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Beyond Customer Lifetime Value</h2>
+      <div class="philosophy-block">
+        <p>Traditional marketing measures CLV. We measure total Brand Engagement Value—because customers create value in ways that never touch a transaction.</p>
+      </div>
+
+      <h3 class="subsection-title">The 5 Value Dimensions</h3>
+      <div class="value-grid">
+        {valueDimensions.map((dimension) => (
+          <div class="value-card">
+            <div class="value-acronym">{dimension.acronym}</div>
+            <h4>{dimension.name}</h4>
+            <p class="value-description">{dimension.description}</p>
+            <div class="value-metric">
+              <span class="metric-label">Example metric:</span>
+              <span>{dimension.metric}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Key Stats -->
+      <div class="stats-block">
+        <div class="stat-item">
+          <span class="stat-number">81%</span>
+          <span class="stat-text">of emotionally connected consumers promote AND spend more</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">70%</span>
+          <span class="stat-text">of high-engagement customers spend 2x as much</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">30%+</span>
+          <span class="stat-text">improvement in lifetime purchase frequency with BE360</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Engagement Outcomes -->
+  <section class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">Measured in Outcomes, Not Activities</h2>
+      <p class="section-subtitle section-subtitle-dark">Real results from real engagements.</p>
+
+      <div class="case-grid">
+        {caseStudies.map((study) => (
+          <div class="case-card">
+            <div class="case-header">
+              <span class="case-type">{study.client}</span>
+              {study.name && <span class="case-name">{study.name}</span>}
+            </div>
+            <div class="case-challenge">
+              <span class="label">Challenge</span>
+              <p>{study.challenge}</p>
+            </div>
+            <div class="case-outcome">
+              <span class="label">Outcome</span>
+              <p class="outcome-value">{study.outcome}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Support Tiers -->
+  <section class="section section-gray">
+    <div class="container">
+      <h2 class="section-title">Support That Scales With You</h2>
+      <p class="section-subtitle">Choose the level of partnership that fits your needs.</p>
+
+      <div class="support-grid">
+        {supportTiers.map((tier) => (
+          <div class={`support-card ${tier.highlighted ? 'support-card-highlighted' : ''}`}>
+            {tier.highlighted && <div class="popular-badge">Most Popular</div>}
+            <h3>{tier.name}</h3>
+            <p class="support-tagline">{tier.tagline}</p>
+            <ul class="support-features">
+              {tier.features.map((feature) => (
+                <li>{feature}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Start with a Discovery Sprint</h2>
+        <p>Two weeks. Your data. Our expertise. A roadmap to measurable value.</p>
+        <a href="/request-demo/" class="btn btn-white btn-large">Schedule Discovery Call</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .page-hero {
+    background: linear-gradient(135deg, var(--header-dark) 0%, var(--primary-purple-dark) 100%);
+    padding: 140px 0 80px;
+    text-align: center;
+    color: white;
+  }
+
+  .page-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-tagline {
+    font-size: 1.375rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  /* Philosophy Block */
+  .philosophy-block {
+    background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+    border-left: 4px solid var(--primary-purple);
+    padding: 32px 40px;
+    margin: 0 auto 48px;
+    max-width: 900px;
+    border-radius: 0 12px 12px 0;
+  }
+
+  .philosophy-block p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin: 0;
+  }
+
+  .section-gray .philosophy-block {
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+  }
+
+  /* Subsection Title */
+  .subsection-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--text-dark);
+  }
+
+  /* Engagement Grid */
+  .engagement-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .engagement-card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .engagement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  .step-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-purple);
+    opacity: 0.2;
+    position: absolute;
+    top: 16px;
+    right: 20px;
+  }
+
+  .engagement-card h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+  }
+
+  .duration-badge {
+    display: inline-block;
+    background: rgba(220, 38, 38, 0.1);
+    color: var(--primary-purple);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  .engagement-card p {
+    font-size: 14px;
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Industry Grid */
+  .industry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .industry-card {
+    background: white;
+    border-radius: 16px;
+    padding: 40px 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--primary-purple);
+  }
+
+  .industry-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  .industry-card h3 {
+    font-size: 1.375rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--text-dark);
+  }
+
+  .expertise-list {
+    list-style: none;
+  }
+
+  .expertise-list li {
+    padding: 10px 0;
+    padding-left: 28px;
+    position: relative;
+    font-size: 14px;
+    color: var(--text-dark);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .expertise-list li:last-child {
+    border-bottom: none;
+  }
+
+  .expertise-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--primary-purple);
+    border-radius: 50%;
+  }
+
+  /* Value Grid (BE360) */
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-bottom: 60px;
+  }
+
+  .value-card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  .value-acronym {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-purple);
+    margin-bottom: 8px;
+  }
+
+  .value-card h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .value-description {
+    font-size: 13px;
+    color: var(--text-gray);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .value-metric {
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .metric-label {
+    display: block;
+    color: var(--text-gray);
+    margin-bottom: 4px;
+  }
+
+  .value-metric span:last-child {
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  /* Stats Block */
+  .stats-block {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    background: linear-gradient(135deg, var(--header-dark) 0%, var(--primary-purple-dark) 100%);
+    border-radius: 20px;
+    padding: 48px 40px;
+    color: white;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .stat-text {
+    font-size: 14px;
+    opacity: 0.9;
+    line-height: 1.5;
+  }
+
+  /* Case Studies Grid */
+  .section-subtitle-dark {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .case-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .case-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px);
+  }
+
+  .case-header {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .case-type {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    margin-bottom: 4px;
+  }
+
+  .case-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .case-challenge,
+  .case-outcome {
+    margin-bottom: 16px;
+  }
+
+  .case-challenge .label,
+  .case-outcome .label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+    margin-bottom: 6px;
+  }
+
+  .case-challenge p,
+  .case-outcome p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .outcome-value {
+    font-weight: 700;
+    color: #4ade80;
+    font-size: 15px !important;
+  }
+
+  /* Support Grid */
+  .support-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .support-card {
+    background: white;
+    border-radius: 16px;
+    padding: 36px 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .support-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  .support-card-highlighted {
+    border: 2px solid var(--primary-purple);
+    transform: scale(1.02);
+  }
+
+  .support-card-highlighted:hover {
+    transform: scale(1.02) translateY(-5px);
+  }
+
+  .popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gradient-purple);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .support-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+  }
+
+  .support-tagline {
+    color: var(--primary-purple);
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .support-features {
+    list-style: none;
+    text-align: left;
+  }
+
+  .support-features li {
+    padding: 12px 0;
+    padding-left: 28px;
+    font-size: 14px;
+    color: var(--text-dark);
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+  }
+
+  .support-features li:last-child {
+    border-bottom: none;
+  }
+
+  .support-features li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--primary-purple);
+    font-weight: 700;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: var(--gradient-purple);
+    padding: 100px 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    color: white;
+  }
+
+  .cta-content h2 {
+    font-size: 2.75rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .cta-content p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 36px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-white {
+    background: white;
+    color: var(--primary-purple);
+  }
+
+  .btn-white:hover {
+    background: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-large {
+    padding: 18px 40px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .value-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .value-grid .value-card:nth-child(4),
+    .value-grid .value-card:nth-child(5) {
+      grid-column: span 1;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .engagement-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .industry-grid,
+    .case-grid,
+    .support-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .value-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-block {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .support-card-highlighted {
+      transform: none;
+    }
+
+    .support-card-highlighted:hover {
+      transform: translateY(-5px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-hero h1 {
+      font-size: 2.5rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.125rem;
+    }
+
+    .philosophy-block {
+      padding: 24px;
+    }
+
+    .engagement-grid,
+    .industry-grid,
+    .case-grid,
+    .support-grid,
+    .value-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-content h2 {
+      font-size: 2rem;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .page-hero {
+      padding: 120px 0 60px;
+    }
+
+    .page-hero h1 {
+      font-size: 2rem;
+    }
+
+    .btn-large {
+      padding: 16px 32px;
+      font-size: 15px;
+    }
+  }
+</style>

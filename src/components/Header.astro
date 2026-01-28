@@ -1,0 +1,415 @@
+---
+const menuItems = [
+  {
+    label: 'Solutions',
+    children: [
+      { label: 'Omni-Channel Marketing', href: '/solutions/omni-channel/' },
+      { label: 'Marketing Automation', href: '/solutions/marketing-automation/' },
+      { label: 'WhatsApp Marketing', href: '/solutions/whatsapp/' },
+      { label: 'Email Marketing', href: '/solutions/email/' },
+      { label: 'SMS Marketing', href: '/solutions/sms/' },
+      { label: 'Conversational Marketing', href: '/solutions/conversational/' },
+    ]
+  },
+  {
+    label: 'Industries',
+    children: [
+      { label: 'Banking', href: '/industries/finance/' },
+      { label: 'Insurance', href: '/industries/insurance/' },
+      { label: 'E-Commerce', href: '/industries/retail/' },
+      { label: 'Healthcare', href: '/industries/healthcare/' },
+      { label: 'Technology', href: '/industries/technology/' },
+    ]
+  },
+  {
+    label: 'Services',
+    children: [
+      { label: 'Consultation Service', href: '/services/' },
+      { label: 'Data Analytics Service', href: '/services/' },
+      { label: 'Training Course', href: '/services/' },
+    ]
+  },
+  {
+    label: 'Resources',
+    children: [
+      { label: 'Blog', href: '/blog/' },
+      { label: 'Videos', href: '/videos/' },
+      { label: 'Events', href: '/events/' },
+    ]
+  },
+  {
+    label: 'About Us',
+    children: [
+      { label: 'About RADICA', href: '/about/' },
+      { label: 'GutCommon', href: '/about/#gutcommon' },
+      { label: 'Our Clients', href: '/clients/' },
+      { label: 'Partners', href: '/partners/' },
+      { label: 'Career', href: '/career/' },
+    ]
+  },
+];
+---
+
+<header class="header">
+  <div class="container">
+    <nav class="nav">
+      <a href="/" class="logo">
+        <img src="/logo.png" alt="RADICA" height="40" />
+      </a>
+
+      <ul class="nav-links">
+        {menuItems.map((item) => (
+          <li class="nav-item has-dropdown">
+            <a href="#" class="nav-link">
+              {item.label}
+              <svg class="dropdown-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <ul>
+                {item.children?.map((child) => (
+                  <li><a href={child.href}>{child.label}</a></li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <div class="nav-actions">
+        <a href="/contact/" class="btn btn-outline">Contact Us</a>
+        <a href="/request-demo/" class="btn btn-primary">Request Demo</a>
+      </div>
+
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <ul class="mobile-nav-links">
+      {menuItems.map((item) => (
+        <li class="mobile-nav-item">
+          <button class="mobile-nav-toggle">
+            {item.label}
+            <svg class="dropdown-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <ul class="mobile-submenu">
+            {item.children?.map((child) => (
+              <li><a href={child.href}>{child.label}</a></li>
+            ))}
+          </ul>
+        </li>
+      ))}
+      <li class="mobile-nav-actions">
+        <a href="/contact/" class="btn btn-outline btn-full">Contact Us</a>
+        <a href="/request-demo/" class="btn btn-primary btn-full">Request Demo</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 40px;
+    width: auto;
+  }
+
+  /* Navigation Links */
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    color: #19242D;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    border-radius: 6px;
+  }
+
+  .nav-link:hover {
+    color: var(--primary);
+    background: #f9fafb;
+  }
+
+  .dropdown-arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .nav-item:hover .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown Menu */
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    padding: 12px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+    z-index: 100;
+  }
+
+  .nav-item:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    color: #374151;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .dropdown-menu li a:hover {
+    background: #f9fafb;
+    color: var(--primary);
+    padding-left: 24px;
+  }
+
+  /* Nav Actions */
+  .nav-actions {
+    display: flex;
+    gap: 12px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .btn-outline {
+    color: #19242D;
+    border: 1px solid #d1d5db;
+    background: transparent;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .btn-primary {
+    background: var(--primary);
+    color: #ffffff;
+    border: 1px solid var(--primary);
+  }
+
+  .btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+  }
+
+  /* Mobile Menu Button */
+  .mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .mobile-menu-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #19242D;
+    transition: all 0.3s ease;
+  }
+
+  /* Mobile Menu */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ffffff;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 999;
+  }
+
+  .mobile-menu.active {
+    display: block;
+  }
+
+  .mobile-nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mobile-nav-item {
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .mobile-nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 0;
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: #19242D;
+    cursor: pointer;
+  }
+
+  .mobile-nav-toggle .dropdown-arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .mobile-nav-item.open .mobile-nav-toggle .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  .mobile-submenu {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 16px 16px;
+  }
+
+  .mobile-nav-item.open .mobile-submenu {
+    display: block;
+  }
+
+  .mobile-submenu li a {
+    display: block;
+    padding: 10px 0;
+    color: #6b7280;
+    font-size: 15px;
+    text-decoration: none;
+  }
+
+  .mobile-submenu li a:hover {
+    color: var(--primary);
+  }
+
+  .mobile-nav-actions {
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-full {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .nav-links {
+      display: none;
+    }
+
+    .nav-actions {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const mobileMenu = document.querySelector('.mobile-menu');
+
+  menuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('active');
+    document.body.style.overflow = mobileMenu?.classList.contains('active') ? 'hidden' : '';
+  });
+
+  // Mobile submenu toggles
+  const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+  mobileNavItems.forEach((item) => {
+    const toggle = item.querySelector('.mobile-nav-toggle');
+    toggle?.addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+</script>

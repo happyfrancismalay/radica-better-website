@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const useCases = [
+  {
+    title: 'Appointment Reminders',
+    description: 'Reduce no-shows with automated appointment reminders via SMS, email, and WhatsApp.',
+    stat: '40% fewer no-shows'
+  },
+  {
+    title: 'Patient Education',
+    description: 'Deliver personalized health tips, medication reminders, and wellness content.',
+    stat: '3x engagement'
+  },
+  {
+    title: 'Care Coordination',
+    description: 'Keep patients informed throughout their care journey with automated updates.',
+    stat: '85% satisfaction'
+  },
+  {
+    title: 'Wellness Programs',
+    description: 'Drive participation in preventive care and wellness initiatives.',
+    stat: '55% enrollment'
+  }
+];
+---
+
+<BaseLayout title="Healthcare Solutions - RADICA" description="Discover how RADICA helps healthcare organizations improve patient engagement with HIPAA-compliant marketing automation.">
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="badge">Industry Solution</span>
+      <h1>Healthcare</h1>
+      <p>Improve patient engagement with secure, compliant health communications</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Key Use Cases</h2>
+      <div class="use-cases-grid">
+        {useCases.map((useCase) => (
+          <div class="use-case-card">
+            <h3>{useCase.title}</h3>
+            <p>{useCase.description}</p>
+            <div class="use-case-stat">{useCase.stat}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Improve Patient Engagement?</h2>
+        <a href="/request-demo/" class="btn btn-white btn-large">Request Demo</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--header-dark) 0%, var(--primary-purple-dark) 100%);
+    padding: 140px 0 80px;
+    text-align: center;
+    color: white;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .page-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .page-hero p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+  }
+
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .use-case-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .use-case-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .use-case-card p {
+    color: var(--text-gray);
+    margin-bottom: 16px;
+  }
+
+  .use-case-stat {
+    display: inline-block;
+    background: rgba(220, 38, 38, 0.1);
+    color: var(--primary-purple);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .cta-section {
+    background: var(--gradient-purple);
+    padding: 80px 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    color: white;
+  }
+
+  .cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 32px;
+  }
+
+  .btn-white {
+    background: white;
+    color: var(--primary-purple);
+  }
+
+  .btn-large {
+    padding: 16px 36px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .use-cases-grid { grid-template-columns: 1fr; }
+    .page-hero h1 { font-size: 2rem; }
+  }
+</style>

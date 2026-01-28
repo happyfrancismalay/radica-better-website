@@ -1,0 +1,204 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const industries = [
+  {
+    name: 'Retail & E-commerce',
+    slug: 'retail',
+    description: 'Drive sales and loyalty with personalized shopping experiences across all channels.',
+    useCases: ['Abandoned cart recovery', 'Product recommendations', 'Loyalty programs', 'Flash sale promotions']
+  },
+  {
+    name: 'Banking & Wealth Management',
+    slug: 'finance',
+    description: 'Drive digital engagement with intelligent customer journeys and secure communications.',
+    useCases: ['Digital onboarding', 'Transaction alerts', 'Wealth advisory', 'Loan lifecycle']
+  },
+  {
+    name: 'Insurance',
+    slug: 'insurance',
+    description: 'Connect with policyholders across borders through WeChat, WhatsApp & Xiaohongshu integration.',
+    useCases: ['Cross-border engagement', 'Policy renewals', 'Claims updates', 'Agent tools']
+  },
+  {
+    name: 'Healthcare',
+    slug: 'healthcare',
+    description: 'Improve patient engagement with timely, personalized health communications.',
+    useCases: ['Appointment reminders', 'Health tips & education', 'Prescription reminders', 'Wellness programs']
+  },
+  {
+    name: 'Technology',
+    slug: 'technology',
+    description: 'Scale your marketing with automation built for fast-moving tech companies.',
+    useCases: ['User onboarding', 'Feature announcements', 'Upgrade campaigns', 'Churn prevention']
+  }
+];
+---
+
+<BaseLayout title="Industries - RADICA" description="Discover how RADICA's marketing automation platform serves different industries including retail, banking, insurance, healthcare, and technology.">
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Industry Solutions</h1>
+      <p>Tailored marketing automation for your industry's unique challenges</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="industries-grid">
+        {industries.map((industry) => (
+          <a href={`/industries/${industry.slug}/`} class="industry-card">
+            <h3>{industry.name}</h3>
+            <p>{industry.description}</p>
+            <div class="use-cases">
+              <h4>Key Use Cases:</h4>
+              <ul>
+                {industry.useCases.map((useCase) => (
+                  <li>{useCase}</li>
+                ))}
+              </ul>
+            </div>
+            <span class="card-link">Learn More →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Don't See Your Industry?</h2>
+        <p>RADICA works across all industries. Contact us to discuss your specific needs.</p>
+        <a href="/contact/" class="btn btn-white btn-large">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--header-dark) 0%, var(--primary-purple-dark) 100%);
+    padding: 140px 0 80px;
+    text-align: center;
+    color: white;
+  }
+
+  .page-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .page-hero p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+  }
+
+  .industries-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .industry-card {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: block;
+  }
+
+  .industry-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(220, 38, 38, 0.15);
+    border-color: var(--primary-purple);
+  }
+
+  .industry-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .industry-card > p {
+    color: var(--text-gray);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  .use-cases h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .use-cases ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .use-cases li {
+    background: #f3f4f6;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: var(--text-dark);
+  }
+
+  .card-link {
+    color: var(--primary-purple);
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .cta-section {
+    background: var(--gradient-purple);
+    padding: 80px 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    color: white;
+  }
+
+  .cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .cta-content p {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 32px;
+  }
+
+  .btn-white {
+    background: white;
+    color: var(--primary-purple);
+  }
+
+  .btn-large {
+    padding: 16px 36px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .industries-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .page-hero h1 {
+      font-size: 2rem;
+    }
+  }
+</style>

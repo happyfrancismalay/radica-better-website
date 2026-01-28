@@ -1,0 +1,358 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const platforms = [
+  'Marketing Cloud',
+  'CRM',
+  'E-commerce',
+  'CDP',
+  'Other',
+  'None'
+];
+
+const channels = [
+  'Email Marketing',
+  'SMS Marketing',
+  'WhatsApp Business',
+  'Push Notifications',
+  'Social Media',
+  'All Channels'
+];
+
+const countries = [
+  'Hong Kong',
+  'China',
+  'Taiwan',
+  'Singapore',
+  'Malaysia',
+  'Thailand',
+  'Indonesia',
+  'Philippines',
+  'Vietnam',
+  'Japan',
+  'Korea',
+  'Australia',
+  'United States',
+  'United Kingdom',
+  'Other'
+];
+---
+
+<BaseLayout title="Request Demo - RADICA" description="Schedule a personalized demo of RADICA's AI-powered marketing automation platform. See how we can transform your marketing.">
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Request a Demo</h1>
+      <p>See RADICA in action. Schedule a personalized demo with our team.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="demo-grid">
+        <div class="demo-benefits">
+          <h2>What You'll See</h2>
+          <p>In your personalized demo, our team will show you how RADICA can transform your marketing operations.</p>
+
+          <div class="benefit-list">
+            <div class="benefit-item">
+              <div class="benefit-icon">🎯</div>
+              <div class="benefit-content">
+                <h4>Platform Overview</h4>
+                <p>A complete walkthrough of RADICA's core features and capabilities.</p>
+              </div>
+            </div>
+
+            <div class="benefit-item">
+              <div class="benefit-icon">🔧</div>
+              <div class="benefit-content">
+                <h4>Customized Solutions</h4>
+                <p>See how our platform addresses your specific marketing challenges.</p>
+              </div>
+            </div>
+
+            <div class="benefit-item">
+              <div class="benefit-icon">📊</div>
+              <div class="benefit-content">
+                <h4>ROI Analysis</h4>
+                <p>Understand the potential impact on your marketing performance.</p>
+              </div>
+            </div>
+
+            <div class="benefit-item">
+              <div class="benefit-icon">💰</div>
+              <div class="benefit-content">
+                <h4>Pricing Discussion</h4>
+                <p>Get transparent pricing tailored to your business needs.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="trust-badges">
+            <p>Trusted by 500+ enterprises worldwide</p>
+          </div>
+        </div>
+
+        <div class="demo-form-wrapper">
+          <form id="demoForm" class="demo-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="name">Full Name *</label>
+                <input type="text" id="name" name="name" class="form-input" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Work Email *</label>
+                <input type="email" id="email" name="email" class="form-input" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="company">Company *</label>
+                <input type="text" id="company" name="company" class="form-input" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="jobTitle">Job Title *</label>
+                <input type="text" id="jobTitle" name="jobTitle" class="form-input" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="country">Country *</label>
+                <select id="country" name="country" class="form-select" required>
+                  <option value="">Select country</option>
+                  {countries.map((country) => (
+                    <option value={country}>{country}</option>
+                  ))}
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" class="form-input" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="platform">Current Marketing Platform</label>
+              <select id="platform" name="platform" class="form-select">
+                <option value="">Select platform</option>
+                {platforms.map((platform) => (
+                  <option value={platform}>{platform}</option>
+                ))}
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="channel">Primary Channel Interest</label>
+              <select id="channel" name="channel" class="form-select">
+                <option value="">Select channel</option>
+                {channels.map((channel) => (
+                  <option value={channel}>{channel}</option>
+                ))}
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Tell us about your marketing goals</label>
+              <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="What challenges are you looking to solve?"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">Schedule Demo</button>
+
+            <p class="form-note">By submitting this form, you agree to receive marketing communications from RADICA.</p>
+
+            <div id="formStatus" class="form-status"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--header-dark) 0%, var(--primary-purple-dark) 100%);
+    padding: 140px 0 80px;
+    text-align: center;
+    color: white;
+  }
+
+  .page-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .page-hero p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+  }
+
+  .demo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .demo-benefits h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .demo-benefits > p {
+    color: var(--text-gray);
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+
+  .benefit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .benefit-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .benefit-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(155, 77, 235, 0.1) 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .benefit-content h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .benefit-content p {
+    color: var(--text-gray);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .trust-badges {
+    padding: 20px;
+    background: #f9fafb;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .trust-badges p {
+    color: var(--text-gray);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .demo-form-wrapper {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .btn-full {
+    width: 100%;
+  }
+
+  .form-note {
+    font-size: 12px;
+    color: var(--text-gray);
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  .form-status {
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    display: none;
+  }
+
+  .form-status.success {
+    display: block;
+    background: #d1fae5;
+    color: #065f46;
+  }
+
+  .form-status.error {
+    display: block;
+    background: #fee2e2;
+    color: #991b1b;
+  }
+
+  @media (max-width: 1024px) {
+    .demo-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .page-hero h1 {
+      font-size: 2rem;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .demo-form-wrapper {
+      padding: 24px;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('demoForm') as HTMLFormElement;
+  const status = document.getElementById('formStatus') as HTMLElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch(import.meta.env.PUBLIC_FORM_ENDPOINT || 'https://asia-east1-YOUR_PROJECT.cloudfunctions.net/submitForm', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        status.textContent = 'Thank you! We\'ll be in touch within 24 hours to schedule your demo.';
+        status.className = 'form-status success';
+        form.reset();
+      } else {
+        throw new Error('Failed to submit');
+      }
+    } catch (error) {
+      status.textContent = 'Sorry, there was an error. Please try again or email us directly.';
+      status.className = 'form-status error';
+    }
+  });
+</script>

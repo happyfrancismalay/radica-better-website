@@ -1,0 +1,2367 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const values = [
+  {
+    title: 'Innovation',
+    description: 'We continuously push the boundaries of marketing technology to deliver cutting-edge solutions.'
+  },
+  {
+    title: 'Customer Success',
+    description: 'Your success is our success. We\'re committed to helping you achieve your marketing goals.'
+  },
+  {
+    title: 'Integrity',
+    description: 'We operate with transparency and honesty in everything we do.'
+  },
+  {
+    title: 'Excellence',
+    description: 'We strive for excellence in our products, services, and customer relationships.'
+  }
+];
+
+const milestones = [
+  { year: '2015', event: 'RADICA founded in Hong Kong' },
+  { year: '2017', event: 'Launched AI-powered marketing platform' },
+  { year: '2019', event: 'Expanded to Southeast Asia' },
+  { year: '2021', event: 'Reached 10 billion messages delivered' },
+  { year: '2023', event: '500+ enterprise customers worldwide' }
+];
+
+// GutCommon Data
+const gutcommonPillars = [
+  {
+    icon: '🤝',
+    title: 'Understanding Challenges',
+    description: 'Understanding local farmers\' pain points and challenges'
+  },
+  {
+    icon: '🏔️',
+    title: 'Geographic Considerations',
+    description: 'Addressing geographical and climate considerations'
+  },
+  {
+    icon: '🚗',
+    title: 'Community Engagement',
+    description: 'Regular site visits and community engagement'
+  },
+  {
+    icon: '🌍',
+    title: 'Market Strategy',
+    description: 'Building global market introduction strategies'
+  },
+  {
+    icon: '📋',
+    title: 'Compliance',
+    description: 'Ensuring regulatory compliance'
+  }
+];
+
+const gutcommonProducts = [
+  {
+    name: '水乳大地 Shui Ru Da Di',
+    chineseName: '水乳大地赤霞珠紅葡萄酒',
+    subtitle: 'Cabernet Sauvignon from 2,600m Elevation',
+    description: 'A premium Cabernet Sauvignon cultivated in the highlands of Yunnan\'s Meili Snow Mountain region. At 2,600 meters elevation, the intense UV exposure and dramatic day-night temperature variations create grapes with exceptional depth and complexity. This wine represents the terroir of one of China\'s most unique wine-growing regions.',
+    image: '/images/gutcommon/album/66440b9302ae8f675cb4345ee19ae840.JPG',
+    secondaryImages: ['/images/gutcommon/album/8efaae6e5ae0d39b107826248d5d8896.jpg', '/images/gutcommon/album/IMG_6746.jpg'],
+    features: [
+      'High-altitude vineyards at 2,600m elevation',
+      'Meili Snow Mountain terroir',
+      'Intense UV exposure & temperature variation',
+      'Partnership with ethnic minority farmers'
+    ]
+  },
+  {
+    name: '諾鄧火腿 Nuodeng Heritage Ham',
+    chineseName: '諾鄧三十六月齡傳統火腿',
+    subtitle: '36-Month Aged, Bai Minority Traditional Methods',
+    description: 'A heritage delicacy cured using ancestral Bai minority methods in Nuodeng village, one of China\'s oldest salt-producing regions. Each ham is hand-salted with local well salt and aged for a minimum of 36 months in the unique Nuodeng microclimate. The result is a complex, nutty flavor profile that rivals the finest European hams.',
+    image: '/images/gutcommon/album/IMG_9658.jpg',
+    secondaryImages: ['/images/gutcommon/album/72b09628-67a3-4983-a4dd-01f0d72624f2.jpg'],
+    features: [
+      'Traditional Bai minority curing methods',
+      '36-month natural aging process',
+      'Nuodeng ancient salt village heritage',
+      'Hand-salted with local well salt'
+    ]
+  }
+];
+
+const gutcommonStats = [
+  { number: '5+', label: 'Minority communities supported' },
+  { number: '50+', label: 'Artisan families partnered' },
+  { number: '2', label: 'Premium products launched' }
+];
+
+// Photo Album Data with GPS locations
+const albumPhotos = [
+  // Shangri-La Region (27.67-27.70°N, 99.90-99.97°E)
+  { src: '/images/gutcommon/album/IMG_1948.jpg', title: 'Alpine Meadow at 3,920m', description: 'Team exploring high-altitude pastures near Shangri-La', location: 'Shangri-La, Yunnan', gps: { lat: 27.70, lng: 99.97 }, category: 'journey' },
+  { src: '/images/gutcommon/album/IMG_2039.jpg', title: 'Sacred Alpine Lake', description: 'Crystal waters reflecting the surrounding peaks', location: 'Shangri-La, Yunnan', gps: { lat: 27.69, lng: 99.95 }, category: 'landscape' },
+  { src: '/images/gutcommon/album/IMG_2045.jpg', title: 'Highland Village Visit', description: 'Meeting local Tibetan communities', location: 'Shangri-La, Yunnan', gps: { lat: 27.68, lng: 99.93 }, category: 'community' },
+  { src: '/images/gutcommon/album/IMG_2415.jpg', title: 'Mountain Trail Exploration', description: 'Trekking through Yunnan highlands', location: 'Shangri-La, Yunnan', gps: { lat: 27.67, lng: 99.90 }, category: 'journey' },
+
+  // Meili Snow Mountain Region (28.03-28.57°N, 98.80-98.91°E)
+  { src: '/images/gutcommon/album/IMG_0015.jpg', title: 'Meili Snow Mountain Vista', description: 'Majestic peaks of the Kawagebo range', location: 'Meili Snow Mountain', gps: { lat: 28.45, lng: 98.88 }, category: 'landscape' },
+  { src: '/images/gutcommon/album/IMG_6746.jpg', title: 'Vineyard with Mountain Backdrop', description: 'High-altitude wine grapes at 2,600m', location: 'Deqin, Yunnan', gps: { lat: 28.03, lng: 98.91 }, category: 'wine' },
+  { src: '/images/gutcommon/album/IMG_9590.jpg', title: 'Terraced Vineyards', description: 'Traditional viticulture on mountain slopes', location: 'Meili Snow Mountain', gps: { lat: 28.25, lng: 98.85 }, category: 'wine' },
+  { src: '/images/gutcommon/album/IMG_9619.jpg', title: 'Glacier River Valley', description: 'Pristine waters from ancient glaciers', location: 'Meili Snow Mountain', gps: { lat: 28.35, lng: 98.82 }, category: 'landscape' },
+
+  // Nuodeng Village - Ham Production (25.91°N, 99.37°E)
+  { src: '/images/gutcommon/album/IMG_9651.jpg', title: 'Nuodeng Salt Village', description: 'Ancient ham curing traditions', location: 'Nuodeng Village, Yunlong', gps: { lat: 25.91, lng: 99.37 }, category: 'ham' },
+  { src: '/images/gutcommon/album/IMG_9654.jpg', title: 'Ham Curing Room', description: 'Traditional aging process', location: 'Nuodeng Village, Yunlong', gps: { lat: 25.91, lng: 99.37 }, category: 'ham' },
+  { src: '/images/gutcommon/album/IMG_9658.jpg', title: 'Heritage Ham Selection', description: '36-month aged Nuodeng ham', location: 'Nuodeng Village, Yunlong', gps: { lat: 25.91, lng: 99.37 }, category: 'ham' },
+  { src: '/images/gutcommon/album/IMG_9681.jpg', title: 'Bai Minority Artisan', description: 'Master ham curer at work', location: 'Nuodeng Village, Yunlong', gps: { lat: 25.91, lng: 99.37 }, category: 'ham' },
+  { src: '/images/gutcommon/album/IMG_9686.jpg', title: 'Salt Well Heritage', description: 'Ancient salt extraction methods', location: 'Nuodeng Village, Yunlong', gps: { lat: 25.91, lng: 99.37 }, category: 'ham' },
+  { src: '/images/gutcommon/album/IMG_9717.jpg', title: 'Village Panorama', description: 'Nuodeng ancient village view', location: 'Nuodeng Village, Yunlong', gps: { lat: 25.91, lng: 99.37 }, category: 'landscape' },
+
+  // Tiger Leaping Gorge (27.24°N, 100.14°E)
+  { src: '/images/gutcommon/album/IMG_5898.jpg', title: 'Tiger Leaping Gorge', description: 'One of the world\'s deepest river canyons', location: 'Tiger Leaping Gorge', gps: { lat: 27.24, lng: 100.14 }, category: 'journey' },
+  { src: '/images/gutcommon/album/c5afaafaf8d30912953722afdf6406ab.jpg', title: 'Stream Crossing', description: 'Navigating mountain waterways', location: 'Tiger Leaping Gorge', gps: { lat: 27.24, lng: 100.14 }, category: 'journey' },
+
+  // Hong Kong Events (22.29°N, 114.17°E)
+  { src: '/images/gutcommon/album/8efaae6e5ae0d39b107826248d5d8896.jpg', title: 'Wine Tasting Setup', description: 'Elegant presentation at Rosewood Hong Kong', location: 'Hong Kong', gps: { lat: 22.29, lng: 114.17 }, category: 'wine' },
+  { src: '/images/gutcommon/album/3219985555a732eba71fa8e902ace161.jpg', title: 'Cultural Wine Presentation', description: 'Showcasing Yunnan wines in traditional dress', location: 'Hong Kong', gps: { lat: 22.29, lng: 114.17 }, category: 'wine' },
+  { src: '/images/gutcommon/album/4f24cef7ef967b492781a368e2cecafc.jpg', title: 'Wine Dinner Event', description: 'Exclusive tasting experience', location: 'Hong Kong', gps: { lat: 22.29, lng: 114.17 }, category: 'wine' },
+  { src: '/images/gutcommon/album/66440b9302ae8f675cb4345ee19ae840.JPG', title: 'Premium Wine Display', description: 'Shui Ru Da Di presentation', location: 'Hong Kong', gps: { lat: 22.29, lng: 114.17 }, category: 'wine' },
+
+  // Winery & Monastery Visits
+  { src: '/images/gutcommon/album/IMG_9200.jpg', title: 'Songzanlin Monastery', description: 'Little Potala Palace of Yunnan', location: 'Shangri-La, Yunnan', gps: { lat: 27.85, lng: 99.70 }, category: 'journey' },
+  { src: '/images/gutcommon/album/IMG_9251.jpg', title: 'Prayer Flags & Mountains', description: 'Tibetan Buddhist sacred sites', location: 'Shangri-La, Yunnan', gps: { lat: 27.85, lng: 99.70 }, category: 'journey' },
+  { src: '/images/gutcommon/album/IMG_9286.jpg', title: 'Winery Estate Tour', description: 'Exploring boutique wineries', location: 'Deqin, Yunnan', gps: { lat: 28.10, lng: 98.92 }, category: 'wine' },
+  { src: '/images/gutcommon/album/IMG_9326.jpg', title: 'Wine Cellar Visit', description: 'Underground aging facilities', location: 'Deqin, Yunnan', gps: { lat: 28.10, lng: 98.92 }, category: 'wine' },
+  { src: '/images/gutcommon/album/IMG_9345.jpg', title: 'Barrel Room', description: 'Oak aging for premium wines', location: 'Deqin, Yunnan', gps: { lat: 28.10, lng: 98.92 }, category: 'wine' },
+  { src: '/images/gutcommon/album/IMG_9395.jpg', title: 'Vineyard Harvest', description: 'Grape picking season in the mountains', location: 'Meili Region', gps: { lat: 28.20, lng: 98.87 }, category: 'wine' },
+  { src: '/images/gutcommon/album/IMG_9399.JPG', title: 'Mountain Vineyard Panorama', description: 'Expansive views of wine country', location: 'Meili Region', gps: { lat: 28.20, lng: 98.87 }, category: 'landscape' },
+  { src: '/images/gutcommon/album/IMG_9471.jpg', title: 'Village Community', description: 'Local farming families', location: 'Deqin, Yunnan', gps: { lat: 28.05, lng: 98.90 }, category: 'community' },
+
+  // Dinner & Cultural Scenes
+  { src: '/images/gutcommon/album/943bb49a7e19e8e4d29bd4bc19b17fa3.JPG', title: 'Valley Dinner Experience', description: 'Farm-to-table dining in Yunnan', location: 'Shangri-La, Yunnan', gps: { lat: 27.75, lng: 99.80 }, category: 'community' },
+  { src: '/images/gutcommon/album/72b09628-67a3-4983-a4dd-01f0d72624f2.jpg', title: 'Ham Slicing Demonstration', description: 'Artisan ham preparation', location: 'Nuodeng Village', gps: { lat: 25.91, lng: 99.37 }, category: 'ham' },
+
+  // Additional Journey Photos
+  { src: '/images/gutcommon/album/IMG_0073.jpg', title: 'Mountain Dawn', description: 'Early morning in the highlands', location: 'Yunnan', gps: { lat: 27.50, lng: 99.50 }, category: 'landscape' },
+  { src: '/images/gutcommon/album/IMG_0108.jpg', title: 'Cloud Sea Valley', description: 'Misty mountain mornings', location: 'Yunnan', gps: { lat: 27.55, lng: 99.55 }, category: 'landscape' },
+  { src: '/images/gutcommon/album/IMG_0807.jpg', title: 'Highland Pastures', description: 'Yak grazing at altitude', location: 'Shangri-La', gps: { lat: 27.80, lng: 99.75 }, category: 'landscape' },
+  { src: '/images/gutcommon/album/IMG_0999.jpg', title: 'Village Life', description: 'Daily life in mountain communities', location: 'Yunnan', gps: { lat: 27.60, lng: 99.60 }, category: 'community' },
+  { src: '/images/gutcommon/album/IMG_1142.jpg', title: 'Traditional Architecture', description: 'Tibetan-style buildings', location: 'Shangri-La', gps: { lat: 27.82, lng: 99.72 }, category: 'journey' },
+  { src: '/images/gutcommon/album/IMG_3998.jpg', title: 'River Valley', description: 'Jinsha River landscape', location: 'Yunnan', gps: { lat: 27.30, lng: 100.00 }, category: 'landscape' },
+  { src: '/images/gutcommon/album/IMG_4020.jpg', title: 'Mountain Road', description: 'Journey through the peaks', location: 'Yunnan', gps: { lat: 27.40, lng: 99.80 }, category: 'journey' },
+  { src: '/images/gutcommon/album/IMG_4023.jpg', title: 'Alpine Flowers', description: 'High-altitude wildflowers', location: 'Yunnan', gps: { lat: 27.45, lng: 99.85 }, category: 'landscape' },
+  { src: '/images/gutcommon/album/IMG_4030.jpg', title: 'Sunset Vista', description: 'Golden hour in the mountains', location: 'Yunnan', gps: { lat: 27.50, lng: 99.90 }, category: 'landscape' },
+  { src: '/images/gutcommon/album/IMG_4042.jpg', title: 'Peak View', description: 'Summit perspectives', location: 'Yunnan', gps: { lat: 27.55, lng: 99.92 }, category: 'landscape' },
+  { src: '/images/gutcommon/album/IMG_6919.jpg', title: 'Vineyard Workers', description: 'Local farmers tending vines', location: 'Deqin', gps: { lat: 28.00, lng: 98.90 }, category: 'wine' },
+  { src: '/images/gutcommon/album/IMG_6951.jpg', title: 'Grape Clusters', description: 'Cabernet Sauvignon on the vine', location: 'Deqin', gps: { lat: 28.02, lng: 98.91 }, category: 'wine' },
+  { src: '/images/gutcommon/album/IMG_9326(1).jpg', title: 'Wine Cellar Interior', description: 'Aging room atmosphere', location: 'Deqin', gps: { lat: 28.10, lng: 98.92 }, category: 'wine' },
+  { src: '/images/gutcommon/album/IMG_9635.jpg', title: 'Mountain Community', description: 'Tibetan village gathering', location: 'Deqin', gps: { lat: 28.15, lng: 98.88 }, category: 'community' },
+
+  // Additional unique photos
+  { src: '/images/gutcommon/album/07fc1ab65f64a1d47ea7b610f9c7e77a.jpg', title: 'Artisan Collaboration', description: 'Working with local producers', location: 'Yunnan', gps: { lat: 27.00, lng: 99.50 }, category: 'community' },
+  { src: '/images/gutcommon/album/15be851f90fbb5101ccc4e6492f80964.jpg', title: 'Product Display', description: 'GutCommon premium selection', location: 'Hong Kong', gps: { lat: 22.29, lng: 114.17 }, category: 'wine' },
+  { src: '/images/gutcommon/album/23961c68-75c4-4fa4-a443-ef2df1ac81e5.jpg', title: 'Team Journey', description: 'Exploring remote regions', location: 'Yunnan', gps: { lat: 27.20, lng: 99.40 }, category: 'journey' },
+  { src: '/images/gutcommon/album/5a9f9f1cad872ed07e472842a1069134.jpg', title: 'Cultural Exchange', description: 'Learning traditional methods', location: 'Yunnan', gps: { lat: 27.10, lng: 99.45 }, category: 'community' },
+  { src: '/images/gutcommon/album/5ddc891ceb6b39837f4e57790b8933ee.jpg', title: 'Heritage Preservation', description: 'Documenting traditions', location: 'Yunnan', gps: { lat: 27.05, lng: 99.42 }, category: 'community' },
+  { src: '/images/gutcommon/album/5eafaac55f53f002a66bd00fae77c98e.jpg', title: 'Landscape Exploration', description: 'Discovering hidden valleys', location: 'Yunnan', gps: { lat: 27.15, lng: 99.48 }, category: 'landscape' },
+  { src: '/images/gutcommon/album/f03288f608507113d6c078083a1da596.jpg', title: 'Partnership Building', description: 'Community engagement session', location: 'Yunnan', gps: { lat: 27.25, lng: 99.52 }, category: 'community' }
+];
+
+// Discovery Tour Itinerary
+const tourItinerary = [
+  {
+    day: 1,
+    title: 'Arrival',
+    titleCn: '抵達',
+    highlights: ['21:40 Direct flight HK → Lijiang', '5-star international hotel (acclimatization)'],
+    photos: ['IMG_1142'],
+    location: 'Lijiang'
+  },
+  {
+    day: 2,
+    title: 'Lijiang & First Winery',
+    titleCn: '麗江及首個酒莊',
+    highlights: ['30-min morning meditation (altitude prep)', 'Jade Dragon Snow Mountain / Baisha Ancient Town', 'Shangri-La Winery HQ: 6 wines + 2 spirits tasting', 'Private label services introduction', 'Dali-style farm dinner + terroir presentation'],
+    photos: ['IMG_2039'],
+    location: 'Lijiang / Shangri-La Winery'
+  },
+  {
+    day: 3,
+    title: 'Tiger Leaping Gorge → Shangri-La',
+    titleCn: '虎跳峽至香格里拉',
+    highlights: ['Tiger Leaping Gorge (gentle acclimatization)', 'Halfway Guesthouse - specialty coffee & expat story', 'Karma Café - sunset + 3 local craft beers', 'Flying Tiger Restaurant - Tibetan-French fusion + 3 wine pairings', 'Optional: Shangri-La Old Town night walk'],
+    photos: ['IMG_5898', 'c5afaafaf'],
+    location: 'Tiger Leaping Gorge / Shangri-La'
+  },
+  {
+    day: 4,
+    title: 'Monasteries & Wineries',
+    titleCn: '寺廟與酒莊',
+    highlights: ['Songzanlin Monastery / Napa Lake', 'Nixi Café OR Nixi Chicken Hot Pot', 'Black clay pottery workshop', 'Zaxee Winery (Benzilan)', 'Shangri-La Wine Museum', 'Duomujiu Estate - Wine tasting dinner & stargazing'],
+    photos: ['IMG_9200', 'IMG_9251'],
+    location: 'Shangri-La / Benzilan'
+  },
+  {
+    day: 5,
+    title: 'Meili Snow Mountain',
+    titleCn: '梅里雪山',
+    highlights: ['Feilai Temple - Meili Snow Mountain group photo', 'Jijian Winery - vineyard walking tour with owner', 'Optional: Glacier visit', 'Meili Village Chief Winery', 'Village feast with traditional dancing'],
+    photos: ['IMG_9590', 'IMG_9619'],
+    location: 'Meili Snow Mountain'
+  },
+  {
+    day: 6,
+    title: 'Wine Origins & Cultural Immersion',
+    titleCn: '葡萄酒起源與文化體驗',
+    highlights: ['Cizhong Church - birthplace of Yunnan wine', 'Bullfighting show / Pastoral exploration', 'Shui Ru Da Di Estate - dinner with owner', 'Wine investment & terroir discussion'],
+    photos: ['IMG_6746', '943bb49a'],
+    location: 'Cizhong / Shui Ru Da Di Estate'
+  },
+  {
+    day: 7,
+    title: 'Return Journey',
+    titleCn: '返程',
+    highlights: ['Dongzhulin Monastery', 'Jinsha River Great Bend (Meili National Park)', '"Next Burgundy" investment analysis lunch', 'Private label discussion', 'Return flight to Hong Kong'],
+    photos: ['IMG_9399'],
+    location: 'Deqin → Lijiang → Hong Kong'
+  }
+];
+
+// Rosewood Case Study
+const rosewoodCaseStudy = {
+  partner: 'Rosewood Hong Kong',
+  accolade: 'Top 50 Hotels in the World',
+  started: '2025',
+  venue: 'Carlye & Co',
+  testimonial: {
+    quote: 'Best wine I ever tried in Shangri-La region',
+    author: 'Leo Lo',
+    title: 'Director of Wine',
+    company: 'Carlye & Co, Rosewood Hong Kong'
+  },
+  activities: [
+    { title: 'Wine Pairing Dinners', description: 'Exclusive multi-course experiences' },
+    { title: 'Tasting Events', description: 'Curated wine education sessions' },
+    { title: 'Member Programs', description: 'Corporate partnership offerings' }
+  ],
+  photos: [
+    '/images/gutcommon/album/8efaae6e5ae0d39b107826248d5d8896.jpg',
+    '/images/gutcommon/album/66440b9302ae8f675cb4345ee19ae840.JPG',
+    '/images/gutcommon/album/3219985555a732eba71fa8e902ace161.jpg',
+    '/images/gutcommon/album/72b09628-67a3-4983-a4dd-01f0d72624f2.jpg'
+  ]
+};
+---
+
+<BaseLayout title="About Us - RADICA" description="Learn about RADICA's mission to transform marketing through AI-powered automation. Discover our story, values, and the team behind the platform.">
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>About RADICA</h1>
+      <p>Empowering businesses to connect with customers through intelligent marketing automation</p>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="section">
+    <div class="container">
+      <div class="mission-grid">
+        <div class="mission-content">
+          <span class="badge">Our Mission</span>
+          <h2>Transforming Marketing Through AI</h2>
+          <p>
+            RADICA was founded with a simple mission: to help businesses of all sizes leverage the power of AI to create meaningful customer connections. We believe that every company deserves access to enterprise-grade marketing technology.
+          </p>
+          <p>
+            Today, we serve over 500 enterprises across Asia and beyond, helping them deliver personalized experiences at scale through our intelligent marketing automation platform.
+          </p>
+        </div>
+        <div class="mission-stats">
+          <div class="stat-block">
+            <div class="stat-number">500+</div>
+            <div class="stat-text">Enterprise Clients</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-number">10B+</div>
+            <div class="stat-text">Messages Delivered</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-number">15+</div>
+            <div class="stat-text">Countries Served</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-number">99.9%</div>
+            <div class="stat-text">Platform Uptime</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="section section-gray">
+    <div class="container">
+      <h2 class="section-title">Our Values</h2>
+      <p class="section-subtitle">The principles that guide everything we do</p>
+
+      <div class="values-grid">
+        {values.map((value) => (
+          <div class="value-card">
+            <h3>{value.title}</h3>
+            <p>{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Our Journey</h2>
+      <p class="section-subtitle">Key milestones in RADICA's growth story</p>
+
+      <div class="timeline">
+        {milestones.map((milestone, index) => (
+          <div class="timeline-item">
+            <div class="timeline-year">{milestone.year}</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">{milestone.event}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       GUTCOMMON MINI-SITE
+       ===================================================== -->
+  <section class="gc-section" id="gutcommon">
+
+    <!-- GutCommon Hero with Logo -->
+    <div class="gc-hero">
+      <div class="gc-hero-bg" style="background-image: url('/images/gutcommon/album/943bb49a7e19e8e4d29bd4bc19b17fa3.JPG')"></div>
+      <div class="gc-hero-overlay"></div>
+      <div class="gc-hero-content">
+        <img src="/images/gutcommon/logo.jpg" alt="GutCommon Logo" class="gc-logo" />
+        <p class="gc-tagline">谷共 · Where Ancient Traditions Meet Modern Tables</p>
+      </div>
+    </div>
+
+    <!-- Mission & Story -->
+    <div class="gc-mission">
+      <div class="container">
+        <div class="gc-mission-grid">
+          <div class="gc-mission-content gc-animate">
+            <span class="gc-badge-earth">Social Impact Initiative</span>
+            <h3>Good for Your Gut. Good for Communities.</h3>
+            <p>
+              Deep in Yunnan's mountains, where mist-shrouded peaks meet ancient villages, ethnic minority communities have perfected their crafts over generations. GutCommon bridges these remote artisans to global markets, bringing you products that embody centuries of tradition.
+            </p>
+            <p>
+              We partner with Tibetan winemakers cultivating grapes at 2,600 meters and Bai minority families curing ham with methods unchanged for centuries. Through regular site visits, we understand their unique challenges—from geographical isolation to climate variations—and work alongside them to meet international quality standards while preserving the authenticity that makes their products extraordinary.
+            </p>
+          </div>
+          <div class="gc-mission-stats gc-animate">
+            {gutcommonStats.map((stat) => (
+              <div class="gc-stat">
+                <div class="gc-stat-number">{stat.number}</div>
+                <div class="gc-stat-label">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Five Pillars -->
+    <div class="gc-pillars">
+      <div class="container">
+        <h4 class="gc-pillars-title gc-animate">Our Five Pillars</h4>
+        <div class="gc-pillars-grid">
+          {gutcommonPillars.map((pillar) => (
+            <div class="gc-pillar gc-animate">
+              <span class="gc-pillar-icon">{pillar.icon}</span>
+              <h5>{pillar.title}</h5>
+              <p>{pillar.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Products Showcase -->
+    <div class="gc-products" id="gc-products">
+      <div class="container">
+        <h4 class="gc-section-title gc-animate">Our Products</h4>
+        <p class="gc-section-subtitle gc-animate">Premium artisanal products from Yunnan's ethnic minority communities</p>
+        <div class="gc-products-grid">
+          {gutcommonProducts.map((product) => (
+            <div class="gc-product-card gc-animate">
+              <div class="gc-product-image">
+                <img src={product.image} alt={product.name} loading="lazy" />
+              </div>
+              <div class="gc-product-content">
+                <h5>{product.name}</h5>
+                <p class="gc-product-chinese">{product.chineseName}</p>
+                <p class="gc-product-subtitle">{product.subtitle}</p>
+                <p class="gc-product-description">{product.description}</p>
+                <ul class="gc-product-features">
+                  {product.features.map((feature) => (
+                    <li>
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo Album Section -->
+    <div class="gc-album" id="gc-album">
+      <div class="container">
+        <h4 class="gc-section-title gc-animate">Photo Album</h4>
+        <p class="gc-section-subtitle gc-animate">Our journey through Yunnan's mountains and villages</p>
+
+        <!-- Category Filters -->
+        <div class="gc-album-filters gc-animate">
+          <button class="gc-filter-btn active" data-filter="all">All</button>
+          <button class="gc-filter-btn" data-filter="journey">Journey</button>
+          <button class="gc-filter-btn" data-filter="wine">Wine</button>
+          <button class="gc-filter-btn" data-filter="ham">Ham</button>
+          <button class="gc-filter-btn" data-filter="community">Community</button>
+          <button class="gc-filter-btn" data-filter="landscape">Landscape</button>
+        </div>
+
+        <!-- Masonry Grid -->
+        <div class="gc-album-grid">
+          {albumPhotos.map((photo, index) => (
+            <div class="gc-album-item gc-animate" data-category={photo.category} data-index={index}>
+              <img src={photo.src} alt={photo.title} loading="lazy" />
+              <div class="gc-album-overlay">
+                <h6>{photo.title}</h6>
+                <p class="gc-album-location">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  {photo.location}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Slideshow Modal -->
+    <div class="gc-slideshow-modal" id="gc-slideshow">
+      <button class="gc-slideshow-close" aria-label="Close slideshow">&times;</button>
+      <button class="gc-slideshow-prev" aria-label="Previous photo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <button class="gc-slideshow-next" aria-label="Next photo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+      <div class="gc-slideshow-content">
+        <img src="" alt="" class="gc-slideshow-img" />
+        <div class="gc-slideshow-info">
+          <h5 class="gc-slideshow-title"></h5>
+          <p class="gc-slideshow-desc"></p>
+          <p class="gc-slideshow-location">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span class="gc-slideshow-location-text"></span>
+            <span class="gc-slideshow-gps"></span>
+          </p>
+        </div>
+      </div>
+      <div class="gc-slideshow-progress">
+        <div class="gc-slideshow-progress-bar"></div>
+      </div>
+      <div class="gc-slideshow-counter"></div>
+    </div>
+
+    <!-- Discovery Tour Section -->
+    <div class="gc-tour" id="gc-tour">
+      <div class="gc-tour-header">
+        <div class="container">
+          <span class="gc-badge-gold gc-animate">Wine Journey</span>
+          <h4 class="gc-tour-title gc-animate">
+            <span class="gc-tour-title-cn">發現下一個布根地</span>
+            <span class="gc-tour-title-en">Discovering Next Burgundy</span>
+          </h4>
+          <p class="gc-tour-subtitle gc-animate">香格里拉品酒七日六夜 | 7 Days 6 Nights Wine Journey</p>
+        </div>
+      </div>
+
+      <div class="gc-tour-intro">
+        <div class="container">
+          <div class="gc-tour-objectives gc-animate">
+            <h5>Tour Objectives</h5>
+            <ol>
+              <li>Deep exploration of Shangri-La Tibetan wine region—different wineries, brewing processes, unique flavors</li>
+              <li>Experience the religious, cultural, artistic, and culinary fusion of Tibetan and ethnic minorities</li>
+              <li>Witness the "Three Parallel Rivers" terrain and majestic Meili Snow Mountain</li>
+            </ol>
+          </div>
+          <div class="gc-tour-audience gc-animate">
+            <h5>For</h5>
+            <p>Wine enthusiasts, professional wine investors & collectors, experiential travelers seeking art, culture & gastronomy</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Timeline -->
+      <div class="gc-tour-timeline">
+        <div class="container">
+          <div class="gc-timeline-nav gc-animate">
+            {tourItinerary.map((day) => (
+              <button class={`gc-timeline-dot ${day.day === 1 ? 'active' : ''}`} data-day={day.day}>
+                <span class="gc-timeline-day">Day {day.day}</span>
+                <span class="gc-timeline-location">{day.location.split(' / ')[0]}</span>
+              </button>
+            ))}
+          </div>
+
+          <div class="gc-timeline-content">
+            {tourItinerary.map((day) => (
+              <div class={`gc-timeline-panel ${day.day === 1 ? 'active' : ''}`} data-day={day.day}>
+                <div class="gc-timeline-panel-header">
+                  <div class="gc-timeline-panel-day">Day {day.day}</div>
+                  <h5 class="gc-timeline-panel-title">
+                    {day.title}
+                    <span class="gc-timeline-panel-title-cn">{day.titleCn}</span>
+                  </h5>
+                  <p class="gc-timeline-panel-location">{day.location}</p>
+                </div>
+                <ul class="gc-timeline-highlights">
+                  {day.highlights.map((highlight) => (
+                    <li>{highlight}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Tour Highlights -->
+      <div class="gc-tour-highlights">
+        <div class="container">
+          <div class="gc-tour-highlights-grid gc-animate">
+            <div class="gc-tour-highlight">
+              <span class="gc-tour-highlight-icon">🍷</span>
+              <h6>5 Boutique Wineries</h6>
+              <p>Exclusive tastings & private label opportunities</p>
+            </div>
+            <div class="gc-tour-highlight">
+              <span class="gc-tour-highlight-icon">🏔️</span>
+              <h6>Meili Snow Mountain</h6>
+              <p>Sacred peaks & glacier views</p>
+            </div>
+            <div class="gc-tour-highlight">
+              <span class="gc-tour-highlight-icon">🚙</span>
+              <h6>Land Rover Transport</h6>
+              <p>4 guests per vehicle</p>
+            </div>
+            <div class="gc-tour-highlight">
+              <span class="gc-tour-highlight-icon">🏨</span>
+              <h6>Boutique Stays</h6>
+              <p>HK-standard accommodations</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tour CTA -->
+      <div class="gc-tour-cta">
+        <div class="container">
+          <div class="gc-tour-cta-content gc-animate">
+            <h5>Interested in the Journey?</h5>
+            <p>Contact us to learn more about upcoming tour dates and private group bookings</p>
+            <a href="/contact/" class="gc-tour-cta-btn">Inquire Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rosewood Case Study -->
+    <div class="gc-casestudy" id="gc-casestudy">
+      <div class="container">
+        <span class="gc-badge-gold gc-animate">Case Study</span>
+        <h4 class="gc-section-title gc-animate" style="color: white;">Partnership Excellence</h4>
+
+        <div class="gc-casestudy-content gc-animate">
+          <div class="gc-casestudy-header">
+            <div class="gc-casestudy-partner">
+              <h5>Rosewood Hong Kong</h5>
+              <p class="gc-casestudy-accolade">{rosewoodCaseStudy.accolade}</p>
+            </div>
+            <div class="gc-casestudy-details">
+              <div class="gc-casestudy-detail">
+                <span class="gc-casestudy-label">Partnership Since</span>
+                <span class="gc-casestudy-value">{rosewoodCaseStudy.started}</span>
+              </div>
+              <div class="gc-casestudy-detail">
+                <span class="gc-casestudy-label">Venue</span>
+                <span class="gc-casestudy-value">{rosewoodCaseStudy.venue}</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="gc-casestudy-desc">
+            Rosewood Hong Kong selected GutCommon products to elevate their prestige dining experiences at Carlye & Co. Our wines are now featured on the official wine list, bringing the unique terroir of Yunnan's mountains to one of Asia's most discerning audiences.
+          </p>
+
+          <div class="gc-casestudy-activities">
+            {rosewoodCaseStudy.activities.map((activity) => (
+              <div class="gc-casestudy-activity">
+                <h6>{activity.title}</h6>
+                <p>{activity.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="gc-casestudy-testimonial">
+            <blockquote>
+              "{rosewoodCaseStudy.testimonial.quote}"
+            </blockquote>
+            <cite>
+              <strong>{rosewoodCaseStudy.testimonial.author}</strong>
+              <span>{rosewoodCaseStudy.testimonial.title}</span>
+              <span>{rosewoodCaseStudy.testimonial.company}</span>
+            </cite>
+          </div>
+
+          <div class="gc-casestudy-photos">
+            {rosewoodCaseStudy.photos.map((photo, index) => (
+              <div class="gc-casestudy-photo">
+                <img src={photo} alt={`Rosewood Hong Kong event ${index + 1}`} loading="lazy" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Social CTA -->
+    <div class="gc-social">
+      <div class="container">
+        <div class="gc-social-content gc-animate">
+          <svg class="gc-instagram-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          <h4>Follow Our Journey</h4>
+          <p>See the stories behind the products</p>
+          <a href="https://www.instagram.com/gutcommon" target="_blank" rel="noopener noreferrer" class="gc-social-btn">
+            @gutcommon
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Join Our Growing Community</h2>
+        <p>Discover how RADICA can transform your marketing.</p>
+        <div class="cta-actions">
+          <a href="/request-demo/" class="btn btn-white btn-large">Request Demo</a>
+          <a href="/contact/" class="btn btn-outline-white btn-large">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--header-dark) 0%, var(--primary-purple-dark) 100%);
+    padding: 140px 0 80px;
+    text-align: center;
+    color: white;
+  }
+
+  .page-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .page-hero p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(220, 38, 38, 0.1);
+    color: var(--primary-purple);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .mission-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  .mission-content p {
+    color: var(--text-gray);
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+
+  .mission-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .stat-block {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-purple);
+    margin-bottom: 8px;
+  }
+
+  .stat-text {
+    font-size: 14px;
+    color: var(--text-gray);
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .value-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .value-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--primary-purple);
+  }
+
+  .value-card p {
+    font-size: 14px;
+    color: var(--text-gray);
+    line-height: 1.6;
+  }
+
+  .timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 100px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border-color);
+  }
+
+  .timeline-item {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    position: relative;
+  }
+
+  .timeline-year {
+    width: 80px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-purple);
+    text-align: right;
+  }
+
+  .timeline-dot {
+    width: 16px;
+    height: 16px;
+    background: var(--primary-purple);
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+
+  .timeline-content {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .cta-section {
+    background: var(--gradient-purple);
+    padding: 80px 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    color: white;
+  }
+
+  .cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .cta-content p {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 32px;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .btn-white {
+    background: white;
+    color: var(--primary-purple);
+  }
+
+  .btn-outline-white {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+
+  .btn-large {
+    padding: 16px 36px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 1024px) {
+    .mission-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .values-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .page-hero h1 {
+      font-size: 2rem;
+    }
+
+    .mission-stats,
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .timeline::before {
+      left: 50px;
+    }
+
+    .timeline-year {
+      width: 40px;
+      font-size: 1rem;
+    }
+
+    .cta-actions {
+      flex-direction: column;
+    }
+  }
+
+  /* =====================================================
+     GUTCOMMON MINI-SITE STYLES
+     ===================================================== */
+
+  /* GutCommon Color Variables */
+  .gc-section {
+    --gc-earth: #5D4E37;
+    --gc-wine: #722F37;
+    --gc-gold: #C9A962;
+    --gc-cream: #F5F0E6;
+    --gc-mountain: #3D5A6C;
+    --gc-charcoal: #2D2D2D;
+  }
+
+  .gc-section {
+    margin-top: 80px;
+  }
+
+  /* GutCommon Hero with Logo */
+  .gc-hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    max-height: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .gc-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: 0;
+  }
+
+  @media (max-width: 768px) {
+    .gc-hero-bg {
+      background-attachment: scroll;
+    }
+  }
+
+  .gc-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(45, 45, 45, 0.75) 0%, rgba(93, 78, 55, 0.65) 100%);
+    z-index: 1;
+  }
+
+  .gc-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+  }
+
+  .gc-logo {
+    max-width: 400px;
+    width: 80%;
+    height: auto;
+    margin-bottom: 32px;
+    border-radius: 8px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .gc-tagline {
+    font-size: 1.5rem;
+    font-weight: 300;
+    opacity: 0.95;
+    letter-spacing: 2px;
+  }
+
+  .gc-badge-earth {
+    display: inline-block;
+    background: rgba(93, 78, 55, 0.15);
+    color: var(--gc-earth);
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .gc-badge-gold {
+    display: inline-block;
+    background: rgba(201, 169, 98, 0.2);
+    color: var(--gc-gold);
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  /* Mission Section */
+  .gc-mission {
+    background: var(--gc-cream);
+    padding: 100px 0;
+  }
+
+  .gc-mission-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .gc-mission-content h3 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--gc-earth);
+    margin-bottom: 24px;
+  }
+
+  .gc-mission-content p {
+    color: #5a5a5a;
+    line-height: 1.8;
+    margin-bottom: 16px;
+    font-size: 1.05rem;
+  }
+
+  .gc-mission-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .gc-stat {
+    background: white;
+    padding: 28px 32px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(93, 78, 55, 0.1);
+    border-left: 4px solid var(--gc-gold);
+  }
+
+  .gc-stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--gc-wine);
+    margin-bottom: 4px;
+  }
+
+  .gc-stat-label {
+    font-size: 14px;
+    color: var(--gc-earth);
+    font-weight: 500;
+  }
+
+  /* Five Pillars */
+  .gc-pillars {
+    background: white;
+    padding: 80px 0;
+  }
+
+  .gc-pillars-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--gc-earth);
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .gc-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+  }
+
+  .gc-pillar {
+    text-align: center;
+    padding: 24px 16px;
+    background: var(--gc-cream);
+    border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gc-pillar:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(93, 78, 55, 0.15);
+  }
+
+  .gc-pillar-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .gc-pillar h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gc-earth);
+    margin-bottom: 8px;
+  }
+
+  .gc-pillar p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+  }
+
+  /* Products Section */
+  .gc-products {
+    background: var(--gc-cream);
+    padding: 100px 0;
+  }
+
+  .gc-section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gc-earth);
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .gc-section-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .gc-products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  .gc-product-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(93, 78, 55, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gc-product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(93, 78, 55, 0.18);
+  }
+
+  .gc-product-image {
+    height: 320px;
+    overflow: hidden;
+  }
+
+  .gc-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .gc-product-card:hover .gc-product-image img {
+    transform: scale(1.05);
+  }
+
+  .gc-product-content {
+    padding: 32px;
+  }
+
+  .gc-product-content h5 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gc-earth);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  .gc-product-chinese {
+    font-size: 14px;
+    color: var(--gc-mountain);
+    margin-bottom: 8px;
+  }
+
+  .gc-product-subtitle {
+    font-size: 14px;
+    color: var(--gc-wine);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .gc-product-description {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .gc-product-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .gc-product-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--gc-earth);
+    padding: 8px 0;
+    border-top: 1px solid #f0ebe0;
+  }
+
+  .gc-product-features li:first-child {
+    border-top: none;
+  }
+
+  .gc-product-features svg {
+    color: var(--gc-gold);
+    flex-shrink: 0;
+  }
+
+  /* Photo Album Section */
+  .gc-album {
+    background: white;
+    padding: 100px 0;
+  }
+
+  .gc-album-filters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .gc-filter-btn {
+    padding: 10px 24px;
+    border: 2px solid var(--gc-earth);
+    background: transparent;
+    color: var(--gc-earth);
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .gc-filter-btn:hover,
+  .gc-filter-btn.active {
+    background: var(--gc-earth);
+    color: white;
+  }
+
+  .gc-album-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .gc-album-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    cursor: pointer;
+  }
+
+  .gc-album-item.hidden {
+    display: none;
+  }
+
+  .gc-album-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .gc-album-item:hover img {
+    transform: scale(1.08);
+  }
+
+  .gc-album-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 60px 16px 16px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .gc-album-item:hover .gc-album-overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .gc-album-overlay h6 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .gc-album-location {
+    font-size: 12px;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* Slideshow Modal */
+  .gc-slideshow-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .gc-slideshow-modal.active {
+    display: flex;
+    opacity: 1;
+  }
+
+  .gc-slideshow-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+  .gc-slideshow-close:hover {
+    opacity: 1;
+  }
+
+  .gc-slideshow-prev,
+  .gc-slideshow-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+    z-index: 10;
+  }
+
+  .gc-slideshow-prev:hover,
+  .gc-slideshow-next:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .gc-slideshow-prev {
+    left: 20px;
+  }
+
+  .gc-slideshow-next {
+    right: 20px;
+  }
+
+  .gc-slideshow-content {
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .gc-slideshow-img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .gc-slideshow-info {
+    text-align: center;
+    color: white;
+    padding: 24px;
+    max-width: 600px;
+  }
+
+  .gc-slideshow-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .gc-slideshow-desc {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 12px;
+  }
+
+  .gc-slideshow-location {
+    font-size: 13px;
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .gc-slideshow-gps {
+    font-family: monospace;
+    font-size: 11px;
+    opacity: 0.6;
+  }
+
+  .gc-slideshow-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .gc-slideshow-progress-bar {
+    height: 100%;
+    background: var(--gc-gold);
+    width: 0;
+    transition: width 0.1s linear;
+  }
+
+  .gc-slideshow-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 14px;
+    opacity: 0.7;
+  }
+
+  /* Discovery Tour Section */
+  .gc-tour {
+    background: var(--gc-cream);
+  }
+
+  .gc-tour-header {
+    background: linear-gradient(135deg, var(--gc-earth) 0%, var(--gc-wine) 100%);
+    padding: 80px 0;
+    text-align: center;
+    color: white;
+  }
+
+  .gc-tour-title {
+    margin-bottom: 16px;
+  }
+
+  .gc-tour-title-cn {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .gc-tour-title-en {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 300;
+    opacity: 0.9;
+  }
+
+  .gc-tour-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.85;
+  }
+
+  .gc-tour-intro {
+    padding: 60px 0;
+    background: white;
+  }
+
+  .gc-tour-objectives {
+    max-width: 800px;
+    margin: 0 auto 40px;
+  }
+
+  .gc-tour-objectives h5,
+  .gc-tour-audience h5 {
+    font-size: 1.25rem;
+    color: var(--gc-earth);
+    margin-bottom: 16px;
+  }
+
+  .gc-tour-objectives ol {
+    padding-left: 24px;
+    color: #555;
+    line-height: 1.8;
+  }
+
+  .gc-tour-objectives li {
+    margin-bottom: 12px;
+  }
+
+  .gc-tour-audience {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .gc-tour-audience p {
+    color: var(--gc-mountain);
+    font-style: italic;
+  }
+
+  /* Tour Timeline */
+  .gc-tour-timeline {
+    padding: 60px 0;
+    background: var(--gc-cream);
+  }
+
+  .gc-timeline-nav {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .gc-timeline-dot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 20px;
+    background: white;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+  }
+
+  .gc-timeline-dot:hover {
+    border-color: var(--gc-gold);
+  }
+
+  .gc-timeline-dot.active {
+    background: var(--gc-earth);
+    color: white;
+  }
+
+  .gc-timeline-day {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .gc-timeline-location {
+    font-size: 11px;
+    opacity: 0.7;
+    margin-top: 4px;
+  }
+
+  .gc-timeline-content {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 30px rgba(93, 78, 55, 0.1);
+  }
+
+  .gc-timeline-panel {
+    display: none;
+  }
+
+  .gc-timeline-panel.active {
+    display: block;
+  }
+
+  .gc-timeline-panel-header {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid var(--gc-cream);
+  }
+
+  .gc-timeline-panel-day {
+    display: inline-block;
+    background: var(--gc-gold);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .gc-timeline-panel-title {
+    font-size: 1.75rem;
+    color: var(--gc-earth);
+    margin-bottom: 8px;
+  }
+
+  .gc-timeline-panel-title-cn {
+    display: block;
+    font-size: 1rem;
+    color: var(--gc-mountain);
+    font-weight: 400;
+    margin-top: 4px;
+  }
+
+  .gc-timeline-panel-location {
+    color: var(--gc-wine);
+    font-weight: 500;
+  }
+
+  .gc-timeline-highlights {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .gc-timeline-highlights li {
+    position: relative;
+    padding: 12px 0 12px 28px;
+    color: #555;
+    border-bottom: 1px solid #f5f0e6;
+  }
+
+  .gc-timeline-highlights li:last-child {
+    border-bottom: none;
+  }
+
+  .gc-timeline-highlights li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 18px;
+    width: 8px;
+    height: 8px;
+    background: var(--gc-gold);
+    border-radius: 50%;
+  }
+
+  /* Tour Highlights */
+  .gc-tour-highlights {
+    padding: 60px 0;
+    background: white;
+  }
+
+  .gc-tour-highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .gc-tour-highlight {
+    text-align: center;
+    padding: 32px 20px;
+    background: var(--gc-cream);
+    border-radius: 16px;
+  }
+
+  .gc-tour-highlight-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .gc-tour-highlight h6 {
+    font-size: 1rem;
+    color: var(--gc-earth);
+    margin-bottom: 8px;
+  }
+
+  .gc-tour-highlight p {
+    font-size: 13px;
+    color: #666;
+  }
+
+  /* Tour CTA */
+  .gc-tour-cta {
+    padding: 60px 0;
+    background: linear-gradient(135deg, var(--gc-mountain) 0%, var(--gc-earth) 100%);
+  }
+
+  .gc-tour-cta-content {
+    text-align: center;
+    color: white;
+  }
+
+  .gc-tour-cta-content h5 {
+    font-size: 1.75rem;
+    margin-bottom: 12px;
+  }
+
+  .gc-tour-cta-content p {
+    opacity: 0.9;
+    margin-bottom: 24px;
+  }
+
+  .gc-tour-cta-btn {
+    display: inline-block;
+    background: var(--gc-gold);
+    color: white;
+    padding: 16px 40px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gc-tour-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Case Study Section */
+  .gc-casestudy {
+    background: linear-gradient(135deg, var(--gc-charcoal) 0%, var(--gc-earth) 100%);
+    padding: 100px 0;
+  }
+
+  .gc-casestudy .gc-badge-gold {
+    display: block;
+    text-align: center;
+  }
+
+  .gc-casestudy-content {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 48px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .gc-casestudy-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .gc-casestudy-partner h5 {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 4px;
+  }
+
+  .gc-casestudy-accolade {
+    color: var(--gc-gold);
+    font-weight: 500;
+  }
+
+  .gc-casestudy-details {
+    display: flex;
+    gap: 32px;
+  }
+
+  .gc-casestudy-detail {
+    text-align: right;
+  }
+
+  .gc-casestudy-label {
+    display: block;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  .gc-casestudy-value {
+    color: white;
+    font-weight: 600;
+  }
+
+  .gc-casestudy-desc {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.8;
+    margin-bottom: 32px;
+    font-size: 1.05rem;
+  }
+
+  .gc-casestudy-activities {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .gc-casestudy-activity {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 24px;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .gc-casestudy-activity h6 {
+    color: var(--gc-gold);
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .gc-casestudy-activity p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+  }
+
+  .gc-casestudy-testimonial {
+    background: rgba(201, 169, 98, 0.15);
+    padding: 40px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+    border-left: 4px solid var(--gc-gold);
+  }
+
+  .gc-casestudy-testimonial blockquote {
+    font-size: 1.5rem;
+    color: white;
+    font-style: italic;
+    margin: 0 0 20px;
+    line-height: 1.5;
+  }
+
+  .gc-casestudy-testimonial cite {
+    display: block;
+    font-style: normal;
+  }
+
+  .gc-casestudy-testimonial cite strong {
+    display: block;
+    color: var(--gc-gold);
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+
+  .gc-casestudy-testimonial cite span {
+    display: block;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+  }
+
+  .gc-casestudy-photos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .gc-casestudy-photo {
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 1;
+  }
+
+  .gc-casestudy-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .gc-casestudy-photo:hover img {
+    transform: scale(1.08);
+  }
+
+  /* Social CTA */
+  .gc-social {
+    background: linear-gradient(135deg, var(--gc-earth) 0%, var(--gc-wine) 100%);
+    padding: 80px 0;
+  }
+
+  .gc-social-content {
+    text-align: center;
+    color: white;
+  }
+
+  .gc-instagram-icon {
+    margin-bottom: 20px;
+    opacity: 0.9;
+  }
+
+  .gc-social-content h4 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .gc-social-content p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 24px;
+  }
+
+  .gc-social-btn {
+    display: inline-block;
+    background: white;
+    color: var(--gc-earth);
+    padding: 14px 36px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gc-social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Animation Classes */
+  .gc-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .gc-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* GutCommon Responsive */
+  @media (max-width: 1024px) {
+    .gc-hero {
+      height: 80vh;
+      min-height: 500px;
+    }
+
+    .gc-logo {
+      max-width: 300px;
+    }
+
+    .gc-tagline {
+      font-size: 1.25rem;
+    }
+
+    .gc-mission-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .gc-mission-stats {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .gc-stat {
+      flex: 1;
+      min-width: 200px;
+      max-width: 250px;
+    }
+
+    .gc-pillars-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .gc-album-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .gc-tour-highlights-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gc-casestudy-activities {
+      grid-template-columns: 1fr;
+    }
+
+    .gc-casestudy-photos {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .gc-hero {
+      height: 70vh;
+      min-height: 450px;
+    }
+
+    .gc-logo {
+      max-width: 250px;
+    }
+
+    .gc-tagline {
+      font-size: 1rem;
+    }
+
+    .gc-mission,
+    .gc-pillars,
+    .gc-products,
+    .gc-album {
+      padding: 60px 0;
+    }
+
+    .gc-mission-content h3 {
+      font-size: 1.75rem;
+    }
+
+    .gc-mission-stats {
+      flex-direction: column;
+    }
+
+    .gc-stat {
+      max-width: none;
+    }
+
+    .gc-pillars-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gc-pillar:last-child {
+      grid-column: 1 / -1;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .gc-products-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .gc-product-image {
+      height: 240px;
+    }
+
+    .gc-album-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gc-tour-title-cn {
+      font-size: 1.75rem;
+    }
+
+    .gc-tour-title-en {
+      font-size: 1.1rem;
+    }
+
+    .gc-timeline-nav {
+      gap: 4px;
+    }
+
+    .gc-timeline-dot {
+      padding: 12px 16px;
+      min-width: auto;
+    }
+
+    .gc-timeline-content {
+      padding: 24px;
+    }
+
+    .gc-tour-highlights-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .gc-casestudy-content {
+      padding: 24px;
+    }
+
+    .gc-casestudy-header {
+      flex-direction: column;
+    }
+
+    .gc-casestudy-details {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .gc-casestudy-detail {
+      text-align: left;
+    }
+
+    .gc-casestudy-testimonial {
+      padding: 24px;
+    }
+
+    .gc-casestudy-testimonial blockquote {
+      font-size: 1.25rem;
+    }
+
+    .gc-casestudy-photos {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gc-section-title {
+      font-size: 1.5rem;
+    }
+
+    .gc-slideshow-prev,
+    .gc-slideshow-next {
+      width: 40px;
+      height: 40px;
+    }
+
+    .gc-slideshow-prev {
+      left: 10px;
+    }
+
+    .gc-slideshow-next {
+      right: 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .gc-album-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .gc-timeline-dot {
+      padding: 10px 12px;
+    }
+
+    .gc-timeline-day {
+      font-size: 10px;
+    }
+
+    .gc-timeline-location {
+      display: none;
+    }
+  }
+</style>
+
+<script define:vars={{ albumPhotos }}>
+  // GutCommon Scroll Animations
+  document.addEventListener('DOMContentLoaded', () => {
+    const animatedElements = document.querySelectorAll('.gc-animate');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 50);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    animatedElements.forEach((el) => {
+      observer.observe(el);
+    });
+
+    // Album Filter Functionality
+    const filterBtns = document.querySelectorAll('.gc-filter-btn');
+    const albumItems = document.querySelectorAll('.gc-album-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        albumItems.forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Slideshow Functionality
+    const slideshowModal = document.getElementById('gc-slideshow');
+    const slideshowImg = slideshowModal.querySelector('.gc-slideshow-img');
+    const slideshowTitle = slideshowModal.querySelector('.gc-slideshow-title');
+    const slideshowDesc = slideshowModal.querySelector('.gc-slideshow-desc');
+    const slideshowLocationText = slideshowModal.querySelector('.gc-slideshow-location-text');
+    const slideshowGps = slideshowModal.querySelector('.gc-slideshow-gps');
+    const slideshowCounter = slideshowModal.querySelector('.gc-slideshow-counter');
+    const slideshowProgressBar = slideshowModal.querySelector('.gc-slideshow-progress-bar');
+    const closeBtn = slideshowModal.querySelector('.gc-slideshow-close');
+    const prevBtn = slideshowModal.querySelector('.gc-slideshow-prev');
+    const nextBtn = slideshowModal.querySelector('.gc-slideshow-next');
+
+    let currentIndex = 0;
+    let autoAdvanceInterval;
+    let progressInterval;
+    const autoAdvanceTime = 5000;
+
+    function getVisiblePhotos() {
+      return Array.from(albumItems).filter(item => !item.classList.contains('hidden'));
+    }
+
+    function showSlide(index) {
+      const visibleItems = getVisiblePhotos();
+      if (visibleItems.length === 0) return;
+
+      currentIndex = ((index % visibleItems.length) + visibleItems.length) % visibleItems.length;
+      const photoIndex = parseInt(visibleItems[currentIndex].dataset.index);
+      const photo = albumPhotos[photoIndex];
+
+      slideshowImg.src = photo.src;
+      slideshowImg.alt = photo.title;
+      slideshowTitle.textContent = photo.title;
+      slideshowDesc.textContent = photo.description;
+      slideshowLocationText.textContent = photo.location;
+      slideshowGps.textContent = photo.gps ? `(${photo.gps.lat.toFixed(2)}°N, ${photo.gps.lng.toFixed(2)}°E)` : '';
+      slideshowCounter.textContent = `${currentIndex + 1} / ${visibleItems.length}`;
+
+      resetProgress();
+    }
+
+    function resetProgress() {
+      clearInterval(progressInterval);
+      slideshowProgressBar.style.width = '0%';
+
+      let progress = 0;
+      progressInterval = setInterval(() => {
+        progress += 100 / (autoAdvanceTime / 100);
+        slideshowProgressBar.style.width = `${progress}%`;
+      }, 100);
+    }
+
+    function startAutoAdvance() {
+      clearInterval(autoAdvanceInterval);
+      autoAdvanceInterval = setInterval(() => {
+        showSlide(currentIndex + 1);
+      }, autoAdvanceTime);
+    }
+
+    function stopAutoAdvance() {
+      clearInterval(autoAdvanceInterval);
+      clearInterval(progressInterval);
+    }
+
+    function openSlideshow(index) {
+      currentIndex = index;
+      slideshowModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      showSlide(currentIndex);
+      startAutoAdvance();
+    }
+
+    function closeSlideshow() {
+      slideshowModal.classList.remove('active');
+      document.body.style.overflow = '';
+      stopAutoAdvance();
+    }
+
+    albumItems.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        const visibleItems = getVisiblePhotos();
+        const visibleIndex = visibleItems.indexOf(item);
+        openSlideshow(visibleIndex);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeSlideshow);
+    prevBtn.addEventListener('click', () => {
+      showSlide(currentIndex - 1);
+      startAutoAdvance();
+    });
+    nextBtn.addEventListener('click', () => {
+      showSlide(currentIndex + 1);
+      startAutoAdvance();
+    });
+
+    slideshowModal.addEventListener('click', (e) => {
+      if (e.target === slideshowModal) {
+        closeSlideshow();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!slideshowModal.classList.contains('active')) return;
+
+      if (e.key === 'Escape') closeSlideshow();
+      if (e.key === 'ArrowLeft') {
+        showSlide(currentIndex - 1);
+        startAutoAdvance();
+      }
+      if (e.key === 'ArrowRight') {
+        showSlide(currentIndex + 1);
+        startAutoAdvance();
+      }
+    });
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    slideshowModal.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    slideshowModal.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          showSlide(currentIndex + 1);
+        } else {
+          showSlide(currentIndex - 1);
+        }
+        startAutoAdvance();
+      }
+    }, { passive: true });
+
+    // Tour Timeline Navigation
+    const timelineDots = document.querySelectorAll('.gc-timeline-dot');
+    const timelinePanels = document.querySelectorAll('.gc-timeline-panel');
+
+    timelineDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const day = dot.dataset.day;
+
+        timelineDots.forEach(d => d.classList.remove('active'));
+        timelinePanels.forEach(p => p.classList.remove('active'));
+
+        dot.classList.add('active');
+        document.querySelector(`.gc-timeline-panel[data-day="${day}"]`).classList.add('active');
+      });
+    });
+  });
+</script>

@@ -1,0 +1,299 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const useCases = [
+  {
+    title: 'Cross-Border Client Engagement',
+    description: 'Reach mainland China policyholders through WeChat and Xiaohongshu with compliant, bilingual communications.',
+    stat: '3x engagement vs email'
+  },
+  {
+    title: 'Policy Renewal Campaigns',
+    description: 'Automated multi-touch renewal reminders via WeChat, WhatsApp & SMS with personalized premium quotes.',
+    stat: '45% renewal uplift'
+  },
+  {
+    title: 'Claims Status Updates',
+    description: 'Real-time claims progress notifications and document collection through customers\' preferred channels.',
+    stat: '90% satisfaction rate'
+  },
+  {
+    title: 'Agent Empowerment',
+    description: 'Equip insurance agents with automated follow-up sequences and lead nurturing tools.',
+    stat: '2x agent productivity'
+  }
+];
+
+const features = [
+  'WeChat Official Account Integration',
+  'Xiaohongshu (Rednote) Integration',
+  'WhatsApp Business API',
+  'Bilingual Campaign Support (SC/TC/EN)',
+  'Cross-border compliance (PDPO)',
+  'Insurance-specific templates'
+];
+
+const crossBorderFeatures = [
+  {
+    title: 'WeChat Mini Program Integration',
+    description: 'Direct messaging and service delivery to mainland China clients through WeChat ecosystem.'
+  },
+  {
+    title: 'Xiaohongshu Content Syndication',
+    description: 'Content marketing and lead generation for China audience through Rednote platform.'
+  },
+  {
+    title: 'Cross-border Payment Reminders',
+    description: 'Automated premium payment notifications with multi-currency support.'
+  },
+  {
+    title: 'Bilingual Customer Service',
+    description: 'Automated responses in Simplified Chinese, Traditional Chinese, and English.'
+  }
+];
+---
+
+<BaseLayout title="Insurance Solutions - RADICA" description="Connect with policyholders across borders through WeChat, WhatsApp & Xiaohongshu integration.">
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="badge">Industry Solution</span>
+      <h1>Insurance</h1>
+      <p>Connect with policyholders across borders through WeChat, WhatsApp & Xiaohongshu</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Key Use Cases</h2>
+      <p class="section-subtitle">How Hong Kong insurers use RADICA to engage policyholders across borders</p>
+
+      <div class="use-cases-grid">
+        {useCases.map((useCase) => (
+          <div class="use-case-card">
+            <h3>{useCase.title}</h3>
+            <p>{useCase.description}</p>
+            <div class="use-case-stat">{useCase.stat}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-gray">
+    <div class="container">
+      <div class="features-content">
+        <div class="features-text">
+          <h2>Cross-Border Channel Integration</h2>
+          <p>RADICA provides the channel connectivity Hong Kong insurers need to reach mainland China clients effectively.</p>
+          <ul class="features-list">
+            {features.map((feature) => (
+              <li>{feature}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Reaching Mainland China Clients</h2>
+      <p class="section-subtitle">Purpose-built capabilities for cross-border insurance communication</p>
+
+      <div class="cross-border-grid">
+        {crossBorderFeatures.map((feature) => (
+          <div class="cross-border-card">
+            <h3>{feature.title}</h3>
+            <p>{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Connect with Policyholders Across Borders?</h2>
+        <p>See how RADICA can help you engage mainland China clients through their preferred channels.</p>
+        <a href="/request-demo/" class="btn btn-white btn-large">Request Demo</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--header-dark) 0%, var(--primary-purple-dark) 100%);
+    padding: 140px 0 80px;
+    text-align: center;
+    color: white;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .page-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .page-hero p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .use-case-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .use-case-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .use-case-card p {
+    color: var(--text-gray);
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+
+  .use-case-stat {
+    display: inline-block;
+    background: rgba(220, 38, 38, 0.1);
+    color: var(--primary-purple);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .features-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .features-content > div > p {
+    color: var(--text-gray);
+    margin-bottom: 24px;
+  }
+
+  .features-list {
+    list-style: none;
+    columns: 2;
+    column-gap: 40px;
+  }
+
+  .features-list li {
+    padding: 10px 0;
+    padding-left: 28px;
+    position: relative;
+    font-size: 14px;
+  }
+
+  .features-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-purple);
+    font-weight: 700;
+  }
+
+  .cross-border-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .cross-border-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--primary-purple);
+  }
+
+  .cross-border-card h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .cross-border-card p {
+    color: var(--text-gray);
+    line-height: 1.6;
+    font-size: 14px;
+  }
+
+  .cta-section {
+    background: var(--gradient-purple);
+    padding: 80px 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    color: white;
+  }
+
+  .cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .cta-content p {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 32px;
+  }
+
+  .btn-white {
+    background: white;
+    color: var(--primary-purple);
+  }
+
+  .btn-large {
+    padding: 16px 36px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .use-cases-grid,
+    .cross-border-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .features-list {
+      columns: 1;
+    }
+
+    .page-hero h1 {
+      font-size: 2rem;
+    }
+  }
+</style>

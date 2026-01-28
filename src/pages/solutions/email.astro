@@ -1,0 +1,836 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// SEO-optimized structured data
+const schemaProduct = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "RADICA Email Marketing Platform",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web-based",
+  "description": "Enterprise email marketing platform with AI-powered personalization, drag-and-drop builder, automation workflows, and 99.9% deliverability. Send millions of emails with confidence.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "HKD",
+    "description": "14-day free trial available"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "520"
+  },
+  "featureList": [
+    "Drag-and-drop email builder",
+    "AI-powered personalization",
+    "Advanced segmentation",
+    "A/B testing",
+    "Marketing automation",
+    "Real-time analytics"
+  ],
+  "provider": {
+    "@type": "Organization",
+    "name": "RADICA",
+    "url": "https://www.radica.ai"
+  }
+};
+
+const schemaFAQ = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What email deliverability rate can I expect?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RADICA maintains a 99.9% deliverability rate through dedicated IP management, authentication protocols (SPF, DKIM, DMARC), and proactive reputation monitoring. Our deliverability team works to ensure your emails reach the inbox, not spam."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many emails can I send per month?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RADICA supports high-volume email sending with plans ranging from thousands to millions of emails per month. Our infrastructure is built for enterprise scale, with no throttling or sending limits that would impact your campaigns."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I migrate from my current email platform?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, RADICA offers assisted migration from all major email platforms including Mailchimp, HubSpot, Klaviyo, and others. We help transfer your subscriber lists, templates, and automation workflows with minimal disruption."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does RADICA support email personalization?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, RADICA offers advanced personalization including dynamic content blocks, AI-powered product recommendations, personalized send times, and conditional content based on subscriber behavior and preferences."
+      }
+    }
+  ]
+};
+
+const stats = [
+  { value: '99.9%', label: 'Deliverability' },
+  { value: '45%', label: 'Avg Open Rate Lift' },
+  { value: '1B+', label: 'Emails Sent Monthly' },
+  { value: '3x', label: 'ROI Improvement' }
+];
+
+const capabilities = [
+  {
+    icon: '🎨',
+    title: 'Drag-and-Drop Email Builder',
+    description: 'Create stunning emails without design skills. Our visual builder includes 100+ templates, mobile-responsive layouts, and brand asset management.',
+    benefits: ['100+ professional templates', 'Mobile-responsive design', 'Brand asset library', 'HTML/CSS access']
+  },
+  {
+    icon: '🎯',
+    title: 'Advanced Segmentation',
+    description: 'Send the right message to the right audience. Segment by behavior, purchase history, engagement, demographics, and custom attributes.',
+    benefits: ['Behavioral segmentation', 'RFM analysis', 'Dynamic lists', 'Predictive segments']
+  },
+  {
+    icon: '🤖',
+    title: 'AI-Powered Personalization',
+    description: 'Let AI optimize every email. From subject lines to send times to product recommendations—personalization that drives results.',
+    benefits: ['Smart subject lines', 'Optimal send time', 'Product recommendations', 'Dynamic content']
+  },
+  {
+    icon: '⚡',
+    title: 'Email Automation',
+    description: 'Set up automated email sequences that nurture leads and drive conversions 24/7. Welcome series, cart recovery, re-engagement, and more.',
+    benefits: ['Visual workflow builder', 'Behavioral triggers', 'Multi-step sequences', 'A/B testing']
+  },
+  {
+    icon: '📊',
+    title: 'Real-Time Analytics',
+    description: 'Track every open, click, and conversion. Understand what works and continuously improve with comprehensive email analytics.',
+    benefits: ['Live dashboards', 'Click heatmaps', 'Revenue attribution', 'Deliverability reports']
+  },
+  {
+    icon: '🛡️',
+    title: 'Enterprise Deliverability',
+    description: 'Your emails deserve to reach the inbox. Dedicated IPs, authentication, reputation management, and proactive monitoring included.',
+    benefits: ['Dedicated IP options', 'SPF/DKIM/DMARC', 'Spam testing', 'Reputation monitoring']
+  }
+];
+
+const emailTypes = [
+  {
+    type: 'Marketing Campaigns',
+    description: 'Promotional emails that drive revenue',
+    examples: ['Product launches', 'Sales & promotions', 'Newsletters', 'Event invitations'],
+    icon: '📣'
+  },
+  {
+    type: 'Automated Sequences',
+    description: 'Triggered emails based on behavior',
+    examples: ['Welcome series', 'Cart abandonment', 'Post-purchase', 'Re-engagement'],
+    icon: '🔄'
+  },
+  {
+    type: 'Transactional Emails',
+    description: 'Essential customer communications',
+    examples: ['Order confirmations', 'Shipping updates', 'Password resets', 'Account alerts'],
+    icon: '📋'
+  }
+];
+
+const useCases = [
+  {
+    title: 'Welcome Series Automation',
+    description: 'Convert new subscribers into customers with a strategic welcome sequence. Introduce your brand, offer first-purchase incentives, and set expectations.',
+    stat: '+40%',
+    statLabel: 'First purchase rate'
+  },
+  {
+    title: 'Cart Abandonment Recovery',
+    description: 'Recover lost revenue with perfectly-timed abandonment emails. Remind, incentivize, and convert hesitant shoppers before they forget.',
+    stat: '28%',
+    statLabel: 'Recovery rate'
+  },
+  {
+    title: 'Newsletter Engagement',
+    description: 'Keep your audience engaged with content they actually want. AI helps optimize send times, subject lines, and content for each subscriber.',
+    stat: '+45%',
+    statLabel: 'Open rate increase'
+  },
+  {
+    title: 'Win-Back Campaigns',
+    description: 'Re-engage inactive subscribers before they\'re gone for good. Segment by inactivity period and send targeted win-back offers.',
+    stat: '15%',
+    statLabel: 'Reactivation rate'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What email deliverability rate can I expect?',
+    answer: 'RADICA maintains a 99.9% deliverability rate through dedicated IP management, authentication protocols (SPF, DKIM, DMARC), and proactive reputation monitoring. Our deliverability team works to ensure your emails reach the inbox, not spam.'
+  },
+  {
+    question: 'How many emails can I send per month?',
+    answer: 'RADICA supports high-volume email sending with plans ranging from thousands to millions of emails per month. Our infrastructure is built for enterprise scale, with no throttling or sending limits that would impact your campaigns.'
+  },
+  {
+    question: 'Can I migrate from my current email platform?',
+    answer: 'Yes, RADICA offers assisted migration from all major email platforms including Mailchimp, HubSpot, Klaviyo, and others. We help transfer your subscriber lists, templates, and automation workflows with minimal disruption.'
+  },
+  {
+    question: 'Does RADICA support email personalization?',
+    answer: 'Yes, RADICA offers advanced personalization including dynamic content blocks, AI-powered product recommendations, personalized send times, and conditional content based on subscriber behavior and preferences.'
+  },
+  {
+    question: 'What integrations are available?',
+    answer: 'RADICA integrates with major CRMs (Salesforce, HubSpot), e-commerce platforms (Shopify, WooCommerce, Magento), and data tools. We also offer REST APIs and webhooks for custom integrations.'
+  },
+  {
+    question: 'Is RADICA compliant with email regulations?',
+    answer: 'Yes, RADICA is fully compliant with GDPR, CAN-SPAM, CASL, and PDPO (Hong Kong). We provide built-in consent management, unsubscribe handling, and data protection features to keep you compliant.'
+  }
+];
+---
+
+<BaseLayout
+  title="Email Marketing Platform | AI-Powered Email Automation - RADICA"
+  description="Enterprise email marketing with 99.9% deliverability. AI-powered personalization, drag-and-drop builder, advanced automation. Send millions of emails. Free demo available."
+>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaProduct)} />
+  <script type="application/ld+json" set:html={JSON.stringify(schemaFAQ)} />
+
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="badge">Email Marketing Platform</span>
+      <h1>Email Marketing That Delivers Results, Not Just Emails</h1>
+      <p>Sending emails is easy. Getting them opened, clicked, and converted? That's where RADICA excels. With <strong>99.9% deliverability</strong>, AI-powered personalization, and automation that works while you sleep.</p>
+      <div class="hero-stats">
+        {stats.map((stat) => (
+          <div class="hero-stat">
+            <div class="hero-stat-value">{stat.value}</div>
+            <div class="hero-stat-label">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+      <div class="hero-cta">
+        <a href="/request-demo/" class="btn btn-white btn-large">Start Free Trial</a>
+        <a href="/contact/" class="btn btn-outline-white btn-large">Talk to Sales</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem/Solution Section -->
+  <section class="section">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-content">
+          <h2>Email Marketing That Actually Reaches the Inbox</h2>
+          <p>
+            The average office worker receives 121 emails per day. Most get ignored—or worse, land in spam. The difference between email that works and email that wastes budget? <strong>Deliverability, personalization, and timing.</strong>
+          </p>
+          <p>
+            RADICA's email marketing platform is built for enterprise performance. Our infrastructure delivers 99.9% of emails to the inbox. Our AI personalizes every send. And our automation ensures every message arrives at exactly the right moment.
+          </p>
+          <p>
+            Whether you're sending newsletters to thousands or transactional emails to millions, RADICA gives you the tools to turn email into your highest-ROI channel.
+          </p>
+        </div>
+        <div class="intro-visual">
+          <div class="email-preview">
+            <div class="email-header">
+              <div class="email-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="email-subject">Your personalized picks are here! 🎁</span>
+            </div>
+            <div class="email-body">
+              <div class="email-greeting">Hi Sarah,</div>
+              <div class="email-text">Based on your recent browsing, we thought you'd love these:</div>
+              <div class="email-products">
+                <div class="email-product"></div>
+                <div class="email-product"></div>
+                <div class="email-product"></div>
+              </div>
+              <div class="email-cta-preview">Shop Your Picks →</div>
+            </div>
+            <div class="email-stats-preview">
+              <span>✓ Personalized</span>
+              <span>✓ Mobile-optimized</span>
+              <span>✓ A/B tested</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities Section -->
+  <section class="section section-gray" id="capabilities">
+    <div class="container">
+      <h2 class="section-title">Email Marketing Capabilities</h2>
+      <p class="section-subtitle">Everything you need to create, send, and optimize high-performing email campaigns</p>
+
+      <div class="capabilities-grid">
+        {capabilities.map((capability) => (
+          <article class="capability-card">
+            <span class="capability-icon">{capability.icon}</span>
+            <h3>{capability.title}</h3>
+            <p>{capability.description}</p>
+            <ul class="capability-benefits">
+              {capability.benefits.map((benefit) => (
+                <li>{benefit}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Email Types Section -->
+  <section class="section" id="email-types">
+    <div class="container">
+      <h2 class="section-title">Email Types for Every Purpose</h2>
+      <p class="section-subtitle">From promotional campaigns to transactional messages, we've got you covered</p>
+
+      <div class="email-types-grid">
+        {emailTypes.map((emailType) => (
+          <article class="email-type-card">
+            <span class="email-type-icon">{emailType.icon}</span>
+            <h3>{emailType.type}</h3>
+            <p>{emailType.description}</p>
+            <ul class="email-type-examples">
+              {emailType.examples.map((example) => (
+                <li>{example}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases Section -->
+  <section class="section section-gray" id="use-cases">
+    <div class="container">
+      <h2 class="section-title">Email Marketing in Action</h2>
+      <p class="section-subtitle">Real results from real email campaigns</p>
+
+      <div class="use-cases-grid">
+        {useCases.map((useCase) => (
+          <article class="use-case-card">
+            <h3>{useCase.title}</h3>
+            <p>{useCase.description}</p>
+            <div class="use-case-stat">
+              <span class="stat-value">{useCase.stat}</span>
+              <span class="stat-label">{useCase.statLabel}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section" id="faq">
+    <div class="container">
+      <h2 class="section-title">Email Marketing FAQ</h2>
+      <p class="section-subtitle">Common questions about RADICA's email platform</p>
+
+      <div class="faq-grid">
+        {faqs.map((faq) => (
+          <article class="faq-item">
+            <h3>{faq.question}</h3>
+            <p>{faq.answer}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Transform Your Email Marketing?</h2>
+        <p>Join thousands of businesses sending smarter emails with RADICA.</p>
+        <div class="cta-actions">
+          <a href="/request-demo/" class="btn btn-white btn-large">Start Free Trial</a>
+          <a href="/pricing/" class="btn btn-outline-white btn-large">View Pricing</a>
+        </div>
+        <p class="cta-note">No credit card required. 14-day free trial included.</p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--header-dark) 0%, var(--primary-purple-dark) 100%);
+    padding: 140px 0 80px;
+    text-align: center;
+    color: white;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .page-hero h1 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .page-hero > .container > p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    max-width: 750px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .hero-stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+  }
+
+  .hero-stat-label {
+    font-size: 14px;
+    opacity: 0.85;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-white {
+    background: white;
+    color: var(--primary-purple);
+  }
+
+  .btn-outline-white {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+  }
+
+  .btn-large {
+    padding: 16px 36px;
+    font-size: 16px;
+  }
+
+  /* Intro Section */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .intro-content h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  .intro-content p {
+    color: var(--text-gray);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+  }
+
+  /* Email Preview */
+  .email-preview {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+  }
+
+  .email-header {
+    background: #f5f5f5;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .email-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .email-dots span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ddd;
+  }
+
+  .email-dots span:nth-child(1) { background: #ff5f56; }
+  .email-dots span:nth-child(2) { background: #ffbd2e; }
+  .email-dots span:nth-child(3) { background: #27ca40; }
+
+  .email-subject {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  .email-body {
+    padding: 24px;
+  }
+
+  .email-greeting {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .email-text {
+    font-size: 14px;
+    color: var(--text-gray);
+    margin-bottom: 20px;
+  }
+
+  .email-products {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .email-product {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+    border-radius: 8px;
+  }
+
+  .email-cta-preview {
+    display: inline-block;
+    background: var(--primary-purple);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .email-stats-preview {
+    background: #f9fafb;
+    padding: 12px 24px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    font-size: 12px;
+    color: #22c55e;
+    font-weight: 600;
+  }
+
+  /* Capabilities Grid */
+  .capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .capability-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .capability-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .capability-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .capability-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .capability-card > p {
+    color: var(--text-gray);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .capability-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .capability-benefits li {
+    font-size: 13px;
+    color: var(--primary-purple);
+    padding: 4px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .capability-benefits li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+
+  /* Email Types Grid */
+  .email-types-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .email-type-card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+  }
+
+  .email-type-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .email-type-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+  }
+
+  .email-type-card > p {
+    color: var(--text-gray);
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .email-type-examples {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
+
+  .email-type-examples li {
+    font-size: 13px;
+    color: var(--text-dark);
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .email-type-examples li:last-child {
+    border-bottom: none;
+  }
+
+  .email-type-examples li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-purple);
+    font-weight: 700;
+  }
+
+  /* Use Cases */
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .use-case-card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .use-case-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .use-case-card > p {
+    color: var(--text-gray);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .use-case-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .use-case-stat .stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary-purple);
+  }
+
+  .use-case-stat .stat-label {
+    font-size: 14px;
+    color: var(--text-gray);
+  }
+
+  /* FAQ Section */
+  .faq-grid {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: white;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .faq-item h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+  }
+
+  .faq-item p {
+    color: var(--text-gray);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: var(--gradient-purple);
+    padding: 80px 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    color: white;
+  }
+
+  .cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .cta-content > p {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 32px;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .cta-note {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .intro-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .email-preview {
+      margin-top: 40px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .capabilities-grid,
+    .email-types-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-hero h1 {
+      font-size: 2rem;
+    }
+
+    .hero-stats {
+      gap: 24px;
+    }
+
+    .hero-stat-value {
+      font-size: 2rem;
+    }
+
+    .capabilities-grid,
+    .email-types-grid,
+    .use-cases-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

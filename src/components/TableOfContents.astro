@@ -1,0 +1,81 @@
+---
+interface Props {
+  headings: Array<{
+    depth: number;
+    slug: string;
+    text: string;
+  }>;
+}
+
+const { headings } = Astro.props;
+
+// Filter to only show h2 and h3 headings
+const filteredHeadings = headings.filter(h => h.depth >= 2 && h.depth <= 3);
+---
+
+{filteredHeadings.length > 0 && (
+  <nav class="toc" aria-label="Table of Contents">
+    <h2 class="toc-title">Table of Contents</h2>
+    <ul class="toc-list">
+      {filteredHeadings.map((heading) => (
+        <li class:list={["toc-item", `toc-depth-${heading.depth}`]}>
+          <a href={`#${heading.slug}`} class="toc-link">
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+<style>
+  .toc {
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+
+  .toc-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+  }
+
+  .toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .toc-item {
+    margin-bottom: 8px;
+  }
+
+  .toc-depth-3 {
+    padding-left: 16px;
+  }
+
+  .toc-link {
+    color: var(--text-gray);
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    display: block;
+    padding: 4px 0;
+  }
+
+  .toc-link:hover {
+    color: var(--primary);
+  }
+
+  .toc-depth-2 > .toc-link {
+    font-weight: 500;
+    color: var(--text-dark);
+  }
+
+  .toc-depth-3 > .toc-link {
+    font-size: 13px;
+  }
+</style>

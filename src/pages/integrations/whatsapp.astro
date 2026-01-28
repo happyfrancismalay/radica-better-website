@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const features = [
+  {
+    title: 'Business API Integration',
+    description: 'Direct integration with WhatsApp Business API for reliable, high-volume messaging.'
+  },
+  {
+    title: 'Template Messages',
+    description: 'Send pre-approved templates for notifications, alerts, and transactional messages.'
+  },
+  {
+    title: 'Rich Media Support',
+    description: 'Send images, documents, videos, and interactive buttons for engaging conversations.'
+  },
+  {
+    title: 'Two-Way Conversations',
+    description: 'Enable customer replies and manage conversations within the RADICA platform.'
+  }
+];
+
+const useCases = [
+  'Order confirmations and shipping updates',
+  'Appointment reminders',
+  'Customer support notifications',
+  'Marketing promotions (with opt-in)',
+  'Account verification codes',
+  'Payment confirmations'
+];
+---
+
+<BaseLayout title="WhatsApp Integration - RADICA" description="Connect RADICA with WhatsApp Business API to reach customers on their preferred messaging app.">
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="badge">Integration</span>
+      <h1>WhatsApp Business</h1>
+      <p>Reach 2+ billion users on the world's most popular messaging app</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Features</h2>
+      <div class="features-grid">
+        {features.map((feature) => (
+          <div class="feature-card">
+            <h3>{feature.title}</h3>
+            <p>{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-gray">
+    <div class="container">
+      <div class="use-cases-content">
+        <h2>Common Use Cases</h2>
+        <ul class="use-cases-list">
+          {useCases.map((useCase) => (
+            <li>{useCase}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Connect WhatsApp?</h2>
+        <a href="/request-demo/" class="btn btn-white btn-large">Request Demo</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--header-dark) 0%, #25D366 100%);
+    padding: 140px 0 80px;
+    text-align: center;
+    color: white;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .page-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .page-hero p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .feature-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .feature-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .feature-card p {
+    color: var(--text-gray);
+    line-height: 1.6;
+  }
+
+  .use-cases-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .use-cases-list {
+    list-style: none;
+    max-width: 600px;
+    margin: 0 auto;
+    columns: 2;
+    column-gap: 40px;
+  }
+
+  .use-cases-list li {
+    padding: 12px 0;
+    padding-left: 28px;
+    position: relative;
+  }
+
+  .use-cases-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-purple);
+    font-weight: 700;
+  }
+
+  .cta-section {
+    background: var(--gradient-purple);
+    padding: 80px 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    color: white;
+  }
+
+  .cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 32px;
+  }
+
+  .btn-white {
+    background: white;
+    color: var(--primary-purple);
+  }
+
+  .btn-large {
+    padding: 16px 36px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .features-grid { grid-template-columns: 1fr; }
+    .use-cases-list { columns: 1; }
+    .page-hero h1 { font-size: 2rem; }
+  }
+</style>

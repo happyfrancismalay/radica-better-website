@@ -1,0 +1,219 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BlogCard from '../../../components/BlogCard.astro';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog');
+  const categories = [...new Set(allPosts.map(post => post.data.category))];
+
+  return categories.map(category => ({
+    params: {
+      category: category.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')
+    },
+    props: {
+      category,
+      posts: allPosts
+        .filter(post => post.data.category === category)
+        .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+    }
+  }));
+}
+
+const { category, posts } = Astro.props;
+
+// Get all categories for navigation
+const allPosts = await getCollection('blog');
+const allCategories = [...new Set(allPosts.map(post => post.data.category))];
+---
+
+<BaseLayout
+  title={`${category} | RADICA Blog`}
+  description={`Explore our articles about ${category.toLowerCase()}. Insights and best practices from the RADICA team.`}
+>
+  <section class="blog-hero">
+    <div class="container">
+      <p class="breadcrumb">
+        <a href="/blog/">Blog</a> / {category}
+      </p>
+      <h1>{category}</h1>
+      <p>{posts.length} article{posts.length !== 1 ? 's' : ''}</p>
+    </div>
+  </section>
+
+  <section class="blog-categories">
+    <div class="container">
+      <div class="categories-list">
+        <a href="/blog/" class="category-link">All Posts</a>
+        {allCategories.map(cat => (
+          <a
+            href={`/blog/category/${cat.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}/`}
+            class:list={["category-link", { active: cat === category }]}
+          >
+            {cat}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="blog-list">
+    <div class="container">
+      <div class="posts-grid">
+        {posts.map(post => (
+          <BlogCard
+            title={post.data.title}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+            heroImage={post.data.heroImage}
+            category={post.data.category}
+            slug={post.slug}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="blog-cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to transform your marketing?</h2>
+        <p>See how RADICA can help you automate, personalize, and grow.</p>
+        <a href="/request-demo/" class="btn btn-primary">Request a Demo</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-hero {
+    padding: 80px 0 60px;
+    background: var(--header-dark);
+    color: white;
+    text-align: center;
+  }
+
+  .breadcrumb {
+    font-size: 0.875rem;
+    opacity: 0.7;
+    margin-bottom: 16px;
+  }
+
+  .breadcrumb a {
+    color: white;
+    text-decoration: underline;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 0.8;
+  }
+
+  .blog-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .blog-hero p {
+    font-size: 1.125rem;
+    opacity: 0.8;
+  }
+
+  .blog-categories {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border-color);
+    background: white;
+    position: sticky;
+    top: 80px;
+    z-index: 10;
+  }
+
+  .categories-list {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .category-link {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-gray);
+    background: #f3f4f6;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .category-link:hover,
+  .category-link.active {
+    background: var(--primary);
+    color: white;
+  }
+
+  .blog-list {
+    padding: 60px 0;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .blog-cta {
+    padding: 80px 0;
+    background: var(--gradient-primary);
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 12px;
+  }
+
+  .cta-content p {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 24px;
+  }
+
+  .cta-content .btn-primary {
+    background: white;
+    color: var(--primary);
+  }
+
+  .cta-content .btn-primary:hover {
+    background: #f3f4f6;
+  }
+
+  @media (max-width: 1024px) {
+    .posts-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .blog-hero h1 {
+      font-size: 2rem;
+    }
+
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .categories-list {
+      justify-content: flex-start;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      padding-bottom: 8px;
+    }
+
+    .category-link {
+      white-space: nowrap;
+    }
+  }
+</style>
