@@ -875,6 +875,13 @@ const rosewoodCaseStudy = {
         </div>
       </div>
     </div>
+
+    <!-- Back to Top of GutCommon -->
+    <button class="gc-back-to-top" id="gc-back-to-top" aria-label="Back to top">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
   </section>
 
   <!-- CTA Section -->
@@ -1154,7 +1161,7 @@ const rosewoodCaseStudy = {
      ===================================================== */
   .gc-mini-nav {
     position: sticky;
-    top: 0;
+    top: 80px;
     z-index: 900;
     background: rgba(245, 240, 230, 0.95);
     backdrop-filter: blur(10px);
@@ -1169,6 +1176,38 @@ const rosewoodCaseStudy = {
   .gc-mini-nav.visible {
     opacity: 1;
     pointer-events: auto;
+  }
+
+  /* Back to Top button */
+  .gc-back-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--gc-earth);
+    color: var(--gc-cream);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    z-index: 950;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  .gc-back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .gc-back-to-top:hover {
+    transform: translateY(-2px);
+    background: var(--gc-wine);
   }
 
   .gc-mini-nav-inner {
@@ -3295,31 +3334,38 @@ const rosewoodCaseStudy = {
       });
     });
 
-    // Sticky Mini-Nav: show when hero scrolls out, hide when section ends
+    // Sticky Mini-Nav + Back to Top: show when hero scrolls out, hide when section ends
     const miniNav = document.getElementById('gc-mini-nav');
+    const backToTop = document.getElementById('gc-back-to-top');
     const gcHero = document.querySelector('.gc-hero');
     const gcSocialSection = document.querySelector('.gc-social');
 
-    if (miniNav && gcHero) {
-      // Show nav once the hero is no longer visible
+    if (gcHero && (miniNav || backToTop)) {
+      // Show once the hero scrolls above the viewport
       new IntersectionObserver((entries) => {
         const entry = entries[0];
-        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
-          miniNav.classList.add('visible');
-        } else {
-          miniNav.classList.remove('visible');
-        }
+        const show = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+        if (miniNav) miniNav.classList.toggle('visible', show);
+        if (backToTop) backToTop.classList.toggle('visible', show);
       }, { threshold: 0 }).observe(gcHero);
 
-      // Hide nav once the Social CTA (last block) scrolls above the viewport
+      // Hide once the Social CTA scrolls above the viewport
       if (gcSocialSection) {
         new IntersectionObserver((entries) => {
           const entry = entries[0];
           if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
-            miniNav.classList.remove('visible');
+            if (miniNav) miniNav.classList.remove('visible');
+            if (backToTop) backToTop.classList.remove('visible');
           }
         }, { threshold: 0 }).observe(gcSocialSection);
       }
+    }
+
+    // Back to Top click → smooth scroll to top of GutCommon
+    if (backToTop) {
+      backToTop.addEventListener('click', () => {
+        document.getElementById('gutcommon').scrollIntoView({ behavior: 'smooth' });
+      });
     }
   });
 </script>
