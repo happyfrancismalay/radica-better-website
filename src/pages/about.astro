@@ -3295,38 +3295,30 @@ const rosewoodCaseStudy = {
       });
     });
 
-    // Sticky Mini-Nav visibility (show when #gutcommon hero has scrolled past)
-    const gcSection = document.getElementById('gutcommon');
+    // Sticky Mini-Nav: show when hero scrolls out, hide when section ends
     const miniNav = document.getElementById('gc-mini-nav');
+    const gcHero = document.querySelector('.gc-hero');
+    const gcSocialSection = document.querySelector('.gc-social');
 
-    if (gcSection && miniNav) {
-      const navObserver = new IntersectionObserver((entries) => {
+    if (miniNav && gcHero) {
+      // Show nav once the hero is no longer visible
+      new IntersectionObserver((entries) => {
         const entry = entries[0];
         if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
           miniNav.classList.add('visible');
         } else {
           miniNav.classList.remove('visible');
         }
-      }, {
-        threshold: [0, 1],
-        rootMargin: '-1px 0px 0px 0px'
-      });
+      }, { threshold: 0 }).observe(gcHero);
 
-      navObserver.observe(gcSection);
-
-      // Hide nav when user scrolls past the entire #gutcommon section
-      const socialSection = gcSection.querySelector('.gc-social');
-      if (socialSection) {
-        const gcSectionEnd = new IntersectionObserver((entries) => {
+      // Hide nav once the Social CTA (last block) scrolls above the viewport
+      if (gcSocialSection) {
+        new IntersectionObserver((entries) => {
           const entry = entries[0];
           if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
             miniNav.classList.remove('visible');
           }
-        }, {
-          threshold: 0,
-          rootMargin: '-100% 0px 0px 0px'
-        });
-        gcSectionEnd.observe(socialSection);
+        }, { threshold: 0 }).observe(gcSocialSection);
       }
     }
   });
