@@ -1,0 +1,745 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const events = [
+  {
+    title: 'AI Marketing Summit 2026',
+    date: 'March 15, 2026',
+    location: 'Hong Kong Convention Centre',
+    description: 'Explore the future of AI-powered marketing with industry leaders and a preview of RADICA\'s latest platform innovations.',
+    gradient: 'linear-gradient(135deg, #DC2626 0%, #EF4444 100%)'
+  },
+  {
+    title: 'Omnichannel Strategy Workshop',
+    date: 'April 8, 2026',
+    location: 'Singapore',
+    description: 'Hands-on workshop on building seamless, personalised customer journeys across Email, WhatsApp, and SMS channels.',
+    gradient: 'linear-gradient(135deg, #19242D 0%, #374151 100%)'
+  },
+  {
+    title: 'SEA Digital Marketing Conference',
+    date: 'May 20, 2026',
+    location: 'Jakarta, Indonesia',
+    description: 'RADICA\'s keynote on personalisation at scale — strategies built for Southeast Asian enterprise markets.',
+    gradient: 'linear-gradient(135deg, #059669 0%, #10B981 100%)'
+  }
+];
+
+const clients = [
+  { name: 'Banking & Finance', abbr: 'BF', count: '45+', bg: '#3B82F6' },
+  { name: 'Insurance',         abbr: 'IN', count: '28+', bg: '#8B5CF6' },
+  { name: 'Retail & E-Commerce', abbr: 'RE', count: '62+', bg: '#10B981' },
+  { name: 'Healthcare',        abbr: 'HC', count: '19+', bg: '#F59E0B' },
+  { name: 'Technology',        abbr: 'TC', count: '34+', bg: '#EC4899' },
+  { name: 'Luxury & Lifestyle', abbr: 'LL', count: '15+', bg: '#06B6D4' }
+];
+
+const partners = [
+  { name: 'Salesforce',            category: 'CRM',       catColor: '#EF4444', description: 'Seamless CRM sync for enterprise sales teams.' },
+  { name: 'HubSpot',               category: 'Marketing', catColor: '#F59E0B', description: 'Full marketing automation and lead management.' },
+  { name: 'WhatsApp Business API', category: 'Messaging', catColor: '#10B981', description: 'Official certified WhatsApp Business partner.' },
+  { name: 'Google Analytics 4',    category: 'Analytics', catColor: '#8B5CF6', description: 'Deep attribution and performance insights.' },
+  { name: 'Twilio',                category: 'SMS',       catColor: '#06B6D4', description: 'Global SMS delivery with 99.9% uptime SLA.' },
+  { name: 'Microsoft Dynamics',    category: 'CRM',       catColor: '#EF4444', description: 'Enterprise-grade CRM bridge and automation.' }
+];
+---
+
+<BaseLayout title="Updating – RADICA" description="Stay updated on RADICA's upcoming events, trusted enterprise clients, and technology partners.">
+
+  <!-- ─── Hero ─────────────────────────────────────────── -->
+  <section class="up-hero">
+    <!-- Abstract network illustration -->
+    <svg class="up-hero-illustration" viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Concentric rings -->
+      <circle cx="370" cy="180" r="175" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <circle cx="370" cy="180" r="135" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+      <circle cx="370" cy="180" r="95"  stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+      <!-- Central glow -->
+      <circle cx="370" cy="180" r="52" fill="rgba(220,38,38,0.18)"/>
+      <circle cx="370" cy="180" r="28" fill="rgba(220,38,38,0.30)"/>
+      <!-- Orbit nodes -->
+      <circle cx="295" cy="72"  r="5.5" fill="rgba(255,255,255,0.70)"/>
+      <circle cx="455" cy="55"  r="4"   fill="rgba(255,255,255,0.50)"/>
+      <circle cx="510" cy="180" r="6"   fill="rgba(255,255,255,0.60)"/>
+      <circle cx="465" cy="300" r="4.5" fill="rgba(255,255,255,0.50)"/>
+      <circle cx="280" cy="295" r="5"   fill="rgba(255,255,255,0.60)"/>
+      <circle cx="228" cy="165" r="4"   fill="rgba(255,255,255,0.45)"/>
+      <circle cx="260" cy="60"  r="3"   fill="rgba(255,255,255,0.35)"/>
+      <circle cx="430" cy="100" r="3"   fill="rgba(255,255,255,0.40)"/>
+      <!-- Connecting lines -->
+      <line x1="295" y1="72"  x2="350" y2="152" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+      <line x1="455" y1="55"  x2="380" y2="152" stroke="rgba(255,255,255,0.13)" stroke-width="1.5"/>
+      <line x1="510" y1="180" x2="398" y2="180" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+      <line x1="465" y1="300" x2="385" y2="208" stroke="rgba(255,255,255,0.13)" stroke-width="1.5"/>
+      <line x1="280" y1="295" x2="355" y2="208" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+      <line x1="228" y1="165" x2="342" y2="170" stroke="rgba(255,255,255,0.11)" stroke-width="1.5"/>
+      <line x1="260" y1="60"  x2="295" y2="72"  stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+      <line x1="430" y1="100" x2="455" y2="55"  stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+      <!-- Tiny accent dots -->
+      <circle cx="332" cy="118" r="2.5" fill="rgba(255,255,255,0.28)"/>
+      <circle cx="405" cy="210" r="2"   fill="rgba(255,255,255,0.22)"/>
+      <circle cx="340" cy="238" r="2.5" fill="rgba(255,255,255,0.28)"/>
+    </svg>
+
+    <div class="container up-hero-content">
+      <h1>What's New at RADICA</h1>
+      <p>Upcoming events, trusted clients, and the technology partners powering our platform</p>
+      <a href="/contact/" class="up-btn-hero">Send an Enquiry</a>
+    </div>
+  </section>
+
+  <!-- ─── Events ───────────────────────────────────────── -->
+  <section class="up-section">
+    <div class="container">
+      <div class="up-section-head">
+        <h2>Events</h2>
+        <p>Connect with the RADICA team at upcoming industry events and workshops</p>
+      </div>
+
+      <div class="up-events-grid">
+        {events.map((event) => (
+          <article class="up-event-card">
+            <div class="up-event-header" style={`background: ${event.gradient}`}>
+              <!-- Calendar icon -->
+              <svg class="up-event-icon" width="52" height="52" viewBox="0 0 24 24" fill="none"
+                   stroke="rgba(255,255,255,0.92)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8"  y1="2" x2="8"  y2="6"/>
+                <line x1="3"  y1="10" x2="21" y2="10"/>
+                <line x1="8"  y1="16" x2="16" y2="16"/>
+              </svg>
+              <span class="up-badge">Upcoming</span>
+            </div>
+
+            <div class="up-event-body">
+              <h3>{event.title}</h3>
+              <div class="up-event-meta">
+                <span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  {event.date}
+                </span>
+                <span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  {event.location}
+                </span>
+              </div>
+              <p class="up-event-desc">{event.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="up-enquiry-row">
+        <a href="/contact/" class="up-btn-outline">Enquire About Events</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Our Clients ──────────────────────────────────── -->
+  <section class="up-section up-clients-bg">
+    <div class="container">
+      <!-- Header + stats row -->
+      <div class="up-clients-top">
+        <div>
+          <div class="up-section-head up-left">
+            <h2>Our Clients</h2>
+            <p>Trusted by enterprises across Asia-Pacific</p>
+          </div>
+        </div>
+        <div class="up-stats-row">
+          <div class="up-stat">
+            <span class="up-stat-num">500+</span>
+            <span class="up-stat-lbl">Enterprise Clients</span>
+          </div>
+          <div class="up-stat">
+            <span class="up-stat-num">8</span>
+            <span class="up-stat-lbl">Countries</span>
+          </div>
+          <div class="up-stat">
+            <span class="up-stat-num">98%</span>
+            <span class="up-stat-lbl">Retention Rate</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Network illustration -->
+      <div class="up-network-wrap">
+        <svg class="up-network-svg" viewBox="0 0 740 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Connection lines first (behind nodes) -->
+          <line x1="370" y1="100" x2="100" y2="50"  stroke="#E5E7EB" stroke-width="2.5"/>
+          <line x1="370" y1="100" x2="230" y2="50"  stroke="#E5E7EB" stroke-width="2.5"/>
+          <line x1="370" y1="100" x2="510" y2="50"  stroke="#E5E7EB" stroke-width="2.5"/>
+          <line x1="370" y1="100" x2="640" y2="50"  stroke="#E5E7EB" stroke-width="2.5"/>
+          <line x1="370" y1="100" x2="165" y2="155" stroke="#E5E7EB" stroke-width="2.5"/>
+          <line x1="370" y1="100" x2="575" y2="155" stroke="#E5E7EB" stroke-width="2.5"/>
+          <!-- Outer glow ring -->
+          <circle cx="370" cy="100" r="42" stroke="#DC2626" stroke-width="1" stroke-opacity="0.25" fill="none"/>
+          <!-- Industry satellite nodes -->
+          <circle cx="100" cy="50"  r="30" fill="#3B82F6"/>
+          <circle cx="230" cy="50"  r="30" fill="#8B5CF6"/>
+          <circle cx="510" cy="50"  r="30" fill="#10B981"/>
+          <circle cx="640" cy="50"  r="30" fill="#F59E0B"/>
+          <circle cx="165" cy="155" r="30" fill="#EC4899"/>
+          <circle cx="575" cy="155" r="30" fill="#06B6D4"/>
+          <!-- Central hub (drawn last = on top) -->
+          <circle cx="370" cy="100" r="38" fill="#DC2626"/>
+          <circle cx="370" cy="100" r="26" fill="#B91C1C"/>
+        </svg>
+      </div>
+
+      <!-- Industry cards -->
+      <div class="up-clients-grid">
+        {clients.map((c) => (
+          <div class="up-client-card">
+            <div class="up-client-icon" style={`background: ${c.bg}`}>{c.abbr}</div>
+            <h3>{c.name}</h3>
+            <p>{c.count} clients</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="up-enquiry-row">
+        <a href="/contact/" class="up-btn-outline">Enquire About Becoming a Client</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Partners ─────────────────────────────────────── -->
+  <section class="up-section">
+    <div class="container">
+      <div class="up-section-head">
+        <h2>Partners</h2>
+        <p>Trusted technology and integration partners powering the RADICA ecosystem</p>
+      </div>
+
+      <!-- Decorative connector strip -->
+      <div class="up-connector">
+        <svg viewBox="0 0 900 44" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <!-- Dots along a gentle wave -->
+          <path d="M0 22 Q150 6 300 22 T600 22 T900 22" stroke="#E5E7EB" stroke-width="1.5" fill="none"/>
+          <circle cx="0"   cy="22" r="4" fill="#DC2626"/>
+          <circle cx="150" cy="6"  r="3" fill="#E5E7EB"/>
+          <circle cx="300" cy="22" r="4" fill="#DC2626" opacity="0.6"/>
+          <circle cx="450" cy="38" r="3" fill="#E5E7EB"/>
+          <circle cx="600" cy="22" r="4" fill="#DC2626" opacity="0.4"/>
+          <circle cx="750" cy="6"  r="3" fill="#E5E7EB"/>
+          <circle cx="900" cy="22" r="4" fill="#DC2626" opacity="0.6"/>
+        </svg>
+      </div>
+
+      <div class="up-partners-grid">
+        {partners.map((p) => (
+          <div class="up-partner-card">
+            <div class="up-partner-top">
+              <div class="up-partner-logo">{p.name.charAt(0)}</div>
+              <span class="up-partner-badge" style={`background: ${p.catColor}22; color: ${p.catColor}`}>{p.category}</span>
+            </div>
+            <h3>{p.name}</h3>
+            <p>{p.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="up-enquiry-row">
+        <a href="/contact/" class="up-btn-outline">Enquire About Integrations</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ──────────────────────────────────────────── -->
+  <section class="up-cta">
+    <div class="container">
+      <div class="up-cta-inner">
+        <h2>Ready to connect with RADICA?</h2>
+        <p>Send us an enquiry and our team will get back to you within 24 hours.</p>
+        <a href="/contact/" class="btn btn-white up-btn-large">Send Enquiry</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ─── Hero ─────────────────────────────────────────── */
+  .up-hero {
+    background: linear-gradient(135deg, var(--header-dark) 0%, #1c2e3a 60%, #0f1c24 100%);
+    padding: 140px 0 90px;
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+  }
+
+  .up-hero-illustration {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 580px;
+    height: auto;
+    pointer-events: none;
+  }
+
+  .up-hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white;
+  }
+
+  .up-hero-content h1 {
+    font-size: 3.25rem;
+    font-weight: 800;
+    margin-bottom: 18px;
+    line-height: 1.15;
+  }
+
+  .up-hero-content p {
+    font-size: 1.2rem;
+    opacity: 0.82;
+    max-width: 540px;
+    margin: 0 auto 36px;
+    line-height: 1.6;
+  }
+
+  .up-btn-hero {
+    display: inline-block;
+    background: white;
+    color: var(--header-dark);
+    padding: 15px 40px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 15px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .up-btn-hero:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.28);
+  }
+
+  /* ─── Shared section ───────────────────────────────── */
+  .up-section {
+    padding: 88px 0;
+  }
+
+  .up-section-head {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+
+  .up-section-head.up-left {
+    text-align: left;
+  }
+
+  .up-section-head h2 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+  }
+
+  .up-section-head p {
+    font-size: 1.05rem;
+    color: var(--text-gray);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .up-section-head.up-left p {
+    margin: 0;
+  }
+
+  .up-enquiry-row {
+    text-align: center;
+    margin-top: 52px;
+  }
+
+  .up-btn-outline {
+    display: inline-block;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 15px;
+    border: 2px solid var(--primary);
+    padding: 13px 32px;
+    border-radius: 8px;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+  }
+
+  .up-btn-outline:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  /* ─── Events ───────────────────────────────────────── */
+  .up-events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .up-event-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .up-event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.13);
+  }
+
+  .up-event-header {
+    padding: 30px 24px 24px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .up-event-icon {
+    opacity: 0.92;
+    flex-shrink: 0;
+  }
+
+  .up-badge {
+    background: rgba(255, 255, 255, 0.22);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+
+  .up-event-body {
+    padding: 24px 24px 28px;
+  }
+
+  .up-event-body h3 {
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+    line-height: 1.35;
+  }
+
+  .up-event-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 14px;
+  }
+
+  .up-event-meta span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.84rem;
+    color: var(--text-gray);
+  }
+
+  .up-event-desc {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+  }
+
+  /* ─── Clients ──────────────────────────────────────── */
+  .up-clients-bg {
+    background: #f3f4f6;
+  }
+
+  .up-clients-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 48px;
+    margin-bottom: 52px;
+  }
+
+  .up-stats-row {
+    display: flex;
+    gap: 48px;
+    flex-shrink: 0;
+  }
+
+  .up-stat {
+    text-align: center;
+  }
+
+  .up-stat-num {
+    display: block;
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+  }
+
+  .up-stat-lbl {
+    display: block;
+    font-size: 0.76rem;
+    color: var(--text-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-top: 6px;
+  }
+
+  /* Network illustration */
+  .up-network-wrap {
+    max-width: 740px;
+    margin: 0 auto 44px;
+  }
+
+  .up-network-svg {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Client industry cards */
+  .up-clients-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+  }
+
+  .up-client-card {
+    background: white;
+    border-radius: 14px;
+    padding: 28px 14px 24px;
+    text-align: center;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .up-client-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+  }
+
+  .up-client-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+
+  .up-client-card h3 {
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+
+  .up-client-card p {
+    font-size: 0.78rem;
+    color: var(--text-gray);
+  }
+
+  /* ─── Partners ─────────────────────────────────────── */
+  .up-connector {
+    max-width: 900px;
+    margin: 0 auto 44px;
+  }
+
+  .up-connector svg {
+    width: 100%;
+    height: 44px;
+  }
+
+  .up-partners-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .up-partner-card {
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 28px 24px;
+    background: white;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+  }
+
+  .up-partner-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 6px 24px rgba(220, 38, 38, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .up-partner-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+  }
+
+  .up-partner-logo {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: var(--header-dark);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.15rem;
+  }
+
+  .up-partner-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+
+  .up-partner-card h3 {
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+
+  .up-partner-card p {
+    font-size: 0.89rem;
+    color: var(--text-gray);
+    line-height: 1.55;
+  }
+
+  /* ─── Bottom CTA ───────────────────────────────────── */
+  .up-cta {
+    background: var(--gradient-purple);
+    padding: 88px 0;
+  }
+
+  .up-cta-inner {
+    text-align: center;
+    color: white;
+  }
+
+  .up-cta-inner h2 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .up-cta-inner p {
+    font-size: 1.15rem;
+    opacity: 0.9;
+    max-width: 500px;
+    margin: 0 auto 36px;
+    line-height: 1.6;
+  }
+
+  .up-btn-large {
+    padding: 16px 44px;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .up-btn-large:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+  }
+
+  /* ─── Responsive ─ 1024px ─────────────────────────── */
+  @media (max-width: 1024px) {
+    .up-events-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .up-clients-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .up-clients-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .up-stats-row {
+      gap: 32px;
+    }
+  }
+
+  /* ─── Responsive ─ 768px ──────────────────────────── */
+  @media (max-width: 768px) {
+    .up-partners-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .up-hero-illustration {
+      opacity: 0.25;
+      width: 420px;
+    }
+
+    .up-network-wrap {
+      max-width: 100%;
+    }
+  }
+
+  /* ─── Responsive ─ 640px ──────────────────────────── */
+  @media (max-width: 640px) {
+    .up-hero {
+      padding: 110px 0 70px;
+      min-height: auto;
+    }
+
+    .up-hero-content h1 {
+      font-size: 2.1rem;
+    }
+
+    .up-hero-illustration {
+      opacity: 0.15;
+      width: 320px;
+    }
+
+    .up-section {
+      padding: 64px 0;
+    }
+
+    .up-section-head h2 {
+      font-size: 1.9rem;
+    }
+
+    .up-events-grid,
+    .up-clients-grid,
+    .up-partners-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .up-cta-inner h2 {
+      font-size: 1.9rem;
+    }
+
+    .up-stats-row {
+      gap: 24px;
+    }
+
+    .up-stat-num {
+      font-size: 1.7rem;
+    }
+  }
+</style>
