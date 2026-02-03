@@ -6,7 +6,7 @@
 set -e
 
 # Configuration
-BUCKET_NAME="radicaai-static"
+BUCKET_NAME="radica-better-website-static"
 REGION="asia-east1"
 PROJECT_ID="${GCP_PROJECT_ID:-your-project-id}"
 
@@ -49,11 +49,9 @@ gsutil -m setmeta -h "Cache-Control:public, max-age=31536000, immutable" \
 gsutil -m setmeta -h "Cache-Control:public, max-age=86400" \
     "gs://${BUCKET_NAME}/**/*.{png,jpg,jpeg,gif,svg,webp,ico}" 2>/dev/null || true
 
+# Invalidate CDN cache so changes are live immediately
+echo "🔄 Invalidating CDN cache..."
+gcloud compute url-maps invalidate-cdn-cache radica-website-urlmap --path="/*" 2>/dev/null || echo "⚠️  CDN invalidation skipped (url-map not found or not authorised)"
+
 echo "✅ Deployment complete!"
-echo ""
-echo "📋 Next steps:"
-echo "1. Update Cloudflare DNS: CNAME → c.storage.googleapis.com"
-echo "2. Configure SSL in Cloudflare"
-echo "3. Set up Page Rules for caching"
-echo ""
-echo "🌍 Your site is live at: https://storage.googleapis.com/${BUCKET_NAME}/index.html"
+echo "🌍 Your site is live at: https://www.radicaai.com"

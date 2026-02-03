@@ -19,11 +19,13 @@ const { title, description = 'RADICA - AI-Powered Marketing Automation Platform'
 
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBBCCXXBHR"></script>
-  <script>
+  <script is:global>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-JBBCCXXBHR');
+    gtag('config', 'G-JBBCCXXBHR', {
+      cookie_domain_auto: true
+    });
   </script>
   <meta name="description" content={description} />
   <meta name="robots" content="index, follow" />

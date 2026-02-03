@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://radicaai.com',
+  site: 'https://www.radicaai.com',
   trailingSlash: 'always',
   build: {
     format: 'directory'
