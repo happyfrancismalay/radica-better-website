@@ -1168,14 +1168,6 @@ const rosewoodCaseStudy = {
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(93, 78, 55, 0.1);
     padding: 12px 0;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-
-  .gc-mini-nav.visible {
-    opacity: 1;
-    pointer-events: auto;
   }
 
   /* Back to Top button */
@@ -3334,37 +3326,20 @@ const rosewoodCaseStudy = {
       });
     });
 
-    // Sticky Mini-Nav + Back to Top: show when hero scrolls out, hide when section ends
-    const miniNav = document.getElementById('gc-mini-nav');
-    const backToTop = document.getElementById('gc-back-to-top');
-    const gcHero = document.querySelector('.gc-hero');
-    const gcSocialSection = document.querySelector('.gc-social');
+    // Back to Top button: show when scrolled past the hero, hide when leaving #gutcommon
+    const backToTopBtn = document.getElementById('gc-back-to-top');
+    const gcHeroEl = document.querySelector('.gc-hero');
+    const gcSectionEl = document.getElementById('gutcommon');
 
-    if (gcHero && (miniNav || backToTop)) {
-      // Show once the hero scrolls above the viewport
-      new IntersectionObserver((entries) => {
-        const entry = entries[0];
-        const show = !entry.isIntersecting && entry.boundingClientRect.top < 0;
-        if (miniNav) miniNav.classList.toggle('visible', show);
-        if (backToTop) backToTop.classList.toggle('visible', show);
-      }, { threshold: 0 }).observe(gcHero);
+    if (backToTopBtn && gcHeroEl && gcSectionEl) {
+      window.addEventListener('scroll', () => {
+        const heroBottom = gcHeroEl.getBoundingClientRect().bottom;
+        const sectionBottom = gcSectionEl.getBoundingClientRect().bottom;
+        backToTopBtn.classList.toggle('visible', heroBottom < 0 && sectionBottom > 0);
+      }, { passive: true });
 
-      // Hide once the Social CTA scrolls above the viewport
-      if (gcSocialSection) {
-        new IntersectionObserver((entries) => {
-          const entry = entries[0];
-          if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
-            if (miniNav) miniNav.classList.remove('visible');
-            if (backToTop) backToTop.classList.remove('visible');
-          }
-        }, { threshold: 0 }).observe(gcSocialSection);
-      }
-    }
-
-    // Back to Top click → smooth scroll to top of GutCommon
-    if (backToTop) {
-      backToTop.addEventListener('click', () => {
-        document.getElementById('gutcommon').scrollIntoView({ behavior: 'smooth' });
+      backToTopBtn.addEventListener('click', () => {
+        gcSectionEl.scrollIntoView({ behavior: 'smooth' });
       });
     }
   });
