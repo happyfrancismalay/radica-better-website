@@ -347,6 +347,9 @@ const rosewoodCaseStudy = {
           <li><a href="#gc-products">Products</a></li>
           <li><a href="#gc-wine-dadi">水乳大地</a></li>
           <li><a href="#gc-where-to-taste">Where to Taste</a></li>
+          <li><a href="#gc-tour">Wine Journey</a></li>
+          <li><a href="#gc-album">Album</a></li>
+          <li><a href="#gc-casestudy">Case Study</a></li>
         </ul>
       </div>
     </nav>
@@ -378,7 +381,7 @@ const rosewoodCaseStudy = {
         <div class="gc-narrative">
 
           <div class="gc-narrative-block">
-            <p class="gc-narrative-text">It began with a journey. Francis, the mind behind Gut Common, spent years wandering through Tibet and the ethnic minority villages of Yunnan — not as a tourist, but as a listener. He sat with farmers, shared meals under open skies, and witnessed how centuries-old traditions sustained entire communities long before the modern world took notice.</p>
+            <p class="gc-narrative-text">It began with a journey. Francis, the mind behind Gut Common, spent years wandering through Tibetan areas and the ethnic minority villages of Yunnan — not as a tourist, but as a listener. He sat with farmers, shared meals under open skies, and witnessed how centuries-old traditions sustained entire communities long before the modern world took notice.</p>
             <p class="gc-narrative-text-cn">一切從一段旅途開始。Gut Common 的創辦人 Francis，多年來在西藏和雲南少數民族村落之間漫遊——不是作為旅遊者，而是作為傾聽者。他與農民同坐，在露天下共享餐食，親眼目睹數百年來古老傳統如何維繫著整個社群。</p>
           </div>
 
@@ -500,9 +503,9 @@ const rosewoodCaseStudy = {
         <div class="gc-wine-makers-text">
           <span class="gc-editorial-badge">The Winemakers</span>
           <h3 class="gc-wine-makers-title">Guided by two worlds</h3>
-          <p>Yves, a Swiss winemaker with roots at <em>Château Mouton Rothschild</em>, and Helene, a Tibetan woman raised among the mountain vineyards — together they bring a rare philosophy: minimal intervention, no herbicides, and a deep respect for the land.</p>
+          <p>Yves Roduit, from Chateau Roduit Winery, a Swiss winemaker, and Helene, a Tibetan woman raised among the mountain vineyards — together they bring a rare philosophy: minimal intervention, no herbicides, and a deep respect for the land.</p>
           <p>Each vine yields only 6–8 clusters per season. This is not scarcity by accident. It is devotion by design.</p>
-          <p class="gc-wine-makers-cn">Yves，一位源自 Château Mouton Rothschild 的瑞士釀酒師，與 Helene，一位在山中葡萬園長大的藏族女性——他們共同秉持一種罕見的哲學：最小干預、不使用除草劑，以及對大地的深切尊敬。每株藉蔓每季僅結出 6–8 串葡萬。這不是偶然的稀少。這是刻意的奉獻。</p>
+          <p class="gc-wine-makers-cn">Yves Roduit，來自 Chateau Roduit Winery 的瑞士釀酒師，與 Helene，一位在山中葡萬園長大的藏族女性——他們共同秉持一種罕見的哲學：最小干預、不使用除草劑，以及對大地的深切尊敬。每株藉蔓每季僅結出 6–8 串葡萬。這不是偶然的稀少。這是刻意的奉獻。</p>
         </div>
         <div class="gc-wine-makers-img">
           <img src="/images/gutcommon/album/3219985555a732eba71fa8e902ace161.jpg" alt="Tibetan winemaker tradition" loading="lazy" />
@@ -585,7 +588,7 @@ const rosewoodCaseStudy = {
             <div class="gc-where-buy">
               <h4>Buy Online</h4>
               <p>Available exclusively through MyiCellar, Hong Kong's premier online wine merchant.</p>
-              <a href="https://www.myicellar.com" target="_blank" rel="noopener noreferrer" class="gc-where-cta">Shop on MyiCellar →</a>
+              <a href="https://shop.myicellar.com/web/brandPage?id=3707&name=Chateau-Roduit" target="_blank" rel="noopener noreferrer" class="gc-where-cta">Shop on MyiCellar →</a>
             </div>
             <div class="gc-where-taste-list">
               <h4>Taste In Person</h4>
@@ -3009,11 +3012,11 @@ const rosewoodCaseStudy = {
 
     /* Mini-nav responsive — 768px */
     .gc-mini-nav-links {
-      gap: 20px;
+      gap: 14px;
     }
 
     .gc-mini-nav-links a {
-      font-size: 12px;
+      font-size: 11px;
     }
 
     .gc-product-image {
@@ -3121,11 +3124,18 @@ const rosewoodCaseStudy = {
 
     /* Mini-nav responsive — 480px */
     .gc-mini-nav-inner {
-      gap: 16px;
+      flex-direction: column;
+      gap: 8px;
     }
 
     .gc-mini-nav-links {
-      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .gc-mini-nav-links a {
+      font-size: 11px;
     }
   }
 </style>
