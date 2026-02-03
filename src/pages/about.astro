@@ -343,6 +343,8 @@ const rosewoodCaseStudy = {
         <img src="/images/gutcommon/logo.jpg" alt="Gut Common" class="gc-mini-nav-logo" />
         <ul class="gc-mini-nav-links">
           <li><a href="#gc-brand-story">Brand Story</a></li>
+          <li><a href="#gc-pillars">Five Pillars</a></li>
+          <li><a href="#gc-products">Products</a></li>
           <li><a href="#gc-wine-dadi">水乳大地</a></li>
           <li><a href="#gc-where-to-taste">Where to Taste</a></li>
         </ul>
@@ -416,6 +418,55 @@ const rosewoodCaseStudy = {
         </div>
       </div>
     </section>
+
+    <!-- Five Pillars -->
+    <div class="gc-pillars" id="gc-pillars">
+      <div class="container">
+        <h4 class="gc-pillars-title gc-animate">Our Five Pillars</h4>
+        <div class="gc-pillars-grid">
+          {gutcommonPillars.map((pillar) => (
+            <div class="gc-pillar gc-animate">
+              <span class="gc-pillar-icon">{pillar.icon}</span>
+              <h5>{pillar.title}</h5>
+              <p>{pillar.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Products Showcase -->
+    <div class="gc-products" id="gc-products">
+      <div class="container">
+        <h4 class="gc-section-title gc-animate">Our Products</h4>
+        <p class="gc-section-subtitle gc-animate">Premium artisanal products from Yunnan's ethnic minority communities</p>
+        <div class="gc-products-grid">
+          {gutcommonProducts.map((product) => (
+            <div class="gc-product-card gc-animate">
+              <div class="gc-product-image">
+                <img src={product.image} alt={product.name} loading="lazy" />
+              </div>
+              <div class="gc-product-content">
+                <h5>{product.name}</h5>
+                <p class="gc-product-chinese">{product.chineseName}</p>
+                <p class="gc-product-subtitle">{product.subtitle}</p>
+                <p class="gc-product-description">{product.description}</p>
+                <ul class="gc-product-features">
+                  {product.features.map((feature) => (
+                    <li>
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
 
     <!-- Wine Details: 水乳大地 -->
     <section class="gc-wine-dadi" id="gc-wine-dadi">
@@ -574,55 +625,6 @@ const rosewoodCaseStudy = {
       </div>
 
     </section>
-
-    <!-- Five Pillars -->
-    <div class="gc-pillars">
-      <div class="container">
-        <h4 class="gc-pillars-title gc-animate">Our Five Pillars</h4>
-        <div class="gc-pillars-grid">
-          {gutcommonPillars.map((pillar) => (
-            <div class="gc-pillar gc-animate">
-              <span class="gc-pillar-icon">{pillar.icon}</span>
-              <h5>{pillar.title}</h5>
-              <p>{pillar.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-
-    <!-- Products Showcase -->
-    <div class="gc-products" id="gc-products">
-      <div class="container">
-        <h4 class="gc-section-title gc-animate">Our Products</h4>
-        <p class="gc-section-subtitle gc-animate">Premium artisanal products from Yunnan's ethnic minority communities</p>
-        <div class="gc-products-grid">
-          {gutcommonProducts.map((product) => (
-            <div class="gc-product-card gc-animate">
-              <div class="gc-product-image">
-                <img src={product.image} alt={product.name} loading="lazy" />
-              </div>
-              <div class="gc-product-content">
-                <h5>{product.name}</h5>
-                <p class="gc-product-chinese">{product.chineseName}</p>
-                <p class="gc-product-subtitle">{product.subtitle}</p>
-                <p class="gc-product-description">{product.description}</p>
-                <ul class="gc-product-features">
-                  {product.features.map((feature) => (
-                    <li>
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
 
     <!-- Photo Album Section -->
     <div class="gc-album" id="gc-album">
