@@ -512,6 +512,22 @@ const rosewoodCaseStudy = {
         </div>
       </div>
 
+      <!-- 3.5 The Label — Wine Label Artwork -->
+      <div class="gc-wine-label">
+        <div class="gc-wine-label-img">
+          <img src="/images/gutcommon/dadi-wine-label.png" alt="水乳大地 Wine Label — The Person in the Mirror by Karma" loading="lazy" />
+        </div>
+        <div class="gc-wine-label-text">
+          <span class="gc-editorial-badge">The Label</span>
+          <h3 class="gc-wine-label-title">The Person in the Mirror</h3>
+          <p>Designed by <em>Karma</em>, a contemporary Tibetan artist, the label of 水乳大地 is more than decoration — it is a story told in brushstrokes.</p>
+          <p>This artwork masterfully portrays two roles — traditional and modern — within the parallel universe of a single individual. It tells a story of a soul: one that is hardworking and wise, capable of shining brightly in any environment.</p>
+          <p>The figure in the painting loves this land deeply; her beautiful long hair transforms into a pure stream, nourishing and connecting her to the land of her ancestors. Through her passion and abilities, she strives to make the world a better place.</p>
+          <p>This piece also symbolises the collaboration between Chateau Roduit and GutCommon — two vastly different worlds, Tibet and Hong Kong, yet connected by a shared vision.</p>
+          <p class="gc-wine-label-cn">此畫作亦象徵著 Chateau Roduit 與 GutCommon 的合作——西藏與香港，兩個截然不同的世界，卻由一個共同的視野所連結。</p>
+        </div>
+      </div>
+
       <!-- 4. Tasting Notes -->
       <div class="gc-wine-tasting">
         <div class="gc-wine-tasting-inner">
@@ -1508,6 +1524,57 @@ const rosewoodCaseStudy = {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  /* Wine Label Artwork */
+  .gc-wine-label {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 520px;
+    background: var(--gc-cream);
+  }
+
+  .gc-wine-label-img {
+    overflow: hidden;
+    background: #efe9dd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+  }
+
+  .gc-wine-label-img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .gc-wine-label-text {
+    padding: 80px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .gc-wine-label-title {
+    font-family: var(--gc-heading);
+    font-size: 2rem;
+    color: var(--gc-earth);
+    margin-bottom: 24px;
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  .gc-wine-label-text p {
+    color: #4a4a4a;
+    line-height: 1.8;
+    margin-bottom: 16px;
+    font-size: 1.02rem;
+  }
+
+  .gc-wine-label-cn {
+    font-size: 0.88rem !important;
+    color: rgba(93, 78, 55, 0.55) !important;
   }
 
   /* Tasting Notes */
@@ -2903,7 +2970,8 @@ const rosewoodCaseStudy = {
 
     /* Wine sections responsive — 1024px */
     .gc-wine-about,
-    .gc-wine-makers {
+    .gc-wine-makers,
+    .gc-wine-label {
       grid-template-columns: 1fr;
     }
 
@@ -2914,6 +2982,11 @@ const rosewoodCaseStudy = {
 
     .gc-wine-makers-img {
       order: -1;
+    }
+
+    .gc-wine-label-img {
+      height: 420px;
+      padding: 32px;
     }
 
     .gc-wine-tasting-inner {
@@ -2986,7 +3059,8 @@ const rosewoodCaseStudy = {
     }
 
     .gc-wine-about-text,
-    .gc-wine-makers-text {
+    .gc-wine-makers-text,
+    .gc-wine-label-text {
       padding: 48px 32px;
     }
 
