@@ -1,6 +1,49 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+// Schema.org Product structured data for pricing
+const pricingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'RADICA Marketing Automation Platform',
+  description: 'AI-Powered Marketing Automation Platform for omni-channel customer engagement including Email, SMS, and WhatsApp marketing.',
+  brand: {
+    '@type': 'Brand',
+    name: 'RADICA'
+  },
+  offers: [
+    {
+      '@type': 'Offer',
+      name: 'Starter Plan',
+      description: 'For growing businesses getting started with automation - up to 10,000 contacts',
+      priceCurrency: 'HKD',
+      availability: 'https://schema.org/InStock',
+      url: 'https://www.radicaai.com/pricing/'
+    },
+    {
+      '@type': 'Offer',
+      name: 'Professional Plan',
+      description: 'For businesses ready to scale their marketing - up to 100,000 contacts',
+      priceCurrency: 'HKD',
+      availability: 'https://schema.org/InStock',
+      url: 'https://www.radicaai.com/pricing/'
+    },
+    {
+      '@type': 'Offer',
+      name: 'Enterprise Plan',
+      description: 'For large organizations with complex needs - unlimited contacts',
+      priceCurrency: 'HKD',
+      availability: 'https://schema.org/InStock',
+      url: 'https://www.radicaai.com/pricing/'
+    }
+  ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.8',
+    reviewCount: '520'
+  }
+};
+
 const plans = [
   {
     name: 'Starter',
@@ -74,6 +117,8 @@ const faqs = [
 ---
 
 <BaseLayout title="Pricing - RADICA" description="Explore RADICA pricing plans for marketing automation. From startups to enterprises, we have a plan that fits your needs and budget.">
+
+<script type="application/ld+json" set:html={JSON.stringify(pricingSchema)} slot="head" />
 
   <section class="page-hero">
     <div class="container">

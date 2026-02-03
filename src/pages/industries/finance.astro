@@ -1,6 +1,29 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
+// Schema.org Service structured data
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'RADICA Banking & Wealth Management Marketing Solutions',
+  description: 'AI-powered marketing automation platform designed for banking and wealth management institutions with enterprise security and regulatory compliance.',
+  provider: {
+    '@type': 'Organization',
+    name: 'RADICA',
+    url: 'https://www.radicaai.com'
+  },
+  areaServed: [
+    { '@type': 'Country', name: 'Hong Kong' },
+    { '@type': 'Country', name: 'Singapore' },
+    { '@type': 'GeoCircle', name: 'Asia Pacific', geoMidpoint: { '@type': 'GeoCoordinates', latitude: 22.3193, longitude: 114.1694 } }
+  ],
+  serviceType: 'Marketing Automation',
+  audience: {
+    '@type': 'Audience',
+    audienceType: 'Banking and Wealth Management professionals'
+  }
+};
+
 const useCases = [
   {
     title: 'Digital Onboarding',
@@ -35,6 +58,8 @@ const features = [
 ---
 
 <BaseLayout title="Banking & Wealth Management Solutions - RADICA" description="Drive digital engagement and lifetime value with intelligent customer journeys for banking and wealth management.">
+
+<script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} slot="head" />
 
   <section class="page-hero">
     <div class="container">

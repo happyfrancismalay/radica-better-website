@@ -19,7 +19,7 @@ const { title, description = 'RADICA - AI-Powered Marketing Automation Platform'
 
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBBCCXXBHR"></script>
-  <script is:global>
+  <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
@@ -45,6 +45,9 @@ const { title, description = 'RADICA - AI-Powered Marketing Automation Platform'
   <link rel="canonical" href={Astro.url.href} />
 
   <title>{title}</title>
+
+  <!-- Page-specific head content -->
+  <slot name="head" />
 </head>
 <body>
   <Header />

@@ -1,0 +1,92 @@
+---
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+
+// Build full breadcrumb list with Home
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  ...items
+];
+
+// Schema.org BreadcrumbList structured data
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbs.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.label,
+    item: item.href ? new URL(item.href, Astro.site).href : undefined
+  }))
+};
+---
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol class="breadcrumb-list">
+    {breadcrumbs.map((item, index) => (
+      <li class="breadcrumb-item">
+        {item.href && index < breadcrumbs.length - 1 ? (
+          <a href={item.href}>{item.label}</a>
+        ) : (
+          <span aria-current={index === breadcrumbs.length - 1 ? 'page' : undefined}>{item.label}</span>
+        )}
+        {index < breadcrumbs.length - 1 && (
+          <span class="breadcrumb-separator" aria-hidden="true">/</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+<style>
+  .breadcrumb {
+    padding: 16px 0;
+    font-size: 14px;
+  }
+
+  .breadcrumb-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 8px;
+  }
+
+  .breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .breadcrumb-item a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .breadcrumb-item a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+
+  .breadcrumb-item span[aria-current="page"] {
+    color: var(--text-gray);
+  }
+
+  .breadcrumb-separator {
+    color: var(--text-gray);
+    opacity: 0.5;
+  }
+</style>

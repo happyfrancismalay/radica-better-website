@@ -1,8 +1,41 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Schema.org LocalBusiness structured data
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'RADICA',
+  description: 'AI-Powered Marketing Automation Platform for omni-channel customer engagement',
+  url: 'https://www.radicaai.com',
+  logo: 'https://www.radicaai.com/logo.png',
+  image: 'https://www.radicaai.com/logo.png',
+  email: 'marketing@radicasys.com',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Hong Kong',
+    addressCountry: 'HK'
+  },
+  areaServed: [
+    { '@type': 'Country', name: 'Hong Kong' },
+    { '@type': 'GeoCircle', geoMidpoint: { '@type': 'GeoCoordinates', latitude: 22.3193, longitude: 114.1694 }, geoRadius: '5000' }
+  ],
+  sameAs: [
+    'https://www.linkedin.com/company/radicasys'
+  ],
+  priceRange: '$$',
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '09:00',
+    closes: '18:00'
+  }
+};
 ---
 
 <BaseLayout title="Contact Us - RADICA" description="Get in touch with RADICA. Contact our sales team for pricing information, technical support, or partnership opportunities.">
+
+<script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} slot="head" />
 
   <section class="page-hero">
     <div class="container">
