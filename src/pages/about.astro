@@ -337,6 +337,18 @@ const rosewoodCaseStudy = {
        ===================================================== -->
   <section class="gc-section" id="gutcommon">
 
+    <!-- GutCommon Sticky Mini-Nav -->
+    <nav class="gc-mini-nav" id="gc-mini-nav">
+      <div class="gc-mini-nav-inner">
+        <img src="/images/gutcommon/logo.jpg" alt="Gut Common" class="gc-mini-nav-logo" />
+        <ul class="gc-mini-nav-links">
+          <li><a href="#gc-brand-story">Brand Story</a></li>
+          <li><a href="#gc-wine-dadi">水乳大地</a></li>
+          <li><a href="#gc-where-to-taste">Where to Taste</a></li>
+        </ul>
+      </div>
+    </nav>
+
     <!-- GutCommon Hero with Logo -->
     <div class="gc-hero">
       <div class="gc-hero-bg" style="background-image: url('/images/gutcommon/album/943bb49a7e19e8e4d29bd4bc19b17fa3.JPG')"></div>
@@ -347,31 +359,221 @@ const rosewoodCaseStudy = {
       </div>
     </div>
 
-    <!-- Mission & Story -->
-    <div class="gc-mission">
-      <div class="container">
-        <div class="gc-mission-grid">
-          <div class="gc-mission-content gc-animate">
-            <span class="gc-badge-earth">Social Impact Initiative</span>
-            <h3>Good for Your Gut. Good for Communities.</h3>
-            <p>
-              Deep in Yunnan's mountains, where mist-shrouded peaks meet ancient villages, ethnic minority communities have perfected their crafts over generations. GutCommon bridges these remote artisans to global markets, bringing you products that embody centuries of tradition.
-            </p>
-            <p>
-              We partner with Tibetan winemakers cultivating grapes at 2,600 meters and Bai minority families curing ham with methods unchanged for centuries. Through regular site visits, we understand their unique challenges—from geographical isolation to climate variations—and work alongside them to meet international quality standards while preserving the authenticity that makes their products extraordinary.
-            </p>
+    <!-- Brand Story -->
+    <section class="gc-brand-story" id="gc-brand-story">
+      <div class="gc-brand-story-inner">
+        <span class="gc-editorial-badge">Brand Story</span>
+
+        <!-- Opening pull quote -->
+        <blockquote class="gc-pull-quote">
+          <p>From the highlands of Yunnan to the tables of Hong Kong — a story of ancient wisdom, modern health, and the communities that make it possible.</p>
+          <p class="gc-pull-quote-cn">從雲南高原到香港的餐桌——古老智慧、現代健康，以及讓這一切成為可能的社群故事。</p>
+        </blockquote>
+
+        <div class="gc-divider"></div>
+
+        <!-- Narrative paragraphs with left citation bar -->
+        <div class="gc-narrative">
+
+          <div class="gc-narrative-block">
+            <p class="gc-narrative-text">It began with a journey. Francis, the mind behind Gut Common, spent years wandering through Tibet and the ethnic minority villages of Yunnan — not as a tourist, but as a listener. He sat with farmers, shared meals under open skies, and witnessed how centuries-old traditions sustained entire communities long before the modern world took notice.</p>
+            <p class="gc-narrative-text-cn">一切從一段旅途開始。Gut Common 的創辦人 Francis，多年來在西藏和雲南少數民族村落之間漫遊——不是作為旅遊者，而是作為傾聽者。他與農民同坐，在露天下共享餐食，親眼目睹數百年來古老傳統如何維繫著整個社群。</p>
           </div>
-          <div class="gc-mission-stats gc-animate">
-            {gutcommonStats.map((stat) => (
-              <div class="gc-stat">
-                <div class="gc-stat-number">{stat.number}</div>
-                <div class="gc-stat-label">{stat.label}</div>
+
+          <div class="gc-narrative-block">
+            <p class="gc-narrative-text">A personal health challenge became the catalyst. Searching for answers in gut health and probiotic science, Francis discovered a profound connection — the same ancient fermentation and natural-process foods that minority communities had perfected over generations were quietly aligned with cutting-edge nutritional research.</p>
+            <p class="gc-narrative-text-cn">一次個人的健康困境成了契機。在探索腸道健康與益生菌科學的過程中，Francis 發現了一個深刻的聯繫——少數民族社群幾百年來精心完善的古老發酵與天然食品，與最新的營養學研究不約而同地契合。</p>
+          </div>
+
+          <div class="gc-narrative-block">
+            <p class="gc-narrative-text">The name "Gut Common" was born from this convergence: gut for health, common for shared — a bridge between the wisdom of the earth and the people who carry it. Every product is sourced under Hong Kong's rigorous quality standards, ensuring that what reaches your table is both authentic and safe.</p>
+            <p class="gc-narrative-text-cn">「Gut Common」這個名字源於這種交匯：gut 代表健康，common 代表共享——架起大地智慧與攜帶它的人之間的橋梁。每個產品均符合香港嚴格的品質標準，確保抵達您餐桌的食品既道地，又安全。</p>
+          </div>
+
+          <div class="gc-narrative-block">
+            <p class="gc-narrative-text">The first product — 水乳大地 (Shui Ru Da Di) — a Cabernet Sauvignon cultivated at 2,360 metres elevation in Yunnan's sacred mountain valleys. Grown by 16 local families, harvested with minimal intervention, and aged in clay pots rather than oak barrels. It is not just a wine. It is a landscape in a bottle.</p>
+            <p class="gc-narrative-text-cn">第一個產品——水乳大地，是種植於雲南神聖山谷、海拔 2,360 米處的卡巴內蘇維翁紅葡萬酒。由當地 16 戶家庭種植，採取最小干預方式收穫，並以陶罐而非橡木桶陳年。它不僅僅是一款葡萬酒。它是一個裝在瓶中的風土大地。</p>
+          </div>
+
+          <div class="gc-narrative-block">
+            <p class="gc-narrative-text">Looking ahead, Gut Common will continue to uncover forgotten treasures — fermented foods, heritage ingredients, and living traditions — from communities that the world has yet to know. Every product is a story. Every purchase is a choice to preserve something worth remembering.</p>
+            <p class="gc-narrative-text-cn">展望未來，Gut Common 將繼續發現被遺忘的寶藏——發酵食品、傳承食材，以及世界尚未認識的活著的傳統。每個產品都是一個故事。每次購買都是一個選擇——選擇讓值得記住的事物延續下去。</p>
+          </div>
+
+        </div>
+
+        <!-- Community photo -->
+        <div class="gc-brand-story-photo">
+          <img src="/images/gutcommon/album/IMG_9471.jpg" alt="Gut Common community" loading="lazy" />
+        </div>
+
+        <div class="gc-divider"></div>
+
+        <!-- RADICA attribution -->
+        <div class="gc-radica-credit">
+          <p class="gc-radica-credit-label">Gut Common is a project proudly supported by</p>
+          <a href="https://radicaai.com" target="_blank" rel="noopener noreferrer" class="gc-radica-credit-name">RADICA Systems</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wine Details: 水乳大地 -->
+    <section class="gc-wine-dadi" id="gc-wine-dadi">
+
+      <!-- 1. Wine Hero -->
+      <div class="gc-wine-hero">
+        <img src="/images/gutcommon/album/66440b9302ae8f675cb4345ee19ae840.JPG" alt="水乳大地 Shui Ru Da Di" class="gc-wine-hero-img" loading="lazy" />
+        <div class="gc-wine-hero-overlay"></div>
+        <div class="gc-wine-hero-content">
+          <h2 class="gc-wine-hero-title">水乳大地</h2>
+          <p class="gc-wine-hero-subtitle">Shui Ru Da Di · Cabernet Sauvignon</p>
+          <p class="gc-wine-hero-sub-cn">赤霞珠紅葡萬酒 · 2,360m Elevation</p>
+        </div>
+      </div>
+
+      <!-- 2. About the Wine -->
+      <div class="gc-wine-about">
+        <div class="gc-wine-about-img">
+          <img src="/images/gutcommon/album/943bb49a7e19e8e4d29bd4bc19b17fa3.JPG" alt="Valley dining experience" loading="lazy" />
+        </div>
+        <div class="gc-wine-about-text">
+          <span class="gc-editorial-badge">About the Wine</span>
+          <h3 class="gc-wine-about-title">A wine born from the earth itself</h3>
+          <p>Cultivated high in the sacred mountain valleys of Yunnan, 水乳大地 is a testament to what happens when nature is allowed to lead. The intense altitude, dramatic temperature swings, and pristine air create grapes of extraordinary depth — translated into a wine that is both wild and refined.</p>
+          <p class="gc-wine-about-cn">種植於雲南神聖山谷高處，水乳大地是大自然主導時的證明。極端的海拔、戲劇性的溫差與潔淨的空氣，造出了具有非凡深度的葡萬粒——釀成一款既野生又精緻的葡萬酒。</p>
+        </div>
+      </div>
+
+      <!-- 3. The Winemakers -->
+      <div class="gc-wine-makers">
+        <div class="gc-wine-makers-text">
+          <span class="gc-editorial-badge">The Winemakers</span>
+          <h3 class="gc-wine-makers-title">Guided by two worlds</h3>
+          <p>Yves, a Swiss winemaker with roots at <em>Château Mouton Rothschild</em>, and Helene, a Tibetan woman raised among the mountain vineyards — together they bring a rare philosophy: minimal intervention, no herbicides, and a deep respect for the land.</p>
+          <p>Each vine yields only 6–8 clusters per season. This is not scarcity by accident. It is devotion by design.</p>
+          <p class="gc-wine-makers-cn">Yves，一位源自 Château Mouton Rothschild 的瑞士釀酒師，與 Helene，一位在山中葡萬園長大的藏族女性——他們共同秉持一種罕見的哲學：最小干預、不使用除草劑，以及對大地的深切尊敬。每株藉蔓每季僅結出 6–8 串葡萬。這不是偶然的稀少。這是刻意的奉獻。</p>
+        </div>
+        <div class="gc-wine-makers-img">
+          <img src="/images/gutcommon/album/3219985555a732eba71fa8e902ace161.jpg" alt="Tibetan winemaker tradition" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- 4. Tasting Notes -->
+      <div class="gc-wine-tasting">
+        <div class="gc-wine-tasting-inner">
+          <div class="gc-wine-tasting-content">
+            <span class="gc-editorial-badge">Tasting Notes / 品酒筆記</span>
+            <h3 class="gc-wine-tasting-title">The Palate</h3>
+
+            <!-- Aroma Wheel -->
+            <div class="gc-aroma-wheel">
+              <div class="gc-aroma-node gc-aroma-1">
+                <span class="gc-aroma-dot"></span>
+                <span class="gc-aroma-label">黑果香<br/>Dark Fruit</span>
               </div>
-            ))}
+              <div class="gc-aroma-node gc-aroma-2">
+                <span class="gc-aroma-dot"></span>
+                <span class="gc-aroma-label">黑醋栗<br/>Blackcurrant</span>
+              </div>
+              <div class="gc-aroma-node gc-aroma-3">
+                <span class="gc-aroma-dot"></span>
+                <span class="gc-aroma-label">覆盆子<br/>Raspberry</span>
+              </div>
+              <div class="gc-aroma-node gc-aroma-4">
+                <span class="gc-aroma-dot"></span>
+                <span class="gc-aroma-label">黑櫻桃<br/>Black Cherry</span>
+              </div>
+            </div>
+
+            <!-- Tasting Note Poetry -->
+            <div class="gc-tasting-poetry">
+              <p><em>On the nose:</em> layers of dark fruit — blackcurrant and black cherry — with a whisper of mountain earth beneath.</p>
+              <p><em>On the palate:</em> velvety, with a quiet intensity. Raspberry emerges mid-mouth, giving way to a long, lingering finish that carries the altitude with it.</p>
+              <p><em>In the glass:</em> deep ruby. A wine that asks you to slow down.</p>
+            </div>
+          </div>
+          <div class="gc-wine-tasting-img">
+            <img src="/images/gutcommon/album/8efaae6e5ae0d39b107826248d5d8896.jpg" alt="Wine tasting" loading="lazy" />
           </div>
         </div>
       </div>
-    </div>
+
+      <!-- 5. The Uniqueness — Data Cards -->
+      <div class="gc-wine-uniqueness">
+        <div class="gc-wine-uniqueness-inner">
+          <div class="gc-uniqueness-cards">
+            <div class="gc-uniqueness-card">
+              <span class="gc-uniqueness-number">5,000</span>
+              <span class="gc-uniqueness-unit">瓶 / Bottles</span>
+              <span class="gc-uniqueness-desc">Annual production</span>
+            </div>
+            <div class="gc-uniqueness-card">
+              <span class="gc-uniqueness-number">2,360</span>
+              <span class="gc-uniqueness-unit">米 / Metres</span>
+              <span class="gc-uniqueness-desc">Vineyard elevation</span>
+            </div>
+            <div class="gc-uniqueness-card">
+              <span class="gc-uniqueness-number">16</span>
+              <span class="gc-uniqueness-unit">戶 / Families</span>
+              <span class="gc-uniqueness-desc">Local families supported</span>
+            </div>
+          </div>
+          <p class="gc-uniqueness-note">
+            <em>Aged in clay pots</em>, not oak barrels. This ancient method preserves the wine's natural terroir expression — no added flavour, only the honest voice of the mountain.
+          </p>
+          <p class="gc-uniqueness-note-cn">以陶罐陳年，而非橡木桶。這種古老方法保留了葡萬酒風土的原真表達——沒有添加的風味，只有山脈誠實的聲音。</p>
+        </div>
+      </div>
+
+      <!-- 6. Where to Buy & Taste -->
+      <div class="gc-where-to-taste" id="gc-where-to-taste">
+        <div class="gc-where-inner">
+          <span class="gc-editorial-badge">Where to Buy &amp; Taste</span>
+          <h3 class="gc-where-title">Find 水乳大地</h3>
+          <div class="gc-where-grid">
+            <div class="gc-where-buy">
+              <h4>Buy Online</h4>
+              <p>Available exclusively through MyiCellar, Hong Kong's premier online wine merchant.</p>
+              <a href="https://www.myicellar.com" target="_blank" rel="noopener noreferrer" class="gc-where-cta">Shop on MyiCellar →</a>
+            </div>
+            <div class="gc-where-taste-list">
+              <h4>Taste In Person</h4>
+              <ul>
+                <li><strong>Hong Kong</strong> — Carlyle &amp; Co, Rosewood Hong Kong</li>
+                <li><strong>Hong Kong</strong> — Mandarin Oriental Wine Bar</li>
+                <li><strong>Hong Kong</strong> — The Saffron Lounge</li>
+                <li><strong>Hong Kong</strong> — Kowloon Bay Wine Cave</li>
+                <li><strong>Macau</strong> — The Ritz-Carlton Wine Lounge</li>
+                <li><strong>Macau</strong> — Sky Lounge, The Venetian</li>
+                <li><strong>Shanghai</strong> — The Peninsula Shanghai</li>
+                <li><strong>Shanghai</strong> — Fang Cai, Rosewood Shanghai</li>
+                <li><strong>Yunnan</strong> — Shui Ru Da Di Estate (by appointment)</li>
+                <li><strong>Yunnan</strong> — Shangri-La Boutique Winery</li>
+                <li><strong>Yunnan</strong> — Meili Village Chief Winery</li>
+                <li><strong>Other</strong> — Contact us for private tastings</li>
+              </ul>
+            </div>
+          </div>
+          <div class="gc-where-photo">
+            <img src="/images/gutcommon/album/4f24cef7ef967b492781a368e2cecafc.jpg" alt="Wine dinner experience" loading="lazy" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Testimonial -->
+      <div class="gc-wine-testimonial">
+        <div class="gc-wine-testimonial-inner">
+          <blockquote class="gc-testimonial-quote">
+            "Best wine I ever tried in Shangri-La region"
+          </blockquote>
+          <cite class="gc-testimonial-cite">
+            <strong>Leo Lo</strong>
+            <span>Carlyle &amp; Co, Rosewood Hong Kong</span>
+          </cite>
+        </div>
+      </div>
+
+    </section>
 
     <!-- Five Pillars -->
     <div class="gc-pillars">
@@ -941,6 +1143,671 @@ const rosewoodCaseStudy = {
     margin-top: 80px;
   }
 
+  /* Editorial Fonts */
+  .gc-section {
+    --gc-heading: 'Playfair Display', Georgia, serif;
+    --gc-body: system-ui, -apple-system, sans-serif;
+  }
+
+  /* =====================================================
+     GutCommon Sticky Mini-Nav
+     ===================================================== */
+  .gc-mini-nav {
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    background: rgba(245, 240, 230, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(93, 78, 55, 0.1);
+    padding: 12px 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .gc-mini-nav.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .gc-mini-nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .gc-mini-nav-logo {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .gc-mini-nav-links {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .gc-mini-nav-links a {
+    text-decoration: none;
+    color: var(--gc-earth);
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-transform: lowercase;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .gc-mini-nav-links a:hover {
+    color: var(--gc-wine);
+  }
+
+  /* =====================================================
+     Brand Story — Editorial Style
+     ===================================================== */
+  .gc-brand-story {
+    background: var(--gc-cream);
+    padding: 120px 0;
+  }
+
+  .gc-brand-story-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .gc-editorial-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gc-wine);
+    margin-bottom: 32px;
+  }
+
+  .gc-pull-quote {
+    margin: 0 0 48px;
+  }
+
+  .gc-pull-quote p {
+    font-family: var(--gc-heading);
+    font-size: 1.75rem;
+    font-style: italic;
+    color: var(--gc-earth);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .gc-pull-quote-cn {
+    font-size: 1.1rem !important;
+    margin-top: 16px;
+    color: rgba(93, 78, 55, 0.6) !important;
+    font-style: italic;
+  }
+
+  .gc-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gc-earth);
+    opacity: 0.2;
+    margin: 48px 0;
+  }
+
+  /* Narrative blocks with left citation line */
+  .gc-narrative {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .gc-narrative-block {
+    padding-left: 28px;
+    border-left: 2px solid var(--gc-gold);
+  }
+
+  .gc-narrative-text {
+    font-size: 1.05rem;
+    color: #4a4a4a;
+    line-height: 1.85;
+  }
+
+  .gc-narrative-text-cn {
+    font-size: 0.9rem;
+    color: rgba(93, 78, 55, 0.55);
+    line-height: 1.7;
+    margin-top: 12px;
+  }
+
+  .gc-brand-story-photo {
+    margin: 48px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 360px;
+  }
+
+  .gc-brand-story-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* RADICA Credit */
+  .gc-radica-credit {
+    text-align: center;
+    padding-top: 16px;
+  }
+
+  .gc-radica-credit-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(93, 78, 55, 0.5);
+    margin-bottom: 8px;
+  }
+
+  .gc-radica-credit-name {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gc-earth);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease;
+  }
+
+  .gc-radica-credit-name:hover {
+    color: var(--gc-wine);
+  }
+
+  /* =====================================================
+     Wine Details: 水乳大地
+     ===================================================== */
+
+  /* Wine Hero */
+  .gc-wine-hero {
+    position: relative;
+    height: 70vh;
+    min-height: 480px;
+    max-height: 700px;
+    overflow: hidden;
+  }
+
+  .gc-wine-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gc-wine-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(30,20,10,0.85) 0%, rgba(30,20,10,0.3) 50%, transparent 100%);
+  }
+
+  .gc-wine-hero-content {
+    position: absolute;
+    bottom: 80px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    padding: 0 24px;
+  }
+
+  .gc-wine-hero-title {
+    font-family: var(--gc-heading);
+    font-size: 4rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+  }
+
+  .gc-wine-hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    opacity: 0.95;
+  }
+
+  .gc-wine-hero-sub-cn {
+    font-size: 0.95rem;
+    opacity: 0.7;
+    margin-top: 6px;
+    letter-spacing: 1px;
+  }
+
+  /* About the Wine — left image, right text */
+  .gc-wine-about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 480px;
+    background: white;
+  }
+
+  .gc-wine-about-img {
+    overflow: hidden;
+  }
+
+  .gc-wine-about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gc-wine-about-text {
+    padding: 80px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .gc-wine-about-title {
+    font-family: var(--gc-heading);
+    font-size: 2rem;
+    color: var(--gc-earth);
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+
+  .gc-wine-about-text p {
+    color: #4a4a4a;
+    line-height: 1.8;
+    margin-bottom: 16px;
+    font-size: 1.02rem;
+  }
+
+  .gc-wine-about-cn {
+    font-size: 0.88rem !important;
+    color: rgba(93, 78, 55, 0.55) !important;
+  }
+
+  /* The Winemakers — left text, right image */
+  .gc-wine-makers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 500px;
+    background: var(--gc-cream);
+  }
+
+  .gc-wine-makers-text {
+    padding: 80px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .gc-wine-makers-title {
+    font-family: var(--gc-heading);
+    font-size: 2rem;
+    color: var(--gc-earth);
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+
+  .gc-wine-makers-text p {
+    color: #4a4a4a;
+    line-height: 1.8;
+    margin-bottom: 16px;
+    font-size: 1.02rem;
+  }
+
+  .gc-wine-makers-cn {
+    font-size: 0.88rem !important;
+    color: rgba(93, 78, 55, 0.55) !important;
+  }
+
+  .gc-wine-makers-img {
+    overflow: hidden;
+  }
+
+  .gc-wine-makers-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Tasting Notes */
+  .gc-wine-tasting {
+    background: white;
+    padding: 100px 0;
+  }
+
+  .gc-wine-tasting-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .gc-wine-tasting-title {
+    font-family: var(--gc-heading);
+    font-size: 2rem;
+    color: var(--gc-earth);
+    margin-bottom: 40px;
+    font-weight: 600;
+  }
+
+  /* Aroma Wheel — 4 nodes in a 2x2 grid with connecting lines */
+  .gc-aroma-wheel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+    position: relative;
+    max-width: 380px;
+  }
+
+  .gc-aroma-wheel::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: var(--gc-wine);
+    opacity: 0.3;
+    transform: translateY(-50%);
+    z-index: 0;
+  }
+
+  .gc-aroma-wheel::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    bottom: 25%;
+    width: 2px;
+    background: var(--gc-wine);
+    opacity: 0.3;
+    transform: translateX(-50%);
+    z-index: 0;
+  }
+
+  .gc-aroma-node {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .gc-aroma-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--gc-wine);
+    border: 3px solid white;
+    box-shadow: 0 2px 12px rgba(114, 47, 55, 0.3);
+  }
+
+  .gc-aroma-label {
+    font-size: 12px;
+    color: var(--gc-earth);
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  /* Tasting poetry */
+  .gc-tasting-poetry {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .gc-tasting-poetry p {
+    color: #4a4a4a;
+    line-height: 1.8;
+    font-size: 1rem;
+  }
+
+  .gc-tasting-poetry em {
+    color: var(--gc-wine);
+    font-style: italic;
+  }
+
+  .gc-wine-tasting-img {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 440px;
+    position: sticky;
+    top: 120px;
+  }
+
+  .gc-wine-tasting-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Uniqueness / Data Cards */
+  .gc-wine-uniqueness {
+    background: var(--gc-cream);
+    padding: 100px 0;
+  }
+
+  .gc-wine-uniqueness-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+  }
+
+  .gc-uniqueness-cards {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-bottom: 56px;
+  }
+
+  .gc-uniqueness-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-width: 140px;
+  }
+
+  .gc-uniqueness-number {
+    font-family: var(--gc-heading);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--gc-wine);
+    line-height: 1;
+  }
+
+  .gc-uniqueness-unit {
+    font-size: 14px;
+    color: var(--gc-gold);
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .gc-uniqueness-desc {
+    font-size: 13px;
+    color: rgba(93, 78, 55, 0.6);
+    margin-top: 4px;
+  }
+
+  .gc-uniqueness-note {
+    max-width: 580px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    color: #4a4a4a;
+    line-height: 1.8;
+  }
+
+  .gc-uniqueness-note em {
+    color: var(--gc-wine);
+    font-style: italic;
+  }
+
+  .gc-uniqueness-note-cn {
+    max-width: 580px;
+    margin: 12px auto 0;
+    font-size: 0.88rem;
+    color: rgba(93, 78, 55, 0.55);
+    line-height: 1.7;
+  }
+
+  /* Where to Buy & Taste */
+  .gc-where-to-taste {
+    background: white;
+    padding: 100px 0;
+  }
+
+  .gc-where-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .gc-where-title {
+    font-family: var(--gc-heading);
+    font-size: 2rem;
+    color: var(--gc-earth);
+    margin-bottom: 40px;
+    font-weight: 600;
+  }
+
+  .gc-where-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 56px;
+    margin-bottom: 56px;
+  }
+
+  .gc-where-buy {
+    background: var(--gc-cream);
+    padding: 40px;
+    border-radius: 16px;
+  }
+
+  .gc-where-buy h4 {
+    font-family: var(--gc-heading);
+    font-size: 1.4rem;
+    color: var(--gc-earth);
+    margin-bottom: 16px;
+  }
+
+  .gc-where-buy p {
+    color: #4a4a4a;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+  }
+
+  .gc-where-cta {
+    display: inline-block;
+    background: var(--gc-wine);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .gc-where-cta:hover {
+    background: var(--gc-earth);
+    transform: translateY(-1px);
+  }
+
+  .gc-where-taste-list h4 {
+    font-family: var(--gc-heading);
+    font-size: 1.4rem;
+    color: var(--gc-earth);
+    margin-bottom: 20px;
+  }
+
+  .gc-where-taste-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .gc-where-taste-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(93, 78, 55, 0.1);
+    font-size: 0.95rem;
+    color: #4a4a4a;
+  }
+
+  .gc-where-taste-list li:last-child {
+    border-bottom: none;
+  }
+
+  .gc-where-taste-list strong {
+    color: var(--gc-earth);
+  }
+
+  .gc-where-photo {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 280px;
+  }
+
+  .gc-where-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Wine Testimonial */
+  .gc-wine-testimonial {
+    background: linear-gradient(135deg, var(--gc-earth) 0%, #3a3020 100%);
+    padding: 100px 0;
+  }
+
+  .gc-wine-testimonial-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+  }
+
+  .gc-testimonial-quote {
+    font-family: var(--gc-heading);
+    font-size: 2.25rem;
+    font-style: italic;
+    color: white;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0 0 32px;
+  }
+
+  .gc-testimonial-cite {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-style: normal;
+  }
+
+  .gc-testimonial-cite strong {
+    color: var(--gc-gold);
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .gc-testimonial-cite span {
+    color: rgba(255,255,255,0.65);
+    font-size: 14px;
+  }
+
   /* GutCommon Hero with Logo */
   .gc-hero {
     position: relative;
@@ -984,12 +1851,13 @@ const rosewoodCaseStudy = {
   }
 
   .gc-logo {
-    max-width: 400px;
-    width: 80%;
+    max-width: 180px;
+    width: auto;
     height: auto;
     margin-bottom: 32px;
-    border-radius: 8px;
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 0.9;
   }
 
   .gc-tagline {
@@ -1973,29 +2841,8 @@ const rosewoodCaseStudy = {
       min-height: 500px;
     }
 
-    .gc-logo {
-      max-width: 300px;
-    }
-
     .gc-tagline {
       font-size: 1.25rem;
-    }
-
-    .gc-mission-grid {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-
-    .gc-mission-stats {
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .gc-stat {
-      flex: 1;
-      min-width: 200px;
-      max-width: 250px;
     }
 
     .gc-pillars-grid {
@@ -2017,6 +2864,40 @@ const rosewoodCaseStudy = {
     .gc-casestudy-photos {
       grid-template-columns: repeat(2, 1fr);
     }
+
+    /* Wine sections responsive — 1024px */
+    .gc-wine-about,
+    .gc-wine-makers {
+      grid-template-columns: 1fr;
+    }
+
+    .gc-wine-about-img,
+    .gc-wine-makers-img {
+      height: 340px;
+    }
+
+    .gc-wine-makers-img {
+      order: -1;
+    }
+
+    .gc-wine-tasting-inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .gc-wine-tasting-img {
+      position: static;
+      height: 300px;
+    }
+
+    .gc-uniqueness-cards {
+      gap: 24px;
+    }
+
+    .gc-where-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
   }
 
   @media (max-width: 768px) {
@@ -2025,31 +2906,14 @@ const rosewoodCaseStudy = {
       min-height: 450px;
     }
 
-    .gc-logo {
-      max-width: 250px;
-    }
-
     .gc-tagline {
       font-size: 1rem;
     }
 
-    .gc-mission,
     .gc-pillars,
     .gc-products,
     .gc-album {
       padding: 60px 0;
-    }
-
-    .gc-mission-content h3 {
-      font-size: 1.75rem;
-    }
-
-    .gc-mission-stats {
-      flex-direction: column;
-    }
-
-    .gc-stat {
-      max-width: none;
     }
 
     .gc-pillars-grid {
@@ -2064,6 +2928,59 @@ const rosewoodCaseStudy = {
 
     .gc-products-grid {
       grid-template-columns: 1fr;
+    }
+
+    /* Brand Story responsive — 768px */
+    .gc-brand-story {
+      padding: 80px 0;
+    }
+
+    .gc-pull-quote p {
+      font-size: 1.35rem;
+    }
+
+    /* Wine sections responsive — 768px */
+    .gc-wine-hero {
+      height: 50vh;
+      min-height: 350px;
+    }
+
+    .gc-wine-hero-title {
+      font-size: 2.8rem;
+    }
+
+    .gc-wine-about-text,
+    .gc-wine-makers-text {
+      padding: 48px 32px;
+    }
+
+    .gc-wine-tasting,
+    .gc-wine-uniqueness,
+    .gc-where-to-taste {
+      padding: 60px 0;
+    }
+
+    .gc-uniqueness-cards {
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .gc-testimonial-quote {
+      font-size: 1.6rem;
+    }
+
+    .gc-wine-testimonial {
+      padding: 60px 0;
+    }
+
+    /* Mini-nav responsive — 768px */
+    .gc-mini-nav-links {
+      gap: 20px;
+    }
+
+    .gc-mini-nav-links a {
+      font-size: 12px;
     }
 
     .gc-product-image {
@@ -2162,6 +3079,20 @@ const rosewoodCaseStudy = {
 
     .gc-timeline-location {
       display: none;
+    }
+
+    /* Wine Hero responsive — 480px */
+    .gc-wine-hero-title {
+      font-size: 2.2rem;
+    }
+
+    /* Mini-nav responsive — 480px */
+    .gc-mini-nav-inner {
+      gap: 16px;
+    }
+
+    .gc-mini-nav-links {
+      gap: 14px;
     }
   }
 </style>
@@ -2363,5 +3294,40 @@ const rosewoodCaseStudy = {
         document.querySelector(`.gc-timeline-panel[data-day="${day}"]`).classList.add('active');
       });
     });
+
+    // Sticky Mini-Nav visibility (show when #gutcommon hero has scrolled past)
+    const gcSection = document.getElementById('gutcommon');
+    const miniNav = document.getElementById('gc-mini-nav');
+
+    if (gcSection && miniNav) {
+      const navObserver = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+          miniNav.classList.add('visible');
+        } else {
+          miniNav.classList.remove('visible');
+        }
+      }, {
+        threshold: [0, 1],
+        rootMargin: '-1px 0px 0px 0px'
+      });
+
+      navObserver.observe(gcSection);
+
+      // Hide nav when user scrolls past the entire #gutcommon section
+      const socialSection = gcSection.querySelector('.gc-social');
+      if (socialSection) {
+        const gcSectionEnd = new IntersectionObserver((entries) => {
+          const entry = entries[0];
+          if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+            miniNav.classList.remove('visible');
+          }
+        }, {
+          threshold: 0,
+          rootMargin: '-100% 0px 0px 0px'
+        });
+        gcSectionEnd.observe(socialSection);
+      }
+    }
   });
 </script>

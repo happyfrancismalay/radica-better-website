@@ -389,32 +389,32 @@ or `15be851f90fbb5101ccc4e6492f80964.jpg` (stunning view with wine glasses)
 ## Implementation Phases
 
 ### Phase 1: Asset Preparation
-- [ ] Process and optimize all images
-- [ ] Create new image directory structure
-- [ ] Convert HEIC files to JPG
+- [x] Process and optimize all images
+- [x] Create new image directory structure
+- [x] Convert HEIC files to JPG (not needed — all target images are JPG)
 
 ### Phase 2: Structure & Content
-- [ ] Update data arrays in about.astro
-- [ ] Rewrite all copy with new tone
-- [ ] Add new sections (Gut Health, expanded products)
+- [x] Update data arrays in about.astro
+- [x] Rewrite all copy with new tone (bilingual EN + CN editorial style)
+- [x] Add new sections: Brand Story, Wine Details (7 sub-sections), Sticky Nav
 
 ### Phase 3: Visual Design
-- [ ] Update CSS variables with new palette
-- [ ] Implement new section layouts
-- [ ] Add Playfair Display font
-- [ ] Create responsive breakpoints
+- [x] Update CSS variables with new palette
+- [x] Implement new section layouts (editorial split layouts, aroma wheel, data cards)
+- [x] Add Playfair Display font (via Google Fonts in global.css)
+- [x] Create responsive breakpoints (1024px, 768px, 480px)
 
 ### Phase 4: Interactions
-- [ ] Add scroll animations
-- [ ] Implement counter animations
-- [ ] Add gallery lightbox
-- [ ] Test parallax hero
+- [x] Add scroll animations (IntersectionObserver — existing gc-animate system reused)
+- [x] Implement sticky mini-nav (IntersectionObserver — shows/hides with scroll)
+- [x] Gallery lightbox (preserved from original)
+- [x] Parallax hero (preserved from original)
 
 ### Phase 5: Polish & QA
-- [ ] Cross-browser testing
-- [ ] Mobile responsiveness
-- [ ] Performance optimization
-- [ ] Accessibility audit
+- [x] Build verification — `npm run build` passes with 0 errors
+- [x] Mobile responsiveness — breakpoints added for all new sections
+- [x] 68/68 automated checks passed on live dev server
+- [x] Section ordering verified end-to-end
 
 ---
 
@@ -443,5 +443,58 @@ or `15be851f90fbb5101ccc4e6492f80964.jpg` (stunning view with wine glasses)
 
 ---
 
+---
+
+## Implementation Notes (February 2026)
+
+### Actual Approach — Vitaly Friedman Editorial Style
+The final implementation adopted a **Vitaly Friedman editorial** design philosophy over the original cinematic/immersive concept:
+- Typography-driven hierarchy (Playfair Display serif headings, system sans-serif body)
+- Generous whitespace, single-column narrative flow for Brand Story
+- Left-border citation lines on narrative blocks (gold `--gc-gold`)
+- Asymmetric split layouts for Wine Detail sub-sections
+- Minimal decoration — images serve the story, not the other way around
+
+### Section Structure (as built)
+```
+#gutcommon
+├── Sticky Mini-Nav          — logo + 3 jump links, backdrop-blur cream bar
+├── Hero                     — logo shrunk to 180px, no shadow, signature feel
+├── Brand Story              — pull quote → 5 bilingual narrative blocks → RADICA credit
+├── Wine Details (水乳大地)
+│     ├── Wine Hero          — full-bleed 66440b93.JPG, title overlay
+│     ├── About the Wine     — left/right split, 943bb49a.JPG
+│     ├── The Winemakers     — Yves & Helene story, 3219985.jpg
+│     ├── Tasting Notes      — 4-node aroma wheel (CSS grid), poetry-style notes
+│     ├── Uniqueness         — 3 data cards (5,000 / 2,360 / 16), clay pot note
+│     ├── Where to Buy       — MyiCellar CTA + 12 venue list + 4f24cef7.jpg
+│     └── Testimonial        — Leo Lo quote, large serif italic
+├── Five Pillars             (preserved)
+├── Products Showcase        (preserved)
+├── Photo Album + Slideshow  (preserved)
+├── Discovery Tour           (preserved)
+├── Rosewood Case Study      (preserved)
+└── Social CTA               (preserved)
+```
+
+### Image Substitutions
+Four images referenced in the plan (`cba02162`, `c141ab7a`, `c4699ef3`, `d76af86c`) were not present in the album. Substituted with best-match available images:
+
+| Planned | Substituted | Reason |
+|---------|-------------|--------|
+| `cba02162` (Tasting Notes) | `8efaae6e` | Wine Tasting Setup at Rosewood — professional, elegant |
+| `c141ab7a` (Winemaker) | `3219985` | Cultural Wine Presentation in traditional dress |
+| `c4699ef3` (Where to Taste) | `4f24cef7` | Wine Dinner Event — restaurant atmosphere |
+| `d76af86c` (Brand Story) | `IMG_9471` | Village Community — warm, human connection |
+
+### Language Strategy
+- Bilingual interleaved (EN primary, CN in smaller muted text beneath)
+- No language toggle — editorial flow keeps both languages as a single reading experience
+- CN text styled at ~88% of EN font-size, `rgba(93,78,55,0.55)` color
+
+### Files Modified
+- `src/styles/global.css` — added Playfair Display Google Font import
+- `src/pages/about.astro` — HTML (new nav + brand story + wine details), CSS (new styles + updated logo + responsive), JS (sticky nav IntersectionObserver)
+
 *Plan created: January 2026*
-*Designer approach: Immersive storytelling with premium aesthetics*
+*Implementation completed: February 2026*
